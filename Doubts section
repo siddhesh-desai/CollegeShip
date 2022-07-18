@@ -20,11 +20,11 @@
 </head>
 <body>
 
-<h1>The button element - Styled with CSS</h1>
+<h1>Doubts</h1>
 <p>Change the background color of a button with the background-color property:</p>
 
-<button class="button button1">Green</button>
-<button class="button button2">Blue</button>
+<button class="button button1">View Doubt</button>
+<button class="button button2">View Doubt/button>
 
 </body>
 </html>
