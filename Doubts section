@@ -14,16 +14,16 @@
   cursor: pointer;
 }
 
-.button1 {background-color: #008CBA;} /* Green */
-.button2 {background-color: #008CBA;} /* Blue */
+.button1 {background-color: #FFA500;} 
+.button2 {background-color: #FFA500;} 
 </style>
 </head>
 <body>
 
 <h1>Doubts</h1>
-<p>Change the background color of a button with the background-color property:</p>
+<p>Choose any of the below options to continue</p>
 
-<button class="button button1">View Doubt</button>
+<button class="button button1">Raise a queryt</button>
 <button class="button button2">View Doubt/button>
 
 </body>
