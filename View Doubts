@@ -1,30 +1,31 @@
-<!DOCTYPE html>
+<!Doctype html>
 <html>
-<head>
 <style>
-.button {
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+.btn-group button {
+  background-color: #FFFFB2; 
+  border: 1px #FF6700; 
+  color: #FF6700; 
+  padding: 10px 24px; 
+  cursor: pointer; 
+  width: 30%; 
+  display: in-line block; 
 }
 
-.button1 {background-color: #FFA500;} 
-.button2 {background-color: #FFA500;} 
+
+
+.btn-group button:hover {
+  background-color: #FF6700;
+  color: #FFFFC2;
+}
 </style>
-</head>
 <body>
 
 <h1>View Doubts</h1>
 
-
-<button class="button button1">General Doubts</button>
-<button class="button button2">Scheme-wise Doubts/button>
+<div class="btn-group">
+  <button>General Doubts</button>
+  <button>Scheme-wise Doubts</button>
+</div>
 
 </body>
 </html>
