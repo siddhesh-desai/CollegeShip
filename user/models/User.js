@@ -20,14 +20,9 @@ const userSchema = new mongoose.Schema({
 
   //==================== Personal Details =============================
 
-  firstName: {
-    type: String,
-    minlength: [3, 'First Name is required'],
-  },
+  firstName: { type: String, minlength: [3, 'First Name is required']},
   lastName: { type: String, minlength: [3, 'Last Name is required'] },
-  aadharNumber: {
-    type: String
-  },
+  aadharNumber: {type: String},
   mobileNumber: { type: String },
   dob: { type: Date },
   gender: { type: String },
