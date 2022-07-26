@@ -40,19 +40,19 @@ const userSchema = new mongoose.Schema({
   religion: { type: String },
   casteCategory: { type: String },
   caste: { type: String },
-  haveCasteCertificate: { type: Boolean },
+  haveCasteCertificate: { type: Boolean, default: false},
   casteCertificateNumber: { type: String },
   casteIssuingDistrict: { type: String },
   casteApplicantName: { type: String },
   casteIssuingAuthority: { type: String },
-  casteIssuingDate: { type: String },
+  casteIssuingDate: { type: Date },
   casteCretificate: { type: String },
   
   // ============== Income Details =============================
 
-  familyAnnualIncome: { type: Number },
-  haveIncomeCertificate: { type: Boolean },
-  incomeCertificateNumber: { type: Number },
+  familyAnnualIncome: { type: String },
+  haveIncomeCertificate: { type: Boolean , default: false },
+  incomeCertificateNumber: { type: String },
   incomeIssuingAuthority: { type: String },
   incomeIssuingDate: { type: Date },
   incomeCertificate: { type: String },
@@ -60,7 +60,7 @@ const userSchema = new mongoose.Schema({
   // ============== Domicile Details =============================
 
   domicileState: { type: String },
-  haveDomicileCertificate: { type: Boolean },
+  haveDomicileCertificate: { type: Boolean, default: false },
   domicileCertificateNumber: { type: Number },
   domicileRelationType: { type: String },
   domicileIssuingAuthority: { type: String },
@@ -69,14 +69,14 @@ const userSchema = new mongoose.Schema({
   
   // ============== Personal Eligibility Details =============================
 
-  isSalaried: { type: Boolean },
-  haveDisability: { type: Boolean },
+  isSalaried: { type: Boolean, default: false },
+  haveDisability: { type: Boolean, default: false },
   disabilityDesc: { type: String },
   disabilityCertificate: { type: String },
 
   // ============== Aadhaar Bank Details =============================
 
-  isAadharLinkedToBank: { type: Boolean },
+  isAadharLinkedToBank: { type: Boolean, default: false },
   
   // ============== Bank Details =============================
 
@@ -88,13 +88,13 @@ const userSchema = new mongoose.Schema({
 
   // ============== Parent's/Guardian's Details =============================
 
-  isFatherAlive: { type: Boolean },
+  isFatherAlive: { type: String },
   fatherOccupation: { type: String },
-  isFatherSalaried: { type: Boolean },
+  isFatherSalaried: { type: String },
   
-  isMotherAlive: { type: Boolean },
+  isMotherAlive: { type: String },
   motherOccupation: { type: String },
-  isMotherSalaried: { type: Boolean },
+  isMotherSalaried: { type: String },
 
   // ============== Current Course Information =============================
   currentCourse: [
@@ -141,7 +141,7 @@ const userSchema = new mongoose.Schema({
       pqPercentage: { type: mongoose.Types.Decimal128 },
       pqAttempts: { type: Number },
       pqMarksheet: { type: String },  
-      pqHaveGAP: { type: Boolean },
+      pqHaveGAP: { type: String },
       pqGAPyears: { type: Number },
     }
   ],
@@ -160,7 +160,7 @@ const userSchema = new mongoose.Schema({
       hostelPinCode: { type: String },
       hostelType: { type: String },
       hostelAdmissionDate: { type: Date },
-      hostelIsMessAvailable: { type: Boolean },
+      hostelIsMessAvailable: { type: String },
       hostelAddmissionLetter: { type: String },
     }
   ],
