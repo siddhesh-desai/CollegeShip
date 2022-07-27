@@ -148,9 +148,9 @@ const userSchema = new mongoose.Schema({
 
   // ============== Hostel Information =============================
 
-  hiBeneficiaryCategory: { type: String },
   hostelDetails: [
     {
+      hiBeneficiaryCategory: { type: String },
       hostelName: { type: String }, 
       hostelAddress: { type: String },
       hostelState: { type: String },

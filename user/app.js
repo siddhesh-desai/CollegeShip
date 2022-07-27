@@ -70,6 +70,11 @@ app.get("/user/pqi", requireAuth,(req, res) => {
   res.render("pastQualificationInfo")
 })
 
+app.get("/user/hd", requireAuth,(req, res) => {
+  // console.log(req.user.id)
+  res.render("hostelDetail")
+})
+
 // app.post("/user/pi", upload.single('image'), (req, res) => {
 // POST Routes :
 // ================ Personal Information Routes =================
@@ -272,7 +277,69 @@ app.post('/user/pqi/delete/:id', (req, res) => {
   });
 })
 
-// 
+
+// ================== Hostel Details =============================
+
+// ================== Add Hostel Details =============================
+app.post('/user/hd/add', upload.single('hostelAddmissionLetter'), (req, res) => {
+  const hostelDetails = { ...req.body }
+  if (req.file) {
+    hostelDetails.hostelAddmissionLetter = req.file.filename   
+  }
+  if (hostelDetails.hiBeneficiaryCategory === "Hosteller") {
+    
+    var user_id = '62d279d46ea57f1860ecabae';
+    User.findById(user_id, function (err, docs) {
+      if (err){
+        console.log(err);
+      }
+      else {
+        docs.hostelDetails.push(hostelDetails)
+        User.findByIdAndUpdate(user_id, docs,
+          function (err, docs2) {
+            if (err){
+              console.log(err)
+              res.send(err)
+            }
+            else{
+              // console.log("Updated User : ", docs2);
+              res.send({...docs2})
+            }
+          });
+        }
+      });
+  } else {
+    res.send("No Hostller")
+    
+  }
+  // console.log(hostelDetails)
+  // res.send(hostelDetails)
+})
+// =============== Delete Hostel =============================
+app.post('/user/hd/delete/:id', (req, res) => { 
+  var user_id = '62d279d46ea57f1860ecabae';
+
+  User.findById(user_id, function (err, docs) {
+    if (err){
+        console.log(err);
+    }
+    else {
+      const updatedHostels = docs.hostelDetails.filter(course => course._id != req.params.id)
+      docs.hostelDetails = updatedHostels
+      User.findByIdAndUpdate(user_id, docs,
+        function (err, docs2) {
+          if (err){
+            console.log(err)
+            res.send(err)
+          }
+          else{
+            // console.log("Updated User : ", docs2);
+            res.send({...docs2})
+          }
+      });
+    }
+  });
+})
 app.use(authRoutes);
 
 // app.listen(port, ()=> console.log("listen on port " + port ));
