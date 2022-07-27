@@ -88,13 +88,13 @@ const userSchema = new mongoose.Schema({
 
   // ============== Parent's/Guardian's Details =============================
 
-  isFatherAlive: { type: String },
+  isFatherAlive: { type: Boolean, default: true},
   fatherOccupation: { type: String },
-  isFatherSalaried: { type: String },
+  isFatherSalaried: { type: Boolean, default: true},
   
-  isMotherAlive: { type: String },
+  isMotherAlive: { type: Boolean, default: true },
   motherOccupation: { type: String },
-  isMotherSalaried: { type: String },
+  isMotherSalaried: { type: Boolean, default: false },
 
   // ============== Current Course Information =============================
   currentCourse: [
@@ -141,7 +141,7 @@ const userSchema = new mongoose.Schema({
       pqPercentage: { type: mongoose.Types.Decimal128 },
       pqAttempts: { type: Number },
       pqMarksheet: { type: String },  
-      pqHaveGAP: { type: String },
+      pqHaveGAP: { type: Boolean },
       pqGAPyears: { type: Number },
     }
   ],

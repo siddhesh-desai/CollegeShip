@@ -55,10 +55,25 @@ app.get("/user/pi", requireAuth, (req, res) => {
   // console.log(req.user.id)
   res.render("personalInformation")
 })
+app.get("/user/oi", requireAuth,(req, res) => {
+  // console.log(req.user.id)
+  res.render("otherInformation")
+})
 
+app.get("/user/cci", requireAuth,(req, res) => {
+  // console.log(req.user.id)
+  res.render("currentCourseInformation")
+})
 
-// app.post("/user/pi", upload.single('image'), (req, res) => { 
-app.post("/user/pi", upload.fields([{name: "casteCretificate"},{name : "incomeCertificate"},{name : "domicileCertificate"}, {name:"disabilityCertificate"}]), (req, res) => { 
+app.get("/user/pqi", requireAuth,(req, res) => {
+  // console.log(req.user.id)
+  res.render("pastQualificationInfo")
+})
+
+// app.post("/user/pi", upload.single('image'), (req, res) => {
+// POST Routes :
+// ================ Personal Information Routes =================
+app.post("/user/pi", upload.fields([{ name: "casteCretificate" }, { name: "incomeCertificate" }, { name: "domicileCertificate" }, { name: "disabilityCertificate" }]), (req, res) => { 
   // console.log(req.file)
   // console.log(req.files)
   // const userID = "62d279d46ea57f1860ecabae"
@@ -85,13 +100,13 @@ app.post("/user/pi", upload.fields([{name: "casteCretificate"},{name : "incomeCe
   
   if (updatedUser["haveDomicileCertificate"] === "Yes") updatedUser["haveDomicileCertificate"] = true
   else updatedUser["haveDomicileCertificate"] = false;
-
+  
   if (updatedUser["isSalaried"] === "Yes") updatedUser["isSalaried"] = true
   else updatedUser["isSalaried"] = false;
-
+  
   if (updatedUser["haveDisability"] === "Yes") updatedUser["haveDisability"] = true
   else updatedUser["haveDisability"] = false;
-
+  
   if (updatedUser["isAadharLinkedToBank"] === "Yes") updatedUser["isAadharLinkedToBank"] = true
   else updatedUser["isAadharLinkedToBank"] = false;
 
@@ -103,12 +118,161 @@ app.post("/user/pi", upload.fields([{name: "casteCretificate"},{name : "incomeCe
         res.send(err)
       }
       else{
-          console.log("Updated User : ", docs);
-          res.send({...docs})
+        console.log("Updated User : ", docs);
+        res.send({...docs})
       }
-  });
+    });
   // res.send({...req.body, ...uplodedFiles})
 })
+
+// ================= Other Information =================
+app.post('/user/oi',upload.none(), (req, res) => {
+  // res.send("OtherInformation")
+  const updatedUser = { ...req.body }
+
+  // String to Boolean
+  if (updatedUser["isFatherAlive"] === "Yes") updatedUser["isFatherAlive"] = true
+  else updatedUser["isFatherAlive"] = false;
+  
+  if (updatedUser["isFatherSalaried"] === "Yes") updatedUser["isFatherSalaried"] = true
+  else updatedUser["isFatherSalaried"] = false;
+  
+  if (updatedUser["isMotherAlive"] === "Yes") updatedUser["isMotherAlive"] = true
+  else updatedUser["isMotherAlive"] = false;
+  
+  if (updatedUser["isMotherSalaried"] === "Yes") updatedUser["isMotherSalaried"] = true
+  else updatedUser["isMotherSalaried"] = false;
+  
+  var user_id = '62d279d46ea57f1860ecabae';
+  User.findByIdAndUpdate(user_id, updatedUser,
+    function (err, docs) {
+      if (err){
+        console.log(err)
+        res.send(err)
+      }
+      else{
+        console.log("Updated User : ", docs);
+        res.send({...docs})
+      }
+    });
+  // res.send(req.body)
+})
+
+// ============== Current Course Information ========================
+
+// ============================= ADD Course ==============================
+app.post('/user/cci/add', upload.fields([{ name: "ccAdmitCard" }, { name: "ccCAPIDcertificate" }]), (req, res) => {
+  const uplodedFiles = {}
+  for (const file in req.files) { 
+    uplodedFiles[file] = req.files[file][0]["filename"]
+  }
+  var user_id = '62d279d46ea57f1860ecabae';
+  User.findById(user_id, function (err, docs) {
+    if (err){
+        console.log(err);
+    }
+    else {
+        docs.currentCourse.push({ ...req.body, ...uplodedFiles  })
+        User.findByIdAndUpdate(user_id, docs,
+          function (err, docs2) {
+            if (err){
+              console.log(err)
+              res.send(err)
+            }
+            else{
+              // console.log("Updated User : ", docs2);
+              res.send({...docs2})
+            }
+        });
+    }
+  });
+  // res.send(updatedUser)
+})
+
+// ======================== Delete Course ================================
+
+app.post('/user/cci/delete/:id', (req, res) => {
+  // res.send(req.params.id)
+  var user_id = '62d279d46ea57f1860ecabae';
+  User.findById(user_id, function (err, docs) {
+    if (err){
+        console.log(err);
+    }
+    else {
+      const updatedCurrentCourse = docs.currentCourse.filter(course => course._id != req.params.id)
+      docs.currentCourse = updatedCurrentCourse
+        // docs.currentCourse.push({ ...req.body, ...uplodedFiles  })
+      User.findByIdAndUpdate(user_id, docs,
+        function (err, docs2) {
+          if (err){
+            console.log(err)
+            res.send(err)
+          }
+          else{
+            // console.log("Updated User : ", docs2);
+            res.send({...docs2})
+          }
+      });
+    }
+  });
+})
+
+// ==================== Past Qualifications Information ====================
+
+// ==================== Add Past Qualification ====================
+app.post('/user/pqi/add', upload.single('pqMarksheet'), (req, res) => {
+  const pastQualification = { ...req.body }
+  pastQualification.pqMarksheet = req.file.filename
+  console.log(pastQualification)
+  var user_id = '62d279d46ea57f1860ecabae';
+  User.findById(user_id, function (err, docs) {
+    if (err){
+        console.log(err);
+    }
+    else {
+        docs.pastQualifications.push(pastQualification )
+        User.findByIdAndUpdate(user_id, docs,
+          function (err, docs2) {
+            if (err){
+              console.log(err)
+              res.send(err)
+            }
+            else{
+              // console.log("Updated User : ", docs2);
+              res.send({...docs2})
+            }
+        });
+    }
+  });
+  // res.send(pastQualification)
+})
+
+// ========================= Delete Qualification =========================
+app.post('/user/pqi/delete/:id', (req, res) => {
+  var user_id = '62d279d46ea57f1860ecabae';
+  User.findById(user_id, function (err, docs) {
+    if (err){
+        console.log(err);
+    }
+    else {
+      const updatedPastqualifications = docs.pastQualifications.filter(course => course._id != req.params.id)
+      docs.pastQualifications = updatedPastqualifications
+      User.findByIdAndUpdate(user_id, docs,
+        function (err, docs2) {
+          if (err){
+            console.log(err)
+            res.send(err)
+          }
+          else{
+            // console.log("Updated User : ", docs2);
+            res.send({...docs2})
+          }
+      });
+    }
+  });
+})
+
+// 
 app.use(authRoutes);
 
 // app.listen(port, ()=> console.log("listen on port " + port ));
