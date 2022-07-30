@@ -76,7 +76,7 @@ const userSchema = new mongoose.Schema({
 
   // ============== Aadhaar Bank Details =============================
 
-  isAadharLinkedToBank: { type: Boolean, default: false },
+  // isAadharLinkedToBank: { type: Boolean, default: false },
   
   // ============== Bank Details =============================
 

@@ -112,8 +112,8 @@ app.post("/user/pi", upload.fields([{ name: "casteCretificate" }, { name: "incom
   if (updatedUser["haveDisability"] === "Yes") updatedUser["haveDisability"] = true
   else updatedUser["haveDisability"] = false;
   
-  if (updatedUser["isAadharLinkedToBank"] === "Yes") updatedUser["isAadharLinkedToBank"] = true
-  else updatedUser["isAadharLinkedToBank"] = false;
+  // if (updatedUser["isAadharLinkedToBank"] === "Yes") updatedUser["isAadharLinkedToBank"] = true
+  // else updatedUser["isAadharLinkedToBank"] = false;
 
   var user_id = '62d279d46ea57f1860ecabae';
   User.findByIdAndUpdate(user_id, updatedUser,
@@ -127,7 +127,7 @@ app.post("/user/pi", upload.fields([{ name: "casteCretificate" }, { name: "incom
         res.send({...docs})
       }
     });
-  // res.send({...req.body, ...uplodedFiles})
+  // res.send({...updatedUser})
 })
 
 // ================= Other Information =================

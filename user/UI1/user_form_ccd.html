@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Current Course Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+</head>
+
+<body>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Personal Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Address Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Other Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Current Course</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Past Qualification</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Hostel Details</a>
+        </li>
+    </ul>
+
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0"
+            aria-valuemax="100">
+            50% Completed
+        </div>
+    </div>
+
+    <div class="card-body p-4 p-sm-5">
+        <form class="row g-3">
+            <legend>
+                <h2><b>Current Course Information</b></h2>
+            </legend>
+            <hr />
+            <legend>Current Course Details</legend>
+
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Admission Year in Current Course</label>
+                <select id="inputState" class="form-select">
+                    <option>2022</option>
+                    <option>2021</option>
+                    <option>2020</option>
+                    <option>2019</option>
+                    <option>2018</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Institute State</label>
+                <select id="inputState" class="form-select">
+                    <option>Choose...</option>
+                    <option>Maharshtra</option>
+                    <option>Tamil Nadu</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Institute District</label>
+                <select id="inputState" class="form-select">
+                    <option>Kolhapur</option>
+                    <option>Amhednagar</option>
+                    <option>Pune</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Institute Taluka</label>
+                <select id="inputState" class="form-select">
+                    <option>Karveer</option>
+                    <option>Ichalkaranji</option>
+                    <option>Hatkalangle</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Qualification Level</label>
+                <select id="inputState" class="form-select">
+                    <option>High School</option>
+                    <option>Undergraduate Level</option>
+                    <option>PostGraduate Level</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Stream</label>
+                <select id="inputState" class="form-select">
+                    <option>Engineering</option>
+                    <option>Medical</option>
+                    <option>Pharmacy</option>
+                </select>
+            </div>
+
+            <div class="col-md-8">
+                <label for="inputZip" class="form-label">College Name</label>
+                <select id="inputState" class="form-select">
+                    <option>VIT Pune</option>
+                    <option>PICT</option>
+                    <option>VIIT</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Course Name</label>
+                <select id="inputState" class="form-select">
+                    <option>Computer Engineering</option>
+                    <option>Information Technology</option>
+                    <option>Artificial Intelligence and Data Science</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Admission Type</label>
+                <select id="inputState" class="form-select">
+                    <option>Through CAP/ Govt. Quota</option>
+                    <option>Through National/ JEE Score</option>
+                    <option>Through Management Quota</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">CET/Merit Percentage</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">CET Admit Card Number</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputZip" class="form-label">Admit Card</label><br />
+                <div class="input-group">
+                    <input type="file" class="form-control" id="inputGroupFile02" />
+                    <button type="view" class="btn btn-secondary">View Document</button>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputZip" class="form-label">CAP ID Certificate</label><br />
+                <div class="input-group">
+                    <input type="file" class="form-control" id="inputGroupFile02" />
+                    <button type="view" class="btn btn-secondary">View Document</button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Year of Study</label>
+                <select id="inputState" class="form-select">
+                    <option>--Select--</option>
+                    <option>First Year</option>
+                    <option>Second Year</option>
+                    <option>Third Year</option>
+                    <option>Fourth Year</option>
+                    <option>Fifth Year</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Completed or Continue?</label>
+                <select id="inputState" class="form-select">
+                    <option>--Select--</option>
+                    <option>Completed</option>
+                    <option>Continued</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Is Proffesional?</label>
+                <select id="inputState" class="form-select">
+                    <option>--Select--</option>
+                    <option>Professional Course</option>
+                    <option>Continued</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Is Admission through Open or Reserved Category?</label>
+                <select id="inputState" class="form-select">
+                    <option>--Select--</option>
+                    <option>Open</option>
+                    <option>Selected Category</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Gap years</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Mode</label>
+                <select id="inputState" class="form-select">
+                    <option>--Select--</option>
+                    <option>Regular</option>
+                    <option>Distance</option>
+                </select>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="d-grid" style="width: auto; align-items: center">
+                <button type="submit" class="btn btn-primary">Save and Next</button>
+            </div>
+
+            <div class="d-grid" style="width: auto; align-items: center">
+                <button type="reset" class="btn btn-primary">Reset</button>
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <legend>Your Saved Details</legend>
+        </form>
+        <br />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sr. no.</th>
+                    <th scope="col">Year of Study</th>
+                    <th scope="col">Admission Date</th>
+                    <th scope="col">Admission Year in College/Institute</th>
+                    <th scope="col">College/School Name</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">University Name</th>
+                    <th scope="col">Completed</th>
+                    <th scope="col">Result</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>First Year</td>
+                    <td>20/12/21</td>
+                    <td>NA</td>
+                    <td>VIT Pune</td>
+                    <td>Artificial Intillegence and Data Science</td>
+                    <td>Savitribai Phule Pune University</td>
+                    <td>Pursuing</td>
+                    <td>NA</td>
+                    <td><button href="#" class="btn btn-secondary">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
