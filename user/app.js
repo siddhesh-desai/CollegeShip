@@ -120,11 +120,15 @@ app.post("/user/pi", upload.fields([{ name: "casteCretificate" }, { name: "incom
     function (err, docs) {
       if (err){
         console.log(err)
-        res.send(err)
+        // res.render("personalInformation")
+        res.redirect("/user/pi")
+        // res.send(err)
       }
       else{
         console.log("Updated User : ", docs);
-        res.send({...docs})
+        // res.send({...docs})
+        // res.render("otherInformation")
+        res.redirect("/user/oi")
       }
     });
   // res.send({...updatedUser})
@@ -153,11 +157,15 @@ app.post('/user/oi',upload.none(), (req, res) => {
     function (err, docs) {
       if (err){
         console.log(err)
-        res.send(err)
+        res.redirect("/user/oi")
+        // res.render("otherInformation")
+        // res.send(err)
       }
       else{
         console.log("Updated User : ", docs);
-        res.send({...docs})
+        res.redirect("/user/cci")
+        // res.render("currentCourseInformation")
+        // res.send({...docs})
       }
     });
   // res.send(req.body)
@@ -174,7 +182,8 @@ app.post('/user/cci/add', upload.fields([{ name: "ccAdmitCard" }, { name: "ccCAP
   var user_id = '62d279d46ea57f1860ecabae';
   User.findById(user_id, function (err, docs) {
     if (err){
-        console.log(err);
+      console.log(err);
+      res.redirect("/user/cci")
     }
     else {
         docs.currentCourse.push({ ...req.body, ...uplodedFiles  })
@@ -185,8 +194,9 @@ app.post('/user/cci/add', upload.fields([{ name: "ccAdmitCard" }, { name: "ccCAP
               res.send(err)
             }
             else{
-              // console.log("Updated User : ", docs2);
-              res.send({...docs2})
+              console.log("Updated User : ", docs2);
+              res.redirect("/user/pqi")
+              // res.send({...docs2})
             }
         });
     }
@@ -232,19 +242,22 @@ app.post('/user/pqi/add', upload.single('pqMarksheet'), (req, res) => {
   var user_id = '62d279d46ea57f1860ecabae';
   User.findById(user_id, function (err, docs) {
     if (err){
-        console.log(err);
+      console.log(err);
+      res.redirect("/user/pqi")
     }
     else {
-        docs.pastQualifications.push(pastQualification )
-        User.findByIdAndUpdate(user_id, docs,
-          function (err, docs2) {
-            if (err){
+      docs.pastQualifications.push(pastQualification )
+      User.findByIdAndUpdate(user_id, docs,
+        function (err, docs2) {
+          if (err){
+              res.redirect("/user/pqi")
               console.log(err)
-              res.send(err)
+              // res.send(err)
             }
             else{
-              // console.log("Updated User : ", docs2);
-              res.send({...docs2})
+              console.log("Updated User : ", docs2);
+              res.redirect("/user/hd")
+              // res.send({...docs2})
             }
         });
     }
@@ -299,17 +312,20 @@ app.post('/user/hd/add', upload.single('hostelAddmissionLetter'), (req, res) => 
           function (err, docs2) {
             if (err){
               console.log(err)
-              res.send(err)
+              res.redirect("/user/hd")
+              // res.send(err)
             }
             else{
-              // console.log("Updated User : ", docs2);
-              res.send({...docs2})
+              console.log("Updated User : ", docs2);
+              res.redirect("/user/pi")
+              // res.send({...docs2})
             }
           });
         }
       });
   } else {
-    res.send("No Hostller")
+    res.redirect("/user/pi")
+    // res.send("No Hostller")
     
   }
   // console.log(hostelDetails)

@@ -1,35 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Other Information</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
-</head>
-
-<body>
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Personal Information</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Address Information</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Other Information</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Current Course</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Past Qualification</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Hostel Details</a>
-        </li>
-    </ul>
+<%- include('partials/header2'); -%>
 
     <div class="progress">
         <div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="25" aria-valuemin="0"
@@ -38,8 +7,8 @@
         </div>
     </div>
 
-    <div class="card-body p-4 p-sm-5">
-        <form class="row g-3">
+    <div class="card-body p-4 p-sm-5" >
+        <form class="row g-3" action="/user/oi" method="post" enctype="multipart/form-data">
             <legend>
                 <h2><b>Other Information</b></h2>
             </legend>
@@ -50,13 +19,13 @@
                 <label for="inputState" class="form-label">Is father alive? </label>
                 <br />
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                        value="option1" />
+                    <input class="form-check-input" type="radio" name="isFatherAlive" id="exampleRadios1"
+                        value="Yes" />
                     <label class="form-check-label" for="exampleRadios1"> Yes </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                        value="option2" />
+                    <input class="form-check-input" type="radio" name="isFatherAlive" id="exampleRadios2"
+                        value="No" />
                     <label class="form-check-label" for="exampleRadios2"> No </label>
                 </div>
             </div>
@@ -68,18 +37,18 @@
 
             <div class="col-md-3">
                 <label for="inputState" class="form-label">Occupation</label>
-                <select id="inputState" class="form-select">
+                <select id="inputState" name="fatherOccupation" class="form-select">
                     <option selected>Choose...</option>
-                    <option>Private Job</option>
-                    <option>Business</option>
+                    <option value="Private Job">Private Job</option>
+                    <option value="Business">Business</option>
                 </select>
             </div>
 
             <div class="col-md-2">
                 <label for="inputState" class="form-label">Is Salaried?</label>
-                <select id="inputState" class="form-select">
-                    <option>Yes</option>
-                    <option>No</option>
+                <select id="inputState" name="isFatherSalaried" class="form-select">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
             </div>
 
@@ -87,13 +56,13 @@
                 <label for="inputState" class="form-label">Is mother alive? </label>
                 <br />
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                        value="option1" />
+                    <input class="form-check-input" type="radio" name="isMotherAlive" id="exampleRadios1"
+                        value="Yes" />
                     <label class="form-check-label" for="exampleRadios1"> Yes </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                        value="option2" />
+                    <input class="form-check-input" type="radio" name="isMotherAlive" id="exampleRadios2"
+                        value="No" />
                     <label class="form-check-label" for="exampleRadios2"> No </label>
                 </div>
             </div>
@@ -105,18 +74,18 @@
 
             <div class="col-md-3">
                 <label for="inputState" class="form-label">Occupation</label>
-                <select id="inputState" class="form-select">
+                <select id="inputState" name="motherOccupation" class="form-select">
                     <option selected>Choose...</option>
-                    <option>Private Job</option>
-                    <option>Business</option>
+                    <option value="Private Job">Private Job</option>
+                    <option value="Business">Business</option>
                 </select>
             </div>
 
             <div class="col-md-2">
                 <label for="inputState" class="form-label">Is Salaried?</label>
-                <select id="inputState" class="form-select">
-                    <option>Yes</option>
-                    <option>No</option>
+                <select id="inputState" name="isMotherSalaried" class="form-select">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
             </div>
 
@@ -128,10 +97,6 @@
 
             <div class="d-grid" style="width: auto; align-items: center">
                 <button type="submit" class="btn btn-primary">Save and Next</button>
-            </div>
-
-            <div class="d-grid" style="width: auto; align-items: center">
-                <button type="reset" class="btn btn-primary">Reset</button>
             </div>
         </form>
     </div>
