@@ -146,28 +146,34 @@
                     <th scope="col">Hostel Address</th>
                     <th scope="col">Admission Date</th>
                     <th scope="col">Mess Available</th>
-                    <th scope="col">View Document</th>
-                    <th scope="col">Edit</th>
+                    <!-- <th scope="col">View Document</th> -->
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Day Scholar</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
+                <% for(var i=0; i<hostelDetails.length; i++) { %>
+                    <% if (hostelDetails[i].hiBeneficiaryCategory === "Hosteller") {%> 
+                    <form action="/user/hd/delete/<%=hostelDetails[i]._id%>" method="post">
+                        <tr>
+                            <th scope="row"><%=i+1 %> </th>
+                            <td><%=hostelDetails[i].hiBeneficiaryCategory %></td>
+                            <td><%=hostelDetails[i].hostelType %></td>
+                            <td><%=hostelDetails[i].hostelName %></td>
+                            <td><%=hostelDetails[i].hostelState %></td>
+                            <td><%=hostelDetails[i].hostelDistrict %></td>
+                            <td><%=hostelDetails[i].hostelTaluka %></td>
+                            <td><%=hostelDetails[i].hostelAddress %></td>
+                            <td><%=hostelDetails[i].hostelAdmissionDate.toLocaleDateString() %></td>
+                            <td><%=hostelDetails[i].hostelIsMessAvailable %></td>
 
-                    <td>
-                        <button href="#" class="btn btn-secondary">View Document</button>
-                    </td>
-                    <td><button href="#" class="btn btn-secondary">Edit</button></td>
-                </tr>
+                            <!-- <td>
+                                <button href="#" class="btn btn-secondary">View Document</button>
+                            </td> -->
+                            <td><button type="submit" class="btn btn-secondary">Delete</button></td>
+                        </tr>
+                    </form>
+                    <% } %>
+                <% }; %> 
             </tbody>
         </table>
     </div>

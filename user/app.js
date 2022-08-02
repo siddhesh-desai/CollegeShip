@@ -116,7 +116,18 @@ app.get("/user/pqi", requireAuth,(req, res) => {
 
 app.get("/user/hd", requireAuth,(req, res) => {
   // console.log(req.user.id)
-  res.render("hostelDetail")
+  var id = req.user.id;
+  User.findById(id, function (err, docs) {
+      if (err){
+        console.log(err);
+        res.redirect("/")
+      }
+      else{
+        console.log("Result : ", docs);
+        res.render("hostelDetail", {hostelDetails : docs.hostelDetails})
+      }
+  });
+  // res.render("hostelDetail")
 })
 
 // app.post("/user/pi", upload.single('image'), (req, res) => {
@@ -410,11 +421,13 @@ app.post('/user/hd/delete/:id', requireAuth , (req, res) => {
         function (err, docs2) {
           if (err){
             console.log(err)
-            res.send(err)
+            res.redirect("/user/hd")
+            // res.send(err)
           }
           else{
-            // console.log("Updated User : ", docs2);
-            res.send({...docs2})
+            console.log("Updated User : ", docs2);
+            res.redirect("/user/hd")
+            // res.send({...docs2})
           }
       });
     }
