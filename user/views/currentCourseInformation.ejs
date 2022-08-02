@@ -16,20 +16,14 @@
             <legend>Current Course Details</legend>
 
             <div class="col-md-4">
-                <label for="inputState" class="form-label">Admission Year in Current Course</label>
-                <select id="inputState" name="ccAddmissionYear" class="form-select">
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                    <option value="2018">2018</option>
-                </select>
+                <label for="ccAddmissionDate" class="form-label">Addmission Date</label>
+                <input type="date" class="form-control" name="ccAddmissionDate" id="ccAddmissionDate" />
+               
             </div>
 
             <div class="col-md-4">
                 <label for="inputState" class="form-label">Institute State</label>
                 <select id="inputState" name="ccInstituteState" class="form-select">
-                    <option>Choose...</option>
                     <option value="Maharshtra">Maharshtra</option>
                     <option value="Tamil Nadu">Tamil Nadu</option>
                 </select>
@@ -71,12 +65,21 @@
                 </select>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <label for="inputZip" class="form-label">College Name</label>
                 <select id="inputState" name="ccCollegeName" class="form-select">
                     <option value="VIT Pune">VIT Pune</option>
                     <option value="PICT">PICT</option>
                     <option value="VIIT">VIIT</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Board/University Name</label>
+                <select id="inputState" name="ccBoradUniversityName" class="form-select">
+                    <option value="Savitribai Phule Pune University">Savitribai Phule Pune University</option>
+                    <option value="Shivaji University">Shivaji University</option>
+                    <option value="Maharashtra Board">Maharashtra Board</option>
+                    <option value="CBSE">CBSE</option>
                 </select>
             </div>
 
@@ -127,7 +130,6 @@
             <div class="col-md-4">
                 <label for="inputZip" class="form-label">Year of Study</label>
                 <select id="inputState" name="ccYearOfStudy" class="form-select">
-                    <option>--Select--</option>
                     <option value="First Year">First Year</option>
                     <option value="Second Year">Second Year</option>
                     <option value="Third Year">Third Year</option>
@@ -139,7 +141,6 @@
             <div class="col-md-4">
                 <label for="inputZip" class="form-label">Completed or Continue?</label>
                 <select id="inputState" name="ccCompletedOrContinue" class="form-select">
-                    <option>--Select--</option>
                     <option value="Completed">Completed</option>
                     <option value="Continued">Continued</option>
                 </select>
@@ -198,7 +199,6 @@
                     <th scope="col">Sr. no.</th>
                     <th scope="col">Year of Study</th>
                     <th scope="col">Admission Date</th>
-                    <th scope="col">Admission Year in College/Institute</th>
                     <th scope="col">College/School Name</th>
                     <th scope="col">Course Name</th>
                     <th scope="col">University Name</th>
@@ -208,18 +208,22 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>First Year</td>
-                    <td>20/12/21</td>
-                    <td>NA</td>
-                    <td>VIT Pune</td>
-                    <td>Artificial Intillegence and Data Science</td>
-                    <td>Savitribai Phule Pune University</td>
-                    <td>Pursuing</td>
-                    <td>NA</td>
-                    <td><button href="#" class="btn btn-secondary">Delete</button></td>
-                </tr>
+              
+                <% for(var i=0; i<currentCourse.length; i++) { %>
+                    <form action="/user/cci/delete/<%=currentCourse[i]._id%>" method="post">
+                    <tr>
+                        <th scope="row"><%=i+1%></th>
+                        <td><%= currentCourse[i].ccYearOfStudy %> </td>
+                        <td><%= currentCourse[i].ccAddmissionDate.toLocaleDateString() %> </td>
+                        <td><%= currentCourse[i].ccCollegeName %></td>
+                        <td><%= currentCourse[i].ccCourseName %></td>
+                        <td><%= currentCourse[i].ccBoradUniversityName %></td>
+                        <td><%= currentCourse[i].ccCompletedOrContinue %></td>
+                        <td><%= currentCourse[i].ccCETpercentage %></td>
+                        <td><button type="submit" class="btn btn-secondary">Delete</button></td>
+                    </tr>
+                    </form>
+                 <% }; %> 
             </tbody>
         </table>
     </div>

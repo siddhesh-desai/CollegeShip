@@ -52,22 +52,66 @@ app.get('*', checkUser);
 app.get('/', (req, res) => res.render('home'));
 app.get('/dashboard', requireAuth, (req, res) => res.render('userDashboard'));
 app.get("/user/pi", requireAuth, (req, res) => {
+  var id = req.user.id;
+  User.findById(id, function (err, docs) {
+      if (err){
+        console.log(err);
+        res.redirect("/")
+      }
+      else{
+        console.log("Result : ", docs);
+        res.render("personalInformation", {email : docs.email})
+      }
+  });
   // console.log(req.user.id)
-  res.render("personalInformation")
+  // res.render("personalInformation")
 })
 app.get("/user/oi", requireAuth,(req, res) => {
   // console.log(req.user.id)
-  res.render("otherInformation")
+  var id = req.user.id;
+  User.findById(id, function (err, docs) {
+      if (err){
+        console.log(err);
+        res.redirect("/")
+      }
+      else{
+        console.log("Result : ", docs);
+        res.render("otherInformation", {fatherName : docs.fatherName, motherName : docs.motherName})
+      }
+  });
+  // res.render("otherInformation")
 })
 
 app.get("/user/cci", requireAuth,(req, res) => {
   // console.log(req.user.id)
-  res.render("currentCourseInformation")
+  var id = req.user.id;
+  User.findById(id, function (err, docs) {
+      if (err){
+        console.log(err);
+        res.redirect("/")
+      }
+      else{
+        console.log("Result : ", docs);
+        res.render("currentCourseInformation", {currentCourse : docs.currentCourse})
+      }
+  });
+  // res.render("currentCourseInformation")
 })
 
 app.get("/user/pqi", requireAuth,(req, res) => {
   // console.log(req.user.id)
-  res.render("pastQualificationInfo")
+  var id = req.user.id;
+  User.findById(id, function (err, docs) {
+      if (err){
+        console.log(err);
+        res.redirect("/")
+      }
+      else{
+        console.log("Result : ", docs);
+        res.render("pastQualificationInfo", {pastQualifications : docs.pastQualifications})
+      }
+  });
+  // res.render("pastQualificationInfo")
 })
 
 app.get("/user/hd", requireAuth,(req, res) => {
@@ -78,7 +122,7 @@ app.get("/user/hd", requireAuth,(req, res) => {
 // app.post("/user/pi", upload.single('image'), (req, res) => {
 // POST Routes :
 // ================ Personal Information Routes =================
-app.post("/user/pi", upload.fields([{ name: "casteCretificate" }, { name: "incomeCertificate" }, { name: "domicileCertificate" }, { name: "disabilityCertificate" }]), (req, res) => { 
+app.post("/user/pi", requireAuth , upload.fields([{ name: "casteCretificate" }, { name: "incomeCertificate" }, { name: "domicileCertificate" }, { name: "disabilityCertificate" }]), (req, res) => { 
   // console.log(req.file)
   // console.log(req.files)
   // const userID = "62d279d46ea57f1860ecabae"
@@ -115,7 +159,8 @@ app.post("/user/pi", upload.fields([{ name: "casteCretificate" }, { name: "incom
   // if (updatedUser["isAadharLinkedToBank"] === "Yes") updatedUser["isAadharLinkedToBank"] = true
   // else updatedUser["isAadharLinkedToBank"] = false;
 
-  var user_id = '62d279d46ea57f1860ecabae';
+  // var user_id = '62d279d46ea57f1860ecabae';
+  var user_id = req.user.id;
   User.findByIdAndUpdate(user_id, updatedUser,
     function (err, docs) {
       if (err){
@@ -135,7 +180,7 @@ app.post("/user/pi", upload.fields([{ name: "casteCretificate" }, { name: "incom
 })
 
 // ================= Other Information =================
-app.post('/user/oi',upload.none(), (req, res) => {
+app.post('/user/oi', requireAuth ,upload.none(), (req, res) => {
   // res.send("OtherInformation")
   const updatedUser = { ...req.body }
 
@@ -152,7 +197,9 @@ app.post('/user/oi',upload.none(), (req, res) => {
   if (updatedUser["isMotherSalaried"] === "Yes") updatedUser["isMotherSalaried"] = true
   else updatedUser["isMotherSalaried"] = false;
   
-  var user_id = '62d279d46ea57f1860ecabae';
+  // var user_id = '62d279d46ea57f1860ecabae';
+  var user_id = req.user.id;
+
   User.findByIdAndUpdate(user_id, updatedUser,
     function (err, docs) {
       if (err){
@@ -174,12 +221,14 @@ app.post('/user/oi',upload.none(), (req, res) => {
 // ============== Current Course Information ========================
 
 // ============================= ADD Course ==============================
-app.post('/user/cci/add', upload.fields([{ name: "ccAdmitCard" }, { name: "ccCAPIDcertificate" }]), (req, res) => {
+app.post('/user/cci/add', requireAuth , upload.fields([{ name: "ccAdmitCard" }, { name: "ccCAPIDcertificate" }]), (req, res) => {
   const uplodedFiles = {}
   for (const file in req.files) { 
     uplodedFiles[file] = req.files[file][0]["filename"]
   }
-  var user_id = '62d279d46ea57f1860ecabae';
+  // var user_id = '62d279d46ea57f1860ecabae';
+  var user_id = req.user.id;
+  req.body["ccAddmissionDate"] = new Date(req.body["ccAddmissionDate"])
   User.findById(user_id, function (err, docs) {
     if (err){
       console.log(err);
@@ -206,26 +255,31 @@ app.post('/user/cci/add', upload.fields([{ name: "ccAdmitCard" }, { name: "ccCAP
 
 // ======================== Delete Course ================================
 
-app.post('/user/cci/delete/:id', (req, res) => {
+app.post('/user/cci/delete/:id', requireAuth , (req, res) => {
   // res.send(req.params.id)
-  var user_id = '62d279d46ea57f1860ecabae';
+  // var user_id = '62d279d46ea57f1860ecabae';
+  var user_id = req.user.id;
+
   User.findById(user_id, function (err, docs) {
     if (err){
-        console.log(err);
+      console.log(err);
+      res.redirect("/user/cci")
     }
     else {
       const updatedCurrentCourse = docs.currentCourse.filter(course => course._id != req.params.id)
       docs.currentCourse = updatedCurrentCourse
-        // docs.currentCourse.push({ ...req.body, ...uplodedFiles  })
+      // docs.currentCourse.push({ ...req.body, ...uplodedFiles  })
       User.findByIdAndUpdate(user_id, docs,
         function (err, docs2) {
           if (err){
             console.log(err)
-            res.send(err)
+            res.redirect("/user/cci")
+            // res.send(err)
           }
           else{
-            // console.log("Updated User : ", docs2);
-            res.send({...docs2})
+            console.log("Updated User : ", docs2);
+            res.redirect("/user/cci")
+            // res.send({...docs2})
           }
       });
     }
@@ -235,11 +289,13 @@ app.post('/user/cci/delete/:id', (req, res) => {
 // ==================== Past Qualifications Information ====================
 
 // ==================== Add Past Qualification ====================
-app.post('/user/pqi/add', upload.single('pqMarksheet'), (req, res) => {
+app.post('/user/pqi/add', requireAuth , upload.single('pqMarksheet'), (req, res) => {
   const pastQualification = { ...req.body }
   pastQualification.pqMarksheet = req.file.filename
   console.log(pastQualification)
-  var user_id = '62d279d46ea57f1860ecabae';
+  // var user_id = '62d279d46ea57f1860ecabae';
+  var user_id = req.user.id;
+
   User.findById(user_id, function (err, docs) {
     if (err){
       console.log(err);
@@ -266,8 +322,10 @@ app.post('/user/pqi/add', upload.single('pqMarksheet'), (req, res) => {
 })
 
 // ========================= Delete Qualification =========================
-app.post('/user/pqi/delete/:id', (req, res) => {
-  var user_id = '62d279d46ea57f1860ecabae';
+app.post('/user/pqi/delete/:id', requireAuth , (req, res) => {
+  // var user_id = '62d279d46ea57f1860ecabae';
+  var user_id = req.user.id;
+
   User.findById(user_id, function (err, docs) {
     if (err){
         console.log(err);
@@ -279,11 +337,13 @@ app.post('/user/pqi/delete/:id', (req, res) => {
         function (err, docs2) {
           if (err){
             console.log(err)
-            res.send(err)
+            // res.send(err)
+            res.redirect("/user/pqi")
           }
           else{
-            // console.log("Updated User : ", docs2);
-            res.send({...docs2})
+            console.log("Updated User : ", docs2);
+            res.redirect("/user/pqi")
+            // res.send({...docs2})
           }
       });
     }
@@ -294,14 +354,16 @@ app.post('/user/pqi/delete/:id', (req, res) => {
 // ================== Hostel Details =============================
 
 // ================== Add Hostel Details =============================
-app.post('/user/hd/add', upload.single('hostelAddmissionLetter'), (req, res) => {
+app.post('/user/hd/add', requireAuth , upload.single('hostelAddmissionLetter'), (req, res) => {
   const hostelDetails = { ...req.body }
   if (req.file) {
     hostelDetails.hostelAddmissionLetter = req.file.filename   
   }
   if (hostelDetails.hiBeneficiaryCategory === "Hosteller") {
     
-    var user_id = '62d279d46ea57f1860ecabae';
+    // var user_id = '62d279d46ea57f1860ecabae';
+    var user_id = req.user.id;
+
     User.findById(user_id, function (err, docs) {
       if (err){
         console.log(err);
@@ -332,8 +394,10 @@ app.post('/user/hd/add', upload.single('hostelAddmissionLetter'), (req, res) => 
   // res.send(hostelDetails)
 })
 // =============== Delete Hostel =============================
-app.post('/user/hd/delete/:id', (req, res) => { 
-  var user_id = '62d279d46ea57f1860ecabae';
+app.post('/user/hd/delete/:id', requireAuth , (req, res) => { 
+  // var user_id = '62d279d46ea57f1860ecabae';
+  var user_id = req.user.id;
+
 
   User.findById(user_id, function (err, docs) {
     if (err){

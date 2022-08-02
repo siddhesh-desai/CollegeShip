@@ -209,28 +209,31 @@
                     <th scope="col">Admission Year</th>
                     <th scope="col">Passing Year</th>
                     <th scope="col">Percentage</th>
-                    <th scope="col">View Document</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>CBSE (10 Std)</td>
-                    <td>CBSE</td>
-                    <td>CBSE</td>
-                    <td>Maharashtra</td>
-                    <td>CBSE</td>
-                    <td>Passed</td>
-                    <td>2009</td>
-                    <td>2019</td>
-                    <td>95.6</td>
+                <% for(var i=0; i<pastQualifications.length; i++) { %>
+                <form action="/user/pqi/delete/<%=pastQualifications[i]._id%>" method="post">
+                    <tr>
+                        <th scope="row"><%=i+1%></th>
+                        <td><%=pastQualifications[i].pqLevel %> </td>
+                        <td><%=pastQualifications[i].pqStream %></td>
+                        <td><%=pastQualifications[i].pqCourseName %></td>
+                        <td><%=pastQualifications[i].pqInstituteState %></td>
+                        <td><%=pastQualifications[i].pqBoardUniversityName %></td>
+                        <td><%=pastQualifications[i].pqResult %></td>
+                        <td><%=pastQualifications[i].pqAddmissionYear %></td>
+                        <td><%=pastQualifications[i].pqPassingYear %></td>
+                        <td><%=pastQualifications[i].pqPercentage %></td>
 
-                    <td>
-                        <button href="#" class="btn btn-secondary">View Document</button>
-                    </td>
-                    <td><button href="#" class="btn btn-secondary">Delete</button></td>
-                </tr>
+                        <!-- <td>
+                            <button href="#" class="btn btn-secondary">View Document</button>
+                        </td> -->
+                        <td><button type="submit" class="btn btn-secondary">Delete</button></td>
+                    </tr>
+                </form>
+            <% }; %> 
             </tbody>
         </table>
     </div>

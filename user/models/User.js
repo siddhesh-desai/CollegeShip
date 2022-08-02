@@ -99,7 +99,7 @@ const userSchema = new mongoose.Schema({
   // ============== Current Course Information =============================
   currentCourse: [
     {
-      ccAddmissionYear: { type: Number },
+      ccAddmissionDate: { type: Date },
       ccInstituteState: { type: String },
       ccInstituteDistrict: { type: String },
       ccInstituteTaluka: { type: String },
@@ -107,12 +107,13 @@ const userSchema = new mongoose.Schema({
       ccStream: { type: String },
       ccCollegeName: { type: String }, 
       ccCourseName: { type: String },
+      ccBoradUniversityName : {type : String},
       ccAddmissionType: { type: String },
       ccCETpercentage: { type: mongoose.Types.Decimal128 },
       ccCETadmitCardNumber: { type: String },
       ccAdmitCard: { type: String },
       ccCAPIDcertificate: { type: String },
-      ccYearOfStudy: { type: Number },
+      ccYearOfStudy: { type: String },
       ccCompletedOrContinue: { type: String },
       ccIsProfessional: { type: String },
       ccIsAddmissionThroughOpenOrReserved: { type: String },
