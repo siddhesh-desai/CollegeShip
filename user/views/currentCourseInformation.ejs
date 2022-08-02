@@ -1,0 +1,232 @@
+<%- include('partials/header2'); -%>
+
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0"
+            aria-valuemax="100">
+            50% Completed
+        </div>
+    </div>
+
+    <div class="card-body p-4 p-sm-5">
+        <form class="row g-3" action="/user/cci/add" method="post" enctype="multipart/form-data">
+            <legend>
+                <h2><b>Current Course Information</b></h2>
+            </legend>
+            <hr />
+            <legend>Current Course Details</legend>
+
+            <div class="col-md-4">
+                <label for="ccAddmissionDate" class="form-label">Addmission Date</label>
+                <input type="date" class="form-control" name="ccAddmissionDate" id="ccAddmissionDate" />
+               
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Institute State</label>
+                <select id="inputState" name="ccInstituteState" class="form-select">
+                    <option value="Maharshtra">Maharshtra</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Institute District</label>
+                <select id="inputState" name="ccInstituteDistrict" class="form-select">
+                    <option value="Kolhapur">Kolhapur</option>
+                    <option value="Amhednagar">Amhednagar</option>
+                    <option value="Pune">Pune</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Institute Taluka</label>
+                <select id="inputState" name="ccInstituteTaluka" class="form-select">
+                    <option value="Karveer">Karveer</option>
+                    <option value="Ichalkaranji">Ichalkaranji</option>
+                    <option value="Hatkalangle">Hatkalangle</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Qualification Level</label>
+                <select id="inputState" name="ccQualificationLevel" class="form-select">
+                    <option value="High School">High School</option>
+                    <option value="Undergraduate Level">Undergraduate Level</option>
+                    <option value=">PostGraduate Level">PostGraduate Level</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Stream</label>
+                <select id="inputState" name="ccStream" class="form-select">
+                    <option value="Engineering">Engineering</option>
+                    <option value="Medical">Medical</option>
+                    <option value="Pharmacy">Pharmacy</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">College Name</label>
+                <select id="inputState" name="ccCollegeName" class="form-select">
+                    <option value="VIT Pune">VIT Pune</option>
+                    <option value="PICT">PICT</option>
+                    <option value="VIIT">VIIT</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Board/University Name</label>
+                <select id="inputState" name="ccBoradUniversityName" class="form-select">
+                    <option value="Savitribai Phule Pune University">Savitribai Phule Pune University</option>
+                    <option value="Shivaji University">Shivaji University</option>
+                    <option value="Maharashtra Board">Maharashtra Board</option>
+                    <option value="CBSE">CBSE</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Course Name</label>
+                <select id="inputState" name="ccCourseName" class="form-select">
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Artificial Intelligence and Data Science">Artificial Intelligence and Data Science</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Admission Type</label>
+                <select id="inputState" name="ccAddmissionType" class="form-select">
+                    <option value="Through CAP/ Govt. Quota">Through CAP/ Govt. Quota</option>
+                    <option value="Through National/ JEE Score">Through National/ JEE Score</option>
+                    <option value="Through Management Quota">Through Management Quota</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">CET/Merit Percentage</label>
+                <input type="text" class="form-control" name="ccCETpercentage" id="inputZip" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">CET Admit Card Number</label>
+                <input type="text" class="form-control" name="ccCETadmitCardNumber" id="inputZip" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputZip" class="form-label">Admit Card</label><br />
+                <div class="input-group">
+                    <input type="file" class="form-control" name="ccAdmitCard" id="inputGroupFile02" />
+                    <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputZip" class="form-label">CAP ID Certificate</label><br />
+                <div class="input-group">
+                    <input type="file" class="form-control" name="ccCAPIDcertificate"  id="inputGroupFile02" />
+                    <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Year of Study</label>
+                <select id="inputState" name="ccYearOfStudy" class="form-select">
+                    <option value="First Year">First Year</option>
+                    <option value="Second Year">Second Year</option>
+                    <option value="Third Year">Third Year</option>
+                    <option value="Fourth Year">Fourth Year</option>
+                    <option value="Fifth Year">Fifth Year</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Completed or Continue?</label>
+                <select id="inputState" name="ccCompletedOrContinue" class="form-select">
+                    <option value="Completed">Completed</option>
+                    <option value="Continued">Continued</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Is Proffesional?</label>
+                <select id="inputState" name="ccIsProfessional" class="form-select">
+                    <option value="Professional Course">Professional Course</option>
+                    <option value="Continued">Continued</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Is Admission through Open or Reserved Category?</label>
+                <select id="inputState" name="ccIsAddmissionThroughOpenOrReserved" class="form-select">
+                    <option value="Open">Open</option>
+                    <option value="Selected Category">Selected Category</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Gap years</label>
+                <input type="text" name="ccGapYears" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Mode</label>
+                <select id="inputState" name="ccMode" class="form-select">
+                    <option value="Regular">Regular</option>
+                    <option value="Distance">Distance</option>
+                </select>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="d-grid" style="width: auto; align-items: center">
+                <button type="submit" class="btn btn-primary">Save and Next</button>
+            </div>
+
+           
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <legend>Your Saved Details</legend>
+        </form>
+        <br />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sr. no.</th>
+                    <th scope="col">Year of Study</th>
+                    <th scope="col">Admission Date</th>
+                    <th scope="col">College/School Name</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">University Name</th>
+                    <th scope="col">Completed</th>
+                    <th scope="col">Result</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              
+                <% for(var i=0; i<currentCourse.length; i++) { %>
+                    <form action="/user/cci/delete/<%=currentCourse[i]._id%>" method="post">
+                    <tr>
+                        <th scope="row"><%=i+1%></th>
+                        <td><%= currentCourse[i].ccYearOfStudy %> </td>
+                        <td><%= currentCourse[i].ccAddmissionDate.toLocaleDateString() %> </td>
+                        <td><%= currentCourse[i].ccCollegeName %></td>
+                        <td><%= currentCourse[i].ccCourseName %></td>
+                        <td><%= currentCourse[i].ccBoradUniversityName %></td>
+                        <td><%= currentCourse[i].ccCompletedOrContinue %></td>
+                        <td><%= currentCourse[i].ccCETpercentage %></td>
+                        <td><button type="submit" class="btn btn-secondary">Delete</button></td>
+                    </tr>
+                    </form>
+                 <% }; %> 
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

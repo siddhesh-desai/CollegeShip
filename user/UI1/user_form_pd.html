@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personal Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+</head>
+
+<body>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Personal Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Address Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Other Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Current Course</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Past Qualification</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Hostel Details</a>
+        </li>
+    </ul>
+
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0"
+            aria-valuemax="100">
+            0% Completed
+        </div>
+    </div>
+
+    <div class="card-body p-4 p-sm-5">
+        <form class="row g-3">
+            <legend>
+                <h2><b>Personal Information</b></h2>
+            </legend>
+            <hr />
+            <legend>Personal Details</legend>
+            <div class="col-md-4">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control" value="example@gmail.com" id="inputEmail4" readonly />
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="inputname4" required />
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="inputname5" />
+            </div>
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">Aadhar Number</label>
+                <input type="text" class="form-control" value="111122223333" id="inputZip" readonly />
+            </div>
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">Mobile Number</label>
+                <input type="text" class="form-control" value="1234567890" id="inputZip" readonly />
+            </div>
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="inputZip" />
+            </div>
+            <div class="col-md-3">
+                <label for="inputState" class="form-label">Gender</label>
+                <select id="inputState" class="form-select">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Others</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Father's Full Name</label>
+                <input type="text" class="form-control" id="inputname5" />
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Mother's Full Name</label>
+                <input type="text" class="form-control" id="inputname5" />
+            </div>
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">State</label>
+                <select id="inputState" class="form-select">
+                    <option selected>Choose...</option>
+                    <option>Maharshtra</option>
+                    <option>Tamil Nadu</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">District</label>
+                <select id="inputState" class="form-select">
+                    <option>Kolhapur</option>
+                    <option>Amhednagar</option>
+                    <option>Pune</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Taluka</label>
+                <select id="inputState" class="form-select">
+                    <option>Karveer</option>
+                    <option>Ichalkaranji</option>
+                    <option>Hatkalangle</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Pin Code</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputState" class="form-label">Marital Status</label>
+                <select id="inputState" class="form-select">
+                    <option>Married</option>
+                    <option>Unmarried</option>
+                    <option>Divorcee</option>
+                </select>
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <legend>Religion & Caste Details</legend>
+
+            <div class="col-md-2">
+                <label for="inputState" class="form-label">Religion</label>
+                <select id="inputState" class="form-select">
+                    <option>Hindu</option>
+                    <option>Islam</option>
+                    <option>Cristian</option>
+                    <option>Sikh</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="inputState" class="form-label">Caste Category</label>
+                <select id="inputState" class="form-select">
+                    <option>General</option>
+                    <option>ST</option>
+                    <option>SC</option>
+                    <option>SBC</option>
+                    <option>OBC</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="inputState" class="form-label">Caste</label>
+                <select id="inputState" class="form-select">
+                    <option>Maratha</option>
+                    <option>Gond</option>
+                    <option>Brahmin</option>
+                </select>
+            </div>
+
+            <div class="col-md-1"></div>
+
+            <div class="col-md-3">
+                <label for="inputState" class="form-label">Do you have a caste Certificate?</label>
+                <br />
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                        value="option1" checked />
+                    <label class="form-check-label" for="exampleRadios1"> Yes </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                        value="option2" />
+                    <label class="form-check-label" for="exampleRadios2"> No </label>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">Caste Certificate Number</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">Issuing District</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">Applicant Name</label>
+                <input type="text" class="form-control" id="inputname5" />
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Issuing Authority</label>
+                <select id="inputState" class="form-select">
+                    <option>Divisional Office</option>
+                    <option>Sub-divisional office</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">Issuing Date</label>
+                <input type="date" class="form-control" id="inputZip" />
+            </div>
+            <div class="col-md-6">
+                <label for="inputZip" class="form-label">Caste Certificate</label><br />
+                <div class="input-group">
+                    <input type="file" class="form-control" id="inputGroupFile02" />
+                    <button type="view" class="btn btn-secondary">View Document</button>
+                </div>
+            </div>
+
+            <div class="col-md-2"></div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <legend>Income Details</legend>
+
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">Family Annual Income</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="col-md-3">
+                <label for="inputState" class="form-label">Do you have Income Certificate?</label>
+                <br />
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                        value="option1" checked />
+                    <label class="form-check-label" for="exampleRadios1"> Yes </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                        value="option2" />
+                    <label class="form-check-label" for="exampleRadios2"> No </label>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">Income Certificate Number</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Issuing Authority</label>
+                <select id="inputState" class="form-select">
+                    <option>Divisional Office</option>
+                    <option>Sub-divisional office</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">Issuing Date</label>
+                <input type="date" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputZip" class="form-label">Income Certificate</label><br />
+                <div class="input-group">
+                    <input type="file" class="form-control" id="inputGroupFile02" />
+                    <button type="view" class="btn btn-secondary">View Document</button>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <legend>Domicile Details</legend>
+
+            <div class="col-md-3">
+                <label for="inputState" class="form-label">Which Domicile are you?</label>
+                <select id="inputState" class="form-select">
+                    <option>Maharashtra</option>
+                    <option>Tamil Nadu</option>
+                    <option>Kashmir</option>
+                </select>
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="col-md-3">
+                <label for="inputState" class="form-label">Do you have Domicile Certificate?</label>
+                <br />
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                        value="option1" checked />
+                    <label class="form-check-label" for="exampleRadios1"> Yes </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                        value="option2" />
+                    <label class="form-check-label" for="exampleRadios2"> No </label>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">Domicile Certificate Number</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputState" class="form-label">Relationship Type</label>
+                <select id="inputState" class="form-select">
+                    <option>Self</option>
+                    <option>Parent</option>
+                    <option>Grandparent</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Issuing Authority</label>
+                <select id="inputState" class="form-select">
+                    <option>Divisional Office</option>
+                    <option>Sub-divisional office</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">Issuing Date</label>
+                <input type="date" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputZip" class="form-label">Income Certificate</label><br />
+                <div class="input-group">
+                    <input type="file" class="form-control" id="inputGroupFile02" />
+                    <button type="view" class="btn btn-secondary">View Document</button>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <legend>Personal Eligibility Details</legend>
+
+            <div class="col-md-2">
+                <label for="inputState" class="form-label">Are you salaried?</label>
+                <select id="inputState" class="form-select">
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputState" class="form-label">Disability of any type?</label>
+                <select id="inputState" class="form-select">
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="inputZip" class="form-label">If yes, what type?</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-5">
+                <label for="inputZip" class="form-label">Disability Certificate</label><br />
+                <div class="input-group">
+                    <input type="file" class="form-control" id="inputGroupFile02" />
+                    <button type="view" class="btn btn-secondary">View Document</button>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <legend>Aadhaar Bank Details</legend>
+
+            <div class="col-md-5">
+                <label for="inputState" class="form-label">Is your Aadhar linked Bank Account a Jandhan/Yuva Account, or
+                    does
+                    the account have a limit on withdrawal or deposit?</label>
+                <br />
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                        value="option1" checked />
+                    <label class="form-check-label" for="exampleRadios1"> Yes </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                        value="option2" />
+                    <label class="form-check-label" for="exampleRadios2"> No </label>
+                </div>
+            </div>
+            <div class="col-md-7"></div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <legend>Bank Details</legend>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Bank Account Number</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">IFSC Code</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Branch Name</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div class="d-grid" style="width: auto; align-items: center">
+                <button type="submit" class="btn btn-primary">Save and Next</button>
+            </div>
+
+            <div class="d-grid" style="width: auto; align-items: center">
+                <button type="reset" class="btn btn-primary">Reset</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

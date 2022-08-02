@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Address Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg" style="padding-left: 20px; background-color: #e3f2fd">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <span class="navbar-brand mb-0 h1">CollegeShip</span>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Profile
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="user_form_verification.html">User Verification</a>
+                        <a class="dropdown-item" href="user_form_pd.html">Personal Details</a>
+                        <a class="dropdown-item" href="user_form_ad.html">Address Details</a>
+                        <a class="dropdown-item" href="user_form_od.html">Other Details</a>
+                        <a class="dropdown-item" href="user_form_ccd.html">Current Course Details</a>
+                        <a class="dropdown-item" href="user_form_pqd.html">Past Qualification Details</a>
+                        <a class="dropdown-item" href="user_form_hd.html">Hostel Details</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">All Schemes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">My Applied Schemes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">My Cancelled Schemes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Grievances</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Notifications</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Declaration Forms</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="user_form_verification.html">User Verification</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="user_form_pd.html">Personal Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="user_form_ad.html">Address Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="user_form_od.html">Other Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="user_form_ccd.html">Current Course</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="user_form_pqd.html">Past Qualification</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="user_form_hd.html">Hostel Details</a>
+        </li>
+    </ul>
+
+    <marquee>The Application of Scholarships will be open till 31 September
+        2022.</marquee>
+
+    <div class="card-body p-4 p-sm-5">
+        <form class="row g-3">
+            <legend>
+                <h2><b>Address Information</b></h2>
+            </legend>
+            <hr />
+            <legend>Permanent Address Details</legend>
+
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">State</label>
+                <select id="inputState" class="form-select">
+                    <option selected>Choose...</option>
+                    <option>Maharshtra</option>
+                    <option>Tamil Nadu</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">District</label>
+                <select id="inputState" class="form-select">
+                    <option>Kolhapur</option>
+                    <option>Amhednagar</option>
+                    <option>Pune</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Taluka</label>
+                <select id="inputState" class="form-select">
+                    <option>Karveer</option>
+                    <option>Ichalkaranji</option>
+                    <option>Hatkalangle</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Village</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Pin Code</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div class="col-md-3">
+                <label for="inputState" class="form-label">Is Correspondence Address same as Permanent?</label>
+                <br />
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                        value="option1" />
+                    <label class="form-check-label" for="exampleRadios1"> Yes </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                        value="option2" />
+                    <label class="form-check-label" for="exampleRadios2"> No </label>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <legend>Correspondence Address Details</legend>
+
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">State</label>
+                <select id="inputState" class="form-select">
+                    <option selected>Choose...</option>
+                    <option>Maharshtra</option>
+                    <option>Tamil Nadu</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">District</label>
+                <select id="inputState" class="form-select">
+                    <option>Kolhapur</option>
+                    <option>Amhednagar</option>
+                    <option>Pune</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Taluka</label>
+                <select id="inputState" class="form-select">
+                    <option>Karveer</option>
+                    <option>Ichalkaranji</option>
+                    <option>Hatkalangle</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Village</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Pin Code</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div class="d-grid" style="width: auto; align-items: center">
+                <button type="submit" class="btn btn-primary">Save and Next</button>
+            </div>
+
+            <div class="d-grid" style="width: auto; align-items: center">
+                <button type="reset" class="btn btn-primary">Reset</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<%- include('partials/header2'); -%>
+
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 83%" aria-valuenow="25" aria-valuemin="0"
+            aria-valuemax="100">
+            83% Completed
+        </div>
+    </div>
+
+    <div class="card-body p-4 p-sm-5">
+        <form class="row g-3" action="/user/hd/add" method="post" enctype="multipart/form-data">
+            <legend>
+                <h2><b>Hostel Information</b></h2>
+            </legend>
+            <hr />
+            <legend>Beneficiary Category</legend>
+
+            <div class="col-md-3">
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="hiBeneficiaryCategory" id="exampleRadios1"
+                        value="Hosteller" />
+                    <label class="form-check-label" for="exampleRadios1"> Hosteller </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="hiBeneficiaryCategory" id="exampleRadios2"
+                        value="Day Scholar" />
+                    <label class="form-check-label" for="exampleRadios2"> Day Scholar </label>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <legend>Hostel Details</legend>
+
+
+            <div class="col-4">
+                <label for="inputAddress" class="form-label">Hostel Name</label>
+                <input type="text" name="hostelName" class="form-control" id="inputAddress" />
+            </div>
+
+            <div class="col-8">
+                <label for="inputAddress" class="form-label"> Hostel Address</label>
+                <input type="text" name="hostelAddress" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">State</label>
+                <select id="inputState" name="hostelState" class="form-select">
+                    <option value="Maharshtra">Maharshtra</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">District</label>
+                <select id="inputState" name="hostelDistrict" class="form-select">
+                    <option value="Kolhapur">Kolhapur</option>
+                    <option value="Amhednagar">Amhednagar</option>
+                    <option value="Pune">Pune</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Taluka</label>
+                <select id="inputState" name="hostelTaluka" class="form-select">
+                    <option value="Karveer">Karveer</option>
+                    <option value="Ichalkaranji">Ichalkaranji</option>
+                    <option value="Hatkalangle">Hatkalangle</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Village</label>
+                <input type="text" name="hostelVillage" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Pin Code</label>
+                <input type="text" name="hostelPinCode" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Hostel Type</label>
+                <select id="inputState" name="hostelType" class="form-select">
+                    <option value="Paying guest">Paying guest</option>
+                    <option value="Hostel">Hostel</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Admission Date</label>
+                <input type="date" name="hostelAdmissionDate" class="form-control" id="inputZip" />
+            </div>
+
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Is Mess Available?</label>
+                <select id="inputState" name="hostelIsMessAvailable" class="form-select">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputZip" class="form-label">Hostel Admission Letter</label><br />
+                <div class="input-group">
+                    <input type="file" name="hostelAddmissionLetter" class="form-control" id="inputGroupFile02" />
+                </div>
+            </div>
+            
+            
+
+            
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div class="d-grid" style="width: auto; align-items: center">
+                <button type="submit" class="btn btn-primary">Save and Next</button>
+            </div>
+
+            
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <legend>Your Saved Past Qualification Details</legend>
+    </form>
+    <br />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sr. no.</th>
+                    <th scope="col">Beneficiary Category</th>
+                    <th scope="col">Hostel Type</th>
+                    <th scope="col">Hostel Name</th>
+                    <th scope="col">State</th>
+                    <th scope="col">District</th>
+                    <th scope="col">Taluka</th>
+                    <th scope="col">Hostel Address</th>
+                    <th scope="col">Admission Date</th>
+                    <th scope="col">Mess Available</th>
+                    <!-- <th scope="col">View Document</th> -->
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <% for(var i=0; i<hostelDetails.length; i++) { %>
+                    <% if (hostelDetails[i].hiBeneficiaryCategory === "Hosteller") {%> 
+                    <form action="/user/hd/delete/<%=hostelDetails[i]._id%>" method="post">
+                        <tr>
+                            <th scope="row"><%=i+1 %> </th>
+                            <td><%=hostelDetails[i].hiBeneficiaryCategory %></td>
+                            <td><%=hostelDetails[i].hostelType %></td>
+                            <td><%=hostelDetails[i].hostelName %></td>
+                            <td><%=hostelDetails[i].hostelState %></td>
+                            <td><%=hostelDetails[i].hostelDistrict %></td>
+                            <td><%=hostelDetails[i].hostelTaluka %></td>
+                            <td><%=hostelDetails[i].hostelAddress %></td>
+                            <td><%=hostelDetails[i].hostelAdmissionDate.toLocaleDateString() %></td>
+                            <td><%=hostelDetails[i].hostelIsMessAvailable %></td>
+
+                            <!-- <td>
+                                <button href="#" class="btn btn-secondary">View Document</button>
+                            </td> -->
+                            <td><button type="submit" class="btn btn-secondary">Delete</button></td>
+                        </tr>
+                    </form>
+                    <% } %>
+                <% }; %> 
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
