@@ -1,0 +1,127 @@
+   .citypage{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    align-self: center;
+  }
+  .container{
+    max-width: 1519px;
+    margin: auto;
+    overflow: auto;
+    text-align: center;
+    align-self: center;
+  }
+  .gallery{
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 390px;
+    margin-bottom: 50px;
+    margin-right: 60px;
+    margin-left: 120px;
+    text-align: center;
+    align-self: center;
+    /* border-radius: 40%; */
+  }
+  /* .gallery img{
+    width: 100%;
+    height: auto;
+    padding-bottom: 30px;
+    border-radius: 40%; 
+  } */
+  .desc{
+    padding: 10px;
+    padding-top: 1px;
+    text-align: center;
+  
+  }
+  
+  .desc p{
+    color: black;
+  }
+
+  .gallery:hover{
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow:10px 10px 10px #999;
+  }
+
+  #btnn3{
+    height: 75px;
+    width: 500px;
+    background-color: rgb(255, 255, 12);
+    border-color: white;
+    font-size: 25px;
+    color: black;
+    border-radius: 50px;
+  }
+  #btnn2{
+    height: 75px;
+    width: 500px;
+    background-color: rgb(232, 134, 29);
+    border-color: white;
+    font-size: 25px;
+    color: white;
+    border-radius: 50px;
+  }
+  #btnn6{
+    height: 75px;
+    width: 500px;
+    background-color: rgb(146, 10, 180);
+    border-color: white;
+    font-size: 25px;
+    color: white;
+    border-radius: 50px;
+  }
+  #btnn4{
+    height: 75px;
+    width: 500px;
+    border-color: white;
+    font-size: 25px;
+    color: white;
+    border-radius: 50px;
+  }
+  #btnn5{
+    height: 75px;
+    width: 500px;
+    border-color: white;
+    font-size: 25px;
+    color: white;
+    border-radius: 50px;
+  }
+  #btnn1{
+    height: 75px;
+    width: 500px;
+    border-color: white;
+    font-size: 25px;
+    color: white;
+    border-radius: 50px;
+  }
+  #btnn7{
+    height: 75px;
+    width: 500px;
+    border-color: white;
+    font-size: 25px;
+    color: white;
+    border-radius: 50px;
+  }
+  .btn-primary:hover{
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow:10px 10px 10px #999;
+}
+.btn-success:hover{
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow:10px 10px 10px #999;
+}
+.btn-dark:hover{
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow:10px 10px 10px #999;
+}
+.btn-danger:hover{
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow:10px 10px 10px #999;
+}
