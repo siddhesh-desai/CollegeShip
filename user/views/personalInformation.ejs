@@ -9,87 +9,86 @@
         <legend>Personal Details</legend>
         <div class="col-md-4">
             <label for="pdEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" value= <%=email%> id="pdEmail" readonly />
+            <input type="email" class="form-control" value= <%=user.email%> id="pdEmail" readonly />
         </div>
         <div class="col-md-4">
             <label for="pdFirstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" name="firstName" id="pdFirstName" required />
+            <input type="text" class="form-control" value= "<%=user.firstName ? user.firstName : '' %>" name="firstName" id="pdFirstName" required />
         </div>
         <div class="col-md-4">
             <label for="pdLastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" name="lastName" id="pdLastName" />
+            <input type="text" class="form-control" value= "<%=user.lastName ? user.lastName : '' %>" name="lastName" id="pdLastName" required/>
         </div>
         <div class="col-md-3">
             <label for="pdAadhaar" class="form-label">Aadhar Number</label>
-            <input type="text" class="form-control" name="aadharNumber"  id="pdAadhaar"  />
+            <input type="text" class="form-control" value= "<%=user.aadharNumber ? user.aadharNumber : '' %>" name="aadharNumber"  id="pdAadhaar" required />
         </div>
         <div class="col-md-3">
             <label for="pdMobile" class="form-label">Mobile Number</label>
-            <input type="text" class="form-control" name="mobileNumber" id="pdMobile"  />
+            <input type="text" class="form-control" value= "<%=user.mobileNumber ? user.mobileNumber : '' %>" name="mobileNumber" id="pdMobile" required />
         </div>
         <div class="col-md-3">
             <label for="pdDOB" class="form-label">Date of Birth</label>
-            <input type="date" class="form-control" name="dob" id="pdDOB" />
+            <input type="date" class="form-control" value= "<%=user.dob ? user.dob[0] : '' %>" name="dob" id="pdDOB" required/>
         </div>
         <div class="col-md-3">
             <label for="pdGender" class="form-label">Gender</label>
-            <select id="pdGender" name="gender" class="form-select">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Others">Others</option>
+            <select id="pdGender" name="gender" class="form-select" required>
+                <option  <%=user.pdGender=="Male" ? 'selected' : '' %> value="Male">Male</option>
+                <option  <%=user.pdGender=="Female" ? "selected" : '' %> value="Female">Female</option>
+                <option  <%=user.pdGender=="Others" ? "selected" : '' %> value="Others">Others</option>
             </select>
         </div>
         <div class="col-md-6">
             <label for="pdFatherName" class="form-label">Father's Full Name</label>
-            <input type="text" class="form-control" name="fatherName" id="pdFatherName" />
+            <input type="text" class="form-control" value= "<%=user.fatherName ? user.fatherName : '' %>" name="fatherName" id="pdFatherName" required/>
         </div>
         <div class="col-md-6">
             <label for="pdMotherName" class="form-label">Mother's Full Name</label>
-            <input type="text" class="form-control" name="motherName" id="pdMotherName" />
+            <input type="text" class="form-control" value= "<%=user.motherName ? user.motherName : '' %>" name="motherName" id="pdMotherName" required/>
         </div>
         <div class="col-12">
             <label for="pdAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" name="address" id="pdAddress" placeholder="1234 Main St" />
+            <input type="text" class="form-control" value= "<%=user.address ? user.address : '' %>" name="address" id="pdAddress" placeholder="1234 Main St" required />
         </div>
 
         <div class="col-md-4">
             <label for="pdState" class="form-label">State</label>
-            <select id="pdState" name="state" class="form-select">
-                <option selected>Choose...</option>
-                <option value="Maharashtra">Maharashtra</option>
-                <option value="Tamil Nadu">Tamil Nadu</option>
+            <select id="pdState" name="state" class="form-select" required>
+                <option <%=user.state=="Maharashtra" ? "selected" : '' %> value="Maharashtra">Maharashtra</option>
+                <option <%=user.state=="Tamil Nadu" ? "selected" : '' %> value="Tamil Nadu">Tamil Nadu</option>
             </select>
         </div>
 
         <div class="col-md-2">
             <label for="pdDistrict" class="form-label">District</label>
-            <select id="pdDistrict" name="district" class="form-select">
-                <option value="Kolhapur">Kolhapur</option>
-                <option value="Amhednagar">Amhednagar</option>
-                <option value="Pune">Pune</option>
+            <select id="pdDistrict"  name="district" class="form-select" required>
+                <option <%=user.district=="Kolhapur" ? "selected" : '' %> value="Kolhapur">Kolhapur</option>
+                <option <%=user.district=="Amhednagar" ? "selected" : '' %> value="Amhednagar">Amhednagar</option>
+                <option <%=user.district=="Pune" ? "selected" : '' %> value="Pune">Pune</option>
             </select>
         </div>
 
         <div class="col-md-2">
             <label for="pdTaluka" class="form-label">Taluka</label>
-            <select id="pdTaluka" name="taluka" class="form-select">
-                <option value="Karveer">Karveer</option>
-                <option value="Ichalkaranji">Ichalkaranji</option>
-                <option value="Hatkalangle">Hatkalangle</option>
+            <select id="pdTaluka" name="taluka" class="form-select" required>
+                <option <%=user.taluka=="Karveer" ? "selected" : '' %> value="Karveer">Karveer</option>
+                <option <%=user.taluka=="Ichalkaranji" ? "selected" : '' %> value="Ichalkaranji">Ichalkaranji</option>
+                <option <%=user.taluka=="Hatkalangle" ? "selected" : '' %> value="Hatkalangle">Hatkalangle</option>
             </select>
         </div>
 
         <div class="col-md-2">
             <label for="pdPinCode" class="form-label">Pin Code</label>
-            <input type="text" name="pincode" class="form-control" id="pdPinCode" />
+            <input type="text"  value= "<%=user.pincode ? user.pincode : '' %>" name="pincode" class="form-control" id="pdPinCode" required/>
         </div>
 
         <div class="col-md-2">
             <label for="pdMartialStatus" class="form-label">Marital Status</label>
-            <select id="pdMartialStatus" name="maritalStatus" class="form-select">
-                <option value="Married">Married</option>
-                <option value="Unmarried">Unmarried</option>
-                <option value="Divorcee">Divorcee</option>
+            <select id="pdMartialStatus" name="maritalStatus" class="form-select" required>
+                <option <%=user.maritalStatus=="Married" ? "selected" : '' %>  value="Married">Married</option>
+                <option <%=user.maritalStatus=="Unmarried" ? "selected" : '' %> value="Unmarried">Unmarried</option>
+                <option <%=user.maritalStatus=="Divorcee" ? "selected" : '' %> value="Divorcee">Divorcee</option>
             </select>
         </div>
 
@@ -102,31 +101,31 @@
 
         <div class="col-md-2">
             <label for="pdReligion" class="form-label">Religion</label>
-            <select id="pdReligion" name="religion" class="form-select">
-                <option value="Hindu">Hindu</option>
-                <option value="Islam">Islam</option>
-                <option value="Cristian">Cristian</option>
-                <option value="Sikh">Sikh</option>
+            <select id="pdReligion" name="religion" class="form-select" required>
+                <option <%=user.religion=="Hindu" ? "selected" : '' %> value="Hindu">Hindu</option>
+                <option <%=user.religion=="Islam" ? "selected" : '' %> value="Islam">Islam</option>
+                <option <%=user.religion=="Cristian" ? "selected" : '' %> value="Cristian">Cristian</option>
+                <option <%=user.religion=="Sikh" ? "selected" : '' %> value="Sikh">Sikh</option>
             </select>
         </div>
 
         <div class="col-md-3">
             <label for="pdCasteCategory" class="form-label">Caste Category</label>
-            <select id="pdCasteCategory" name="casteCategory" class="form-select">
-                <option value="General">General</option>
-                <option value="ST">ST</option>
-                <option value="SC">SC</option>
-                <option value="SBC">SBC</option>
-                <option value="OBC">OBC</option>
+            <select id="pdCasteCategory"  name="casteCategory" class="form-select" required>
+                <option <%=user.casteCategory=="General" ? "selected" : '' %> value="General">General</option>
+                <option <%=user.casteCategory=="ST" ? "selected" : '' %> value="ST">ST</option>
+                <option <%=user.casteCategory=="SC" ? "selected" : '' %> value="SC">SC</option>
+                <option <%=user.casteCategory=="SBC" ? "selected" : '' %> value="SBC">SBC</option>
+                <option <%=user.casteCategory=="OBC" ? "selected" : '' %> value="OBC">OBC</option>
             </select>
         </div>
 
         <div class="col-md-3">
             <label for="pdCaste" class="form-label">Caste</label>
-            <select id="pdCaste" name="caste" class="form-select">
-                <option value="Maratha">Maratha</option>
-                <option value="Gond">Gond</option>
-                <option value="Brahmin">Brahmin</option>
+            <select id="pdCaste" name="caste" class="form-select" required>
+                <option <%=user.caste=="Maratha" ? "selected" : '' %> value="Maratha">Maratha</option>
+                <option <%=user.caste=="Gond" ? "selected" : '' %> value="Gond">Gond</option>
+                <option <%=user.caste=="Brahmin" ? "selected" : '' %> value="Brahmin">Brahmin</option>
             </select>
         </div>
 
@@ -136,15 +135,15 @@
             <label for="pdCateCertificateYesNo" class="form-label">Do you have a caste Certificate?</label>
             <br />
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="haveCasteCertificate" id="pdCateCertificateYes"
-                    value="Yes" />
+                <input class="form-check-input" <%=user.haveCasteCertificate==true ? "checked" : '' %>  type="radio" name="haveCasteCertificate" id="pdCateCertificateYes"
+                    value="Yes" required/>
                 <label class="form-check-label" for="pdCateCertificateYes">
                     Yes
                 </label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="haveCasteCertificate" id="pdCateCertificateNo"
-                    value="No" />
+                <input class="form-check-input" <%=user.haveCasteCertificate==false ? "checked" : '' %> type="radio" name="haveCasteCertificate" id="pdCateCertificateNo"
+                    value="No" required/>
                 <label class="form-check-label" for="pdCateCertificateNo">
                     No
                 </label>
@@ -153,36 +152,36 @@
 
         <div class="col-md-3">
             <label for="pdCasteCertificateNumber" class="form-label">Caste Certificate Number</label>
-            <input type="text" class="form-control"name="casteCertificateNumber" id="pdCasteCertificateNumber" />
+            <input type="text" class="form-control"  required value= "<%=user.casteCertificateNumber ? user.casteCertificateNumber : '' %>" name="casteCertificateNumber" id="pdCasteCertificateNumber" />
         </div>
 
         <div class="col-md-3">
             <label for="pdCasteCertificateDistrict" class="form-label">Issuing District</label>
-            <input type="text" class="form-control" name="casteIssuingDistrict" id="pdCasteCertificateDistrict" />
+            <input type="text" class="form-control"  required value= "<%=user.casteIssuingDistrict ? user.casteIssuingDistrict : '' %>" name="casteIssuingDistrict" id="pdCasteCertificateDistrict" />
         </div>
 
         <div class="col-md-4">
             <label for="pdCasteCertificateName" class="form-label">Applicant Name</label>
-            <input type="text" class="form-control" name="casteApplicantName" id="pdCasteCertificateName" />
+            <input type="text" class="form-control" required  value= "<%=user.casteApplicantName ? user.casteApplicantName : '' %>" name="casteApplicantName" id="pdCasteCertificateName" />
         </div>
 
         <div class="col-md-2">
             <label for="pdCasteCertificateIssueAuthority" class="form-label">Issuing Authority</label>
-            <select id="pdCasteCertificateIssueAuthority" name="casteIssuingAuthority" class="form-select">
-                <option value="Divisional Office">Divisional Office</option>
-                <option value="Sub-divisional office">Sub-divisional office</option>
+            <select id="pdCasteCertificateIssueAuthority" required  name="casteIssuingAuthority" class="form-select">
+                <option <%=user.casteIssuingAuthority=="Divisional Office" ? "selected" : '' %> value="Divisional Office">Divisional Office</option>
+                <option <%=user.casteIssuingAuthority=="Sub-divisional office" ? "selected" : '' %> value="Sub-divisional office">Sub-divisional office</option>
             </select>
         </div>
 
         <div class="col-md-3">
             <label for="pdCasteCertificateIssueDate" class="form-label">Issuing Date</label>
-            <input type="date" class="form-control" name="casteIssuingDate" id="pdCasteCertificateIssueDate" />
+            <input type="date" class="form-control" required value= "<%=user.casteIssuingDate? user.casteIssuingDate[0] : '' %>" name="casteIssuingDate" id="pdCasteCertificateIssueDate" />
         </div>
         <div class="col-md-6">
             <label for="pdCasteCertificate" class="form-label">Caste Certificate</label><br />
             <div class="input-group">
-                <input type="file" class="form-control" id="pdCasteCertificate" name="casteCretificate"/>
-                <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+                <input type="file" required class="form-control" id="pdCasteCertificate" name="casteCretificate"/>
+                <button type="view" class="btn btn-secondary">View Document</button>
             </div>
         </div>
 
@@ -196,8 +195,8 @@
         <legend>Income Details</legend>
 
         <div class="col-md-3">
-            <label for="pdAnnualIncome" class="form-label">Family Annual Income</label>
-            <input type="text" name="familyAnnualIncome" class="form-control" id="pdAnnualIncome" />
+            <label for="pdAnnualIncome"   class="form-label">Family Annual Income</label>
+            <input type="text" value= "<%=user.familyAnnualIncome ? user.familyAnnualIncome : '' %>" name="familyAnnualIncome" class="form-control" id="pdAnnualIncome" required/>
         </div>
         <div class="col-md-1"></div>
 
@@ -205,15 +204,15 @@
             <label for="pdIncomeCertificateYesNo" class="form-label">Do you have Income Certificate?</label>
             <br />
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="haveIncomeCertificate" id="pdIncomeCertificateYes"
-                    value="Yes" />
+                <input class="form-check-input" <%=user.haveIncomeCertificate==true ? "checked" : '' %> type="radio" name="haveIncomeCertificate" id="pdIncomeCertificateYes"
+                    value="Yes" required/>
                 <label class="form-check-label" for="pdIncomeCertificateYes">
                     Yes
                 </label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="haveIncomeCertificate" id="pdIncomeCertificateNo"
-                    value="No" />
+                <input class="form-check-input" <%=user.haveIncomeCertificate==false ? "checked" : '' %> type="radio" name="haveIncomeCertificate" id="pdIncomeCertificateNo"
+                    value="No" required/>
                 <label class="form-check-label" for="pdIncomeCertificateNo">
                     No
                 </label>
@@ -222,26 +221,26 @@
 
         <div class="col-md-3">
             <label for="pdIncomeCertificateNumber" class="form-label">Income Certificate Number</label>
-            <input type="text" class="form-control" name="incomeCertificateNumber" id="pdIncomeCertificateNumber" />
+            <input type="text" required class="form-control"  value= "<%=user.incomeCertificateNumber ? user.incomeCertificateNumber : '' %>" name="incomeCertificateNumber" id="pdIncomeCertificateNumber" />
         </div>
 
         <div class="col-md-2">
             <label for="pdIncomeCertificateAuthority" class="form-label">Issuing Authority</label>
-            <select id="pdIncomeCertificateAuthority" name="incomeIssuingAuthority" class="form-select">
-                <option value="Divisional Office">Divisional Office</option>
-                <option value="Sub-divisional office">Sub-divisional office</option>
+            <select id="pdIncomeCertificateAuthority" name="incomeIssuingAuthority" class="form-select" required>
+                <option <%=user.incomeIssuingAuthority=="Divisional Office" ? "selected" : '' %> value="Divisional Office">Divisional Office</option>
+                <option <%=user.incomeIssuingAuthority=="Sub-divisional office" ? "selected" : '' %> value="Sub-divisional office">Sub-divisional office</option>
             </select>
         </div>
 
         <div class="col-md-3">
             <label for="pdIncomeCertificateDate" class="form-label">Issuing Date</label>
-            <input type="date" class="form-control" name="incomeIssuingDate" id="pdIncomeCertificateDate" />
+            <input type="date" class="form-control" required value= "<%=user.incomeIssuingDate ? user.incomeIssuingDate[0] : '' %>" name="incomeIssuingDate" id="pdIncomeCertificateDate" />
         </div>
 
         <div class="col-md-6">
             <label for="pdIncomeCertificate" class="form-label">Income Certificate</label><br />
             <div class="input-group">
-                <input type="file" class="form-control" id="pdIncomeCertificate" name="incomeCertificate"/>
+                <input type="file" class="form-control" required id="pdIncomeCertificate" name="incomeCertificate"/>
                 <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
             </div>
         </div>
@@ -256,10 +255,10 @@
 
         <div class="col-md-3">
             <label for="pdDomicile" class="form-label">Which Domicile are you?</label>
-            <select id="pdDomicile" name="domicileState" class="form-select">
-                <option value="Maharashtra">Maharashtra</option>
-                <option value="Tamil Nadu">Tamil Nadu</option>
-                <option value="Kashmir">Kashmir</option>
+            <select id="pdDomicile" name="domicileState" class="form-select" required>
+                <option <%=user.domicileState=="Maharashtra" ? "selected" : '' %> value="Maharashtra">Maharashtra</option>
+                <option <%=user.domicileState=="Tamil Nadu" ? "selected" : '' %> value="Tamil Nadu">Tamil Nadu</option>
+                <option <%=user.domicileState=="Kashmir" ? "selected" : '' %> value="Kashmir">Kashmir</option>
             </select>
         </div>
         <div class="col-md-1"></div>
@@ -268,15 +267,15 @@
             <label for="pdDomicileCertificateYesNo" class="form-label">Do you have Domicile Certificate?</label>
             <br />
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="haveDomicileCertificate" id="pdDomicileCertificateYes"
-                    value="Yes" />
+                <input class="form-check-input" <%=user.haveDomicileCertificate==true ? "checked" : '' %> type="radio" name="haveDomicileCertificate" id="pdDomicileCertificateYes"
+                    value="Yes" required/>
                 <label class="form-check-label" for="pdDomicileCertificateYes">
                     Yes
                 </label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="haveDomicileCertificate" id="pdDomicileCertificateNo"
-                    value="No" />
+                <input class="form-check-input" <%=user.haveDomicileCertificate==false ? "checked" : '' %> type="radio" name="haveDomicileCertificate" id="pdDomicileCertificateNo"
+                    value="No" required/>
                 <label class="form-check-label" for="pdDomicileCertificateNo">
                     No
                 </label>
@@ -285,35 +284,35 @@
 
         <div class="col-md-3">
             <label for="pdDomicileCertificateNumber" class="form-label">Domicile Certificate Number</label>
-            <input type="text" class="form-control" name="domicileCertificateNumber" id="pdDomicileCertificateNumber" />
+            <input type="text" class="form-control" required value= "<%=user.domicileCertificateNumber ? user.domicileCertificateNumber : '' %>" name="domicileCertificateNumber" id="pdDomicileCertificateNumber" />
         </div>
 
         <div class="col-md-2">
             <label for="pdDomicileCertificateRelation" class="form-label">Relationship Type</label>
-            <select id="pdDomicileCertificateRelation" name="domicileRelationType" class="form-select">
-                <option value="Self">Self</option>
-                <option value="Parent">Parent</option>
-                <option value="Grandparent">Grandparent</option>
+            <select id="pdDomicileCertificateRelation"  name="domicileRelationType" class="form-select" required>
+                <option <%=user.domicileRelationType=="Self" ? "selected" : '' %> value="Self">Self</option>
+                <option <%=user.domicileRelationType=="Parent" ? "selected" : '' %> value="Parent">Parent</option>
+                <option <%=user.domicileRelationType=="Grandparent" ? "selected" : '' %> value="Grandparent">Grandparent</option>
             </select>
         </div>
 
         <div class="col-md-2">
             <label for="pdDomicileCertificateAuthority" class="form-label">Issuing Authority</label>
-            <select id="pdDomicileCertificateAuthority" name="domicileIssuingAuthority" class="form-select">
-                <option value="Divisional Office">Divisional Office</option>
-                <option value="Sub-divisional office">Sub-divisional office</option>
+            <select id="pdDomicileCertificateAuthority" name="domicileIssuingAuthority" class="form-select" required>
+                <option <%=user.domicileIssuingAuthority=="Divisional Office" ? "selected" : '' %> value="Divisional Office">Divisional Office</option>
+                <option <%=user.domicileIssuingAuthority=="Sub-divisional office" ? "selected" : '' %> value="Sub-divisional office">Sub-divisional office</option>
             </select>
         </div>
 
         <div class="col-md-3">
             <label for="pdDomicileCertificateDate" class="form-label">Issuing Date</label>
-            <input type="date" class="form-control" name="domicileIssuingDate" id="pdDomicileCertificateDate" />
+            <input type="date" class="form-control" value= "<%=user.domicileIssuingDate ? user.domicileIssuingDate[0] : '' %>" name="domicileIssuingDate" required id="pdDomicileCertificateDate" />
         </div>
 
         <div class="col-md-6">
             <label for="pdDomicileCertificate" class="form-label">Income Certificate</label><br />
             <div class="input-group">
-                <input type="file" class="form-control" id="pdDomicileCertificate" name="domicileCertificate"/>
+                <input type="file" class="form-control" id="pdDomicileCertificate" required name="domicileCertificate"/>
                 <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
             </div>
         </div>
@@ -327,23 +326,23 @@
 
         <div class="col-md-2">
             <label for="pdSalaried" class="form-label">Are you salaried?</label>
-            <select id="pdSalaried" name="isSalaried" class="form-select">
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
+            <select id="pdSalaried"  name="isSalaried" required class="form-select">
+                <option <%=user.isSalaried== false ? "selected" : '' %> value="No">No</option>
+                <option <%=user.isSalaried== true ? "selected" : '' %>  value="Yes">Yes</option>
             </select>
         </div>
 
         <div class="col-md-2">
             <label for="pdDisabled" class="form-label">Disability of any type?</label>
-            <select id="pdDisabled" name="haveDisability" class="form-select">
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
+            <select id="pdDisabled"  value= "<%=user.haveDisability ? user.haveDisability : '' %>" required name="haveDisability" class="form-select">
+                <option <%=user.haveDisability== false ? "selected" : '' %> value="No">No</option>
+                <option <%=user.haveDisability== true ? "selected" : '' %> value="Yes">Yes</option>
             </select>
         </div>
 
         <div class="col-md-3">
             <label for="pdDisabledType" class="form-label">If yes, what type?</label>
-            <input type="text" class="form-control" name="disabilityDesc" id="pdDisabledType" />
+            <input type="text"  value= "<%=user.disabilityDesc ? user.disabilityDesc : '' %>" class="form-control" name="disabilityDesc" id="pdDisabledType" />
         </div>
 
         <div class="col-md-5">
@@ -364,17 +363,17 @@
 
         <div class="col-md-4">
             <label for="pdBankAccountNumber" class="form-label">Bank Account Number</label>
-            <input type="text" class="form-control" name="bankAccountNumber" id="pdBankAccountNumber" />
+            <input type="text"  value= "<%=user.bankAccountNumber ? user.bankAccountNumber : '' %>" class="form-control" required name="bankAccountNumber" id="pdBankAccountNumber" />
         </div>
 
         <div class="col-md-4">
             <label for="pdBankIFSCCode" class="form-label">IFSC Code</label>
-            <input type="text" class="form-control" name="bankIFSCode" id="pdBankIFSCCode" />
+            <input type="text"  value= "<%=user.bankIFSCode ? user.bankIFSCode : '' %>" class="form-control" required name="bankIFSCode" id="pdBankIFSCCode" />
         </div>
 
         <div class="col-md-4">
             <label for="pdBankBranch" class="form-label">Branch Name</label>
-            <input type="text" class="form-control" name="bankBranch" id="pdBankBranch" />
+            <input type="text"  value= "<%=user.bankBranch ? user.bankBranch : '' %>" class="form-control" required name="bankBranch" id="pdBankBranch" />
         </div>
 
         <br />

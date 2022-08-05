@@ -47,6 +47,21 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
   .then((result) => app.listen(port, ()=> console.log(`Listening on port ${port}`)))
   .catch((err) => console.log(err));
 
+// Helper Function
+function formatDate(date) {
+  var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+  // console.log(year)
+  return [year, month, day].join('-');
+}
+
 // routes
 app.get('*', checkUser);
 app.get('/', (req, res) => res.render('home'));
@@ -59,8 +74,12 @@ app.get("/user/pi", requireAuth, (req, res) => {
         res.redirect("/")
       }
       else{
-        console.log("Result : ", docs);
-        res.render("personalInformation", {email : docs.email})
+        docs.dob ? docs.dob[0] = formatDate(docs.dob) : 1;
+        docs.casteIssuingDate ? docs.casteIssuingDate[0] = formatDate(docs.casteIssuingDate) : 1;
+        docs.incomeIssuingDate ? docs.incomeIssuingDate[0] = formatDate(docs.incomeIssuingDate) : 1;
+        docs.domicileIssuingDate ? docs.domicileIssuingDate[0] = formatDate(docs.domicileIssuingDate) : 1;
+        
+        res.render("personalInformation", {user : docs})
       }
   });
   // console.log(req.user.id)
