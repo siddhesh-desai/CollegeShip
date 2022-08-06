@@ -95,7 +95,8 @@ app.get("/user/oi", requireAuth,(req, res) => {
       }
       else{
         console.log("Result : ", docs);
-        res.render("otherInformation", {fatherName : docs.fatherName, motherName : docs.motherName})
+        // res.render("otherInformation", {fatherName : docs.fatherName, motherName : docs.motherName})
+        res.render("otherInformation", {user : docs})
       }
   });
   // res.render("otherInformation")
@@ -110,8 +111,16 @@ app.get("/user/cci", requireAuth,(req, res) => {
         res.redirect("/")
       }
       else{
-        console.log("Result : ", docs);
-        res.render("currentCourseInformation", {currentCourse : docs.currentCourse})
+        // console.log("Result : ", docs.currentCourse);
+        for (var i = 0; i < docs.currentCourse.length; i++) { 
+          docs.currentCourse[i].ccAddmissionDate[0] = formatDate(docs.currentCourse[i].ccAddmissionDate)
+        } 
+        // console.log(formatDate(docs.currentCourse[docs.currentCourse.length - 1].ccAddmissionDate))
+        // console.log(docs.currentCourse[0].ccAddmissionDate)
+        // docs.currentCourse.ccAddmissionDate[0] = formatDate(docs.currentCourse.ccAddmissionDate)
+        const recent = docs.currentCourse.length == 0 ? {} : docs.currentCourse[docs.currentCourse.length - 1]
+        console.log(recent)
+        res.render("currentCourseInformation", {currentCourse : docs.currentCourse, recent  : recent})
       }
   });
   // res.render("currentCourseInformation")

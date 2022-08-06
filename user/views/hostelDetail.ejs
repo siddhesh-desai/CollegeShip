@@ -156,15 +156,15 @@
                     <form action="/user/hd/delete/<%=hostelDetails[i]._id%>" method="post">
                         <tr>
                             <th scope="row"><%=i+1 %> </th>
-                            <td><%=hostelDetails[i].hiBeneficiaryCategory %></td>
-                            <td><%=hostelDetails[i].hostelType %></td>
-                            <td><%=hostelDetails[i].hostelName %></td>
-                            <td><%=hostelDetails[i].hostelState %></td>
-                            <td><%=hostelDetails[i].hostelDistrict %></td>
-                            <td><%=hostelDetails[i].hostelTaluka %></td>
-                            <td><%=hostelDetails[i].hostelAddress %></td>
-                            <td><%=hostelDetails[i].hostelAdmissionDate.toLocaleDateString() %></td>
-                            <td><%=hostelDetails[i].hostelIsMessAvailable %></td>
+                            <td><%=hostelDetails[i].hiBeneficiaryCategory ? hostelDetails[i].hiBeneficiaryCategory : "" %></td>
+                            <td><%=hostelDetails[i].hostelType ? hostelDetails[i].hostelType : ""%></td>
+                            <td><%=hostelDetails[i].hostelName ? hostelDetails[i].hostelName : ""%></td>
+                            <td><%=hostelDetails[i].hostelState ? hostelDetails[i].hostelState : "" %></td>
+                            <td><%=hostelDetails[i].hostelDistrict ? hostelDetails[i].hostelDistrict : "" %></td>
+                            <td><%=hostelDetails[i].hostelTaluka ? hostelDetails[i].hostelTaluka : "" %></td>
+                            <td><%=hostelDetails[i].hostelAddress ? hostelDetails[i].hostelAddress : "" %></td>
+                            <td><%=hostelDetails[i].hostelAdmissionDate ? hostelDetails[i].hostelAdmissionDate.toLocaleDateString() : "" %></td>
+                            <td><%=hostelDetails[i].hostelIsMessAvailable ? hostelDetails[i].hostelIsMessAvailable : "" %></td>
 
                             <!-- <td>
                                 <button href="#" class="btn btn-secondary">View Document</button>

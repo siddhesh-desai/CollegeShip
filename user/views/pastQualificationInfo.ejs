@@ -217,15 +217,15 @@
                 <form action="/user/pqi/delete/<%=pastQualifications[i]._id%>" method="post">
                     <tr>
                         <th scope="row"><%=i+1%></th>
-                        <td><%=pastQualifications[i].pqLevel %> </td>
-                        <td><%=pastQualifications[i].pqStream %></td>
-                        <td><%=pastQualifications[i].pqCourseName %></td>
-                        <td><%=pastQualifications[i].pqInstituteState %></td>
-                        <td><%=pastQualifications[i].pqBoardUniversityName %></td>
-                        <td><%=pastQualifications[i].pqResult %></td>
-                        <td><%=pastQualifications[i].pqAddmissionYear %></td>
-                        <td><%=pastQualifications[i].pqPassingYear %></td>
-                        <td><%=pastQualifications[i].pqPercentage %></td>
+                        <td><%=pastQualifications[i].pqLevel ? pastQualifications[i].pqLevel : "" %> </td>
+                        <td><%=pastQualifications[i].pqStream ? pastQualifications[i].pqStream : "" %></td>
+                        <td><%=pastQualifications[i].pqCourseName ? pastQualifications[i].pqCourseName : "" %></td>
+                        <td><%=pastQualifications[i].pqInstituteState ? pastQualifications[i].pqInstituteState : "" %></td>
+                        <td><%=pastQualifications[i].pqBoardUniversityName ? pastQualifications[i].pqBoardUniversityName : "" %></td>
+                        <td><%=pastQualifications[i].pqResult ? pastQualifications[i].pqResult : "" %></td>
+                        <td><%=pastQualifications[i].pqAddmissionYear ? pastQualifications[i].pqAddmissionYear : "" %></td>
+                        <td><%=pastQualifications[i].pqPassingYear ? pastQualifications[i].pqPassingYear : "" %></td>
+                        <td><%=pastQualifications[i].pqPercentage ? pastQualifications[i].pqPercentage  : "" %></td>
 
                         <!-- <td>
                             <button href="#" class="btn btn-secondary">View Document</button>
