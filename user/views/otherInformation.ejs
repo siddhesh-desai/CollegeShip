@@ -19,12 +19,12 @@
                 <label for="inputState" class="form-label">Is father alive? </label>
                 <br />
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="isFatherAlive" id="exampleRadios1"
+                    <input class="form-check-input" <%=user.isFatherAlive==true ? "checked" : '' %> type="radio" name="isFatherAlive" id="exampleRadios1"
                         value="Yes" />
                     <label class="form-check-label" for="exampleRadios1"> Yes </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="isFatherAlive" id="exampleRadios2"
+                    <input class="form-check-input" type="radio" <%=user.isFatherAlive==false ? "checked" : '' %> name="isFatherAlive" id="exampleRadios2"
                         value="No" />
                     <label class="form-check-label" for="exampleRadios2"> No </label>
                 </div>
@@ -32,22 +32,22 @@
 
             <div class="col-4">
                 <label for="inputAddress" class="form-label">Father's Name</label>
-                <input type="text" value="<%=fatherName%>" class="form-control" id="inputAddress" readonly/>
+                <input type="text" value="<%=user.fatherName%>" class="form-control" id="inputAddress" readonly/>
             </div>
 
             <div class="col-md-3">
                 <label for="inputState" class="form-label">Occupation</label>
                 <select id="inputState" name="fatherOccupation" class="form-select">
-                    <option value="Private Job">Private Job</option>
-                    <option value="Business">Business</option>
+                    <option <%=user.fatherOccupation=="Private Job" ? 'selected' : '' %> value="Private Job">Private Job</option>
+                    <option <%=user.fatherOccupation=="Business" ? 'selected' : '' %> value="Business">Business</option>
                 </select>
             </div>
 
             <div class="col-md-2">
                 <label for="inputState" class="form-label">Is Salaried?</label>
                 <select id="inputState" name="isFatherSalaried" class="form-select">
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option <%=user.isFatherSalaried==true ? 'selected' : '' %> value="Yes">Yes</option>
+                    <option <%=user.isFatherSalaried==false ? 'selected' : '' %> value="No">No</option>
                 </select>
             </div>
 
@@ -55,12 +55,12 @@
                 <label for="inputState" class="form-label">Is mother alive? </label>
                 <br />
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="isMotherAlive" id="exampleRadios1"
+                    <input class="form-check-input" <%=user.isMotherAlive==true ? "checked" : '' %> type="radio" name="isMotherAlive" id="exampleRadios1"
                         value="Yes" />
                     <label class="form-check-label" for="exampleRadios1"> Yes </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="isMotherAlive" id="exampleRadios2"
+                    <input class="form-check-input" <%=user.isMotherAlive==false ? "checked" : '' %> type="radio" name="isMotherAlive" id="exampleRadios2"
                         value="No" />
                     <label class="form-check-label" for="exampleRadios2"> No </label>
                 </div>
@@ -68,22 +68,22 @@
 
             <div class="col-4">
                 <label for="inputAddress" class="form-label">Mother's Name</label>
-                <input type="text" class="form-control" value="<%=motherName%>" id="inputAddress" readonly/>
+                <input type="text" class="form-control" value="<%=user.motherName%>" id="inputAddress" readonly/>
             </div>
 
             <div class="col-md-3">
                 <label for="inputState" class="form-label">Occupation</label>
                 <select id="inputState" name="motherOccupation" class="form-select">
-                    <option value="Private Job">Private Job</option>
-                    <option value="Business">Business</option>
+                    <option <%=user.motherOccupation=="Private Job" ? 'selected' : '' %> value="Private Job">Private Job</option>
+                    <option <%=user.motherOccupation=="Business" ? 'selected' : '' %> value="Business">Business</option>
                 </select>
             </div>
 
             <div class="col-md-2">
                 <label for="inputState" class="form-label">Is Salaried?</label>
                 <select id="inputState" name="isMotherSalaried" class="form-select">
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option <%=user.isMotherSalaried==true ? 'selected' : '' %> value="Yes">Yes</option>
+                    <option <%=user.isMotherSalaried==false ? 'selected' : '' %> value="No">No</option>
                 </select>
             </div>
 
