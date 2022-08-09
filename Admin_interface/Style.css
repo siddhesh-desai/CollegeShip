@@ -1,0 +1,103 @@
+.h11{
+    font-size: 90px;
+    text-align: center;
+}
+.btn
+{
+    height: 75px;
+    width: 300px;
+    color: black;
+}
+#btn1{
+    height: 150px;
+    width: 325px;
+    background-color: rgb(255, 255, 12);
+    border-color: white;
+    font-size: 25px;
+    color: black;
+    border-radius: 50px;
+}
+.btn-primary:hover{
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow:10px 10px 10px #999;
+}
+.btn-success:hover{
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow:10px 10px 10px #999;
+}
+.btn-dark:hover{
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow:10px 10px 10px #999;
+}
+.btn-danger:hover{
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow:10px 10px 10px #999;
+}
+#btn2{
+    height: 150px;
+    width: 325px;
+    color: white;
+    font-size: 25px;
+    border-radius: 50px;
+}
+#btn3{
+    height: 150px;
+    width: 325px;
+    color: black;
+    font-size: 25px;
+    border-radius: 50px;
+    background-color: rgb(34, 241, 68);
+    border-color: white;
+}
+#btn4{
+    height: 150px;
+    width: 325px;
+    background-color: rgb(232, 134, 29);
+    border-color: white;
+    color: white;
+    font-size: 25px;
+    border-radius: 50px;
+}
+#btn5{
+    height: 150px;
+    width: 325px;
+    background-color: rgb(146, 10, 180);
+    border-color: white;
+    color: white;
+    font-size: 25px;
+    border-radius: 50px;
+}
+#btn6{
+    height: 150px;
+    width: 325px;
+    color: white;
+    font-size: 25px;
+    border-radius: 50px;
+}
+#btn7{
+    height: 150px;
+    width: 325px;
+    color: white;
+    font-size: 25px;
+    border-radius: 50px;
+}
+#btn8{
+    height: 150px;
+    width: 325px;
+    color: white;
+    font-size: 25px;
+    border-radius: 50px;
+    background-color: rgb(230, 8, 186);
+    border-color: white;
+}
+#btn9{
+    height: 150px;
+    width: 325px;
+    color: white;
+    font-size: 25px;
+    border-radius: 50px;
+}
