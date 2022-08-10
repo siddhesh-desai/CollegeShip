@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Form</title>
+    <style type="text/css">
+        table {
+            border: 2px solid rgb(12, 133, 204);
+            background-color: rgb(188, 224, 239);
+        }
+
+        .blackish {
+            color: black;
+        }
+
+        .bluish {
+            color: rgb(7, 112, 204);
+        }
+        #container 
+        {
+            text-align: center;
+        }
+        .btnform{
+            width: 100px;
+            background-color: rgb(12, 133, 204);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg" style="padding-left: 20px; background-color: #e3f2fd">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <span class="navbar-brand mb-0 h1">CollegeShip</span>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Profile
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="user_form_verification.html">User Verification</a>
+                        <a class="dropdown-item" href="user_form_pd.html">Personal Details</a>
+                        <a class="dropdown-item" href="user_form_ad.html">Address Details</a>
+                        <a class="dropdown-item" href="user_form_od.html">Other Details</a>
+                        <a class="dropdown-item" href="user_form_ccd.html">Current Course Details</a>
+                        <a class="dropdown-item" href="user_form_pqd.html">Past Qualification Details</a>
+                        <a class="dropdown-item" href="user_form_hd.html">Hostel Details</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">All Schemes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">My Applied Schemes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">My Cancelled Schemes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Grievances</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Notifications</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Declaration Forms</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <marquee>The Application of Scholarships will be open till 31 September
+        2022.</marquee>
+    <h1>Applicant Details</h1>
+    <hr><br>
+    <table border=1 width="100%">
+        <h2>Applicant Photo</h2>
+        <tr height="30px">
+            <td rowspan="5" width="500px"><img src="myphoto.jpg"></td>  <!--Photo height = 150px -->
+            <td class="blackish">Application ID</td>
+            <td class="blackish">Scheme Name</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish" width="500px">2122VJC1000056987</td>
+            <td class="bluish" width="500px">Tuition fees for SBC student</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish">Department Name</td>
+            <td class="blackish">Applied Date</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">SBC Welfare Department</td>
+            <td class="bluish">14/11/2021</td>
+        </tr>
+    </table>
+    <table border=1 width="100%">
+        <h2>Personal Details</h2>
+        <tr height="30px">
+            <td class="blackish">Full Name</td>
+            <td class="blackish">Mobile Number</td>
+            <td class="blackish">Email ID</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish" width="500px">Samarth Bura</td>
+            <td class="bluish" width="500px">XXXXXX3254</td>
+            <td class="bluish" width="500px">samarth@gmail.com</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish">Date of Birth</td>
+            <td class="blackish">Gender</td>
+            <td class="blackish">Age</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">14/11/2003</td>
+            <td class="bluish">Male</td>
+            <td class="bluish">18</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish">Religion</td>
+            <td class="blackish">Marital Status</td>
+            <td class="blackish">Parent's Number</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Hindu</td>
+            <td class="bluish">Unmarried</td>
+            <td class="bluish">XXXXXX3254</td>
+        </tr>
+    </table>
+    <table border=1 width="100%">
+        <h2>Address Details</h2>
+        <tr height="30px">
+            <td class="blackish" width="500px">Address</td>
+            <td class="blackish" width="500px">State</td>
+            <td class="blackish" width="500px">District</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">xx, Wall Street</td>
+            <td class="bluish">Maharashtra</td>
+            <td class="bluish">Ahmednagar</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish">Taluka</td>
+            <td class="blackish">Village</td>
+            <td class="blackish">Pincode</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Ahmednagar</td>
+            <td class="bluish">Ahmednagar</td>
+            <td class="bluish">414001</td>
+        </tr>
+    </table>
+    <table border=1 width="100%">
+        <h2>Income Details</h2>
+        <tr height="30px">
+            <td class="blackish" width="500px">Do you have Income certificate?</td>
+            <td class="blackish" width="500px">Does it has barcode?</td>
+            <td class="blackish" width="500px">Family Annual Income</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Yes</td>
+            <td class="bluish">No</td>
+            <td class="bluish">100</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish">Income Certificate No.</td>
+            <td class="blackish">Issuing Authority</td>
+            <td class="blackish">Date of issue</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">51841651512</td>
+            <td class="bluish">Tahsildar</td>
+            <td class="bluish">14/11/2021</td>
+        </tr>
+    </table>
+    <table border=1 width="100%">
+        <h2>Domicile Details</h2>
+        <tr height="30px">
+            <td class="blackish" width="500px">Domicile certificate number</td>
+            <td class="blackish" width="500px">Do you have domicile certificate?</td>
+            <td class="blackish" width="500px">Relationship type</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">1445116485</td>
+            <td class="bluish">Yes</td>
+            <td class="bluish">Self</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Does it has barcode?</td>
+            <td class="blackish" width="500px">Issuing Authority</td>
+            <td class="blackish" width="500px">DAte of issue</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">No</td>
+            <td class="bluish">Subordinate Officer</td>
+            <td class="bluish">14/11/2021</td>
+        </tr>
+    </table>
+    <table border=1 width="100%">
+        <h2>Caste Details</h2>
+        <tr height="30px">
+            <td class="blackish" width="500px">Do you have caste certificate?</td>
+            <td class="blackish" width="500px">Caste category</td>
+            <td class="blackish" width="500px">Does it has Barcode?</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Yes</td>
+            <td class="bluish">SBC Category</td>
+            <td class="bluish">No</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Caste certificate number</td>
+            <td class="blackish" width="500px">Issuing District</td>
+            <td class="blackish" width="500px">Issuing Authority</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">51534845348</td>
+            <td class="bluish">Ahmednagar</td>
+            <td class="bluish">Tahsildar</td>
+        </tr>
+    </table>
+    <table border=1 width="100%">
+        <h2>Parent's/Guardian's Details</h2>
+        <tr height="30px">
+            <td class="blackish" width="500px">Is father alive?</td>
+            <td class="blackish" width="500px">Father name</td>
+            <td class="blackish" width="500px">Is father salaried?</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Yes</td>
+            <td class="bluish">Vinayak Bura</td>
+            <td class="bluish">Yes</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Is mother alive?</td>
+            <td class="blackish" width="500px">Mother name</td>
+            <td class="blackish" width="500px">Is mother salaried?</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Yes</td>
+            <td class="bluish">Neeta Bura</td>
+            <td class="bluish">No</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Father occupation</td>
+            <td class="blackish" width="500px">Mother occupation</td>
+            <td class="blackish" width="500px"></td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Government servant</td>
+            <td class="bluish">None</td>
+            <td class="bluish"></td>
+        </tr>
+    </table>
+    <table border=1 width="100%">
+        <h2>Past Qualification Details</h2>
+        <tr height="30px">
+            <td class="blackish" width="500px">Qualification level</td>
+            <td class="blackish" width="500px">Stream</td>
+            <td class="blackish" width="500px">Completed</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">10<sup>th</sup></td>
+            <td class="bluish">Science</td>
+            <td class="bluish">Completed</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Istitute State</td>
+            <td class="blackish" width="500px">Institute District</td>
+            <td class="blackish" width="500px">Institute Taluka</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Maharashtra</td>
+            <td class="bluish">Ahmednagar</td>
+            <td class="bluish">Ahmednagar</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">College/School NAme</td>
+            <td class="blackish" width="500px">Course Name</td>
+            <td class="blackish" width="500px">Board University</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Army Public School, Ahmednagar</td>
+            <td class="bluish">Science</td>
+            <td class="bluish">CBSE</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Mode</td>
+            <td class="blackish" width="500px">Admission year</td>
+            <td class="blackish" width="500px">Passing year</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Regular</td>
+            <td class="bluish">2018</td>
+            <td class="bluish">2019</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Result</td>
+            <td class="blackish" width="500px">Percentage</td>
+            <td class="blackish" width="500px">Attempts</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Passed</td>
+            <td class="bluish">95.6</td>
+            <td class="bluish">1</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Qualification level</td>
+            <td class="blackish" width="500px">Stream</td>
+            <td class="blackish" width="500px">Completed</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">11<sup>th</sup></td>
+            <td class="bluish">Science</td>
+            <td class="bluish">Completed</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Istitute State</td>
+            <td class="blackish" width="500px">Institute District</td>
+            <td class="blackish" width="500px">Institute Taluka</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Maharashtra</td>
+            <td class="bluish">Ahmednagar</td>
+            <td class="bluish">Ahmednagar</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">College/School NAme</td>
+            <td class="blackish" width="500px">Course Name</td>
+            <td class="blackish" width="500px">Board University</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Army Public School, Ahmednagar</td>
+            <td class="bluish">Science</td>
+            <td class="bluish">CBSE</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Mode</td>
+            <td class="blackish" width="500px">Admission year</td>
+            <td class="blackish" width="500px">Passing year</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Regular</td>
+            <td class="bluish">2018</td>
+            <td class="bluish">2019</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Result</td>
+            <td class="blackish" width="500px">Percentage</td>
+            <td class="blackish" width="500px">Attempts</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Passed</td>
+            <td class="bluish">95.6</td>
+            <td class="bluish">1</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Qualification level</td>
+            <td class="blackish" width="500px">Stream</td>
+            <td class="blackish" width="500px">Completed</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">12<sup>th</sup></td>
+            <td class="bluish">Science</td>
+            <td class="bluish">Completed</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Istitute State</td>
+            <td class="blackish" width="500px">Institute District</td>
+            <td class="blackish" width="500px">Institute Taluka</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Maharashtra</td>
+            <td class="bluish">Ahmednagar</td>
+            <td class="bluish">Ahmednagar</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">College/School NAme</td>
+            <td class="blackish" width="500px">Course Name</td>
+            <td class="blackish" width="500px">Board University</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Army Public School, Ahmednagar</td>
+            <td class="bluish">Science</td>
+            <td class="bluish">CBSE</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Mode</td>
+            <td class="blackish" width="500px">Admission year</td>
+            <td class="blackish" width="500px">Passing year</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Regular</td>
+            <td class="bluish">2018</td>
+            <td class="bluish">2019</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Result</td>
+            <td class="blackish" width="500px">Percentage</td>
+            <td class="blackish" width="500px">Attempts</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Passed</td>
+            <td class="bluish">95.6</td>
+            <td class="bluish">1</td>
+        </tr>
+    </table>
+    <table border=1 width="100%">
+        <h2>Current Course Details</h2>
+        <tr height="30px">
+            <td class="blackish" width="500px">Admission year in current course</td>
+            <td class="blackish" width="500px">Institute State</td>
+            <td class="blackish" width="500px">Institute District</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">2021</td>
+            <td class="bluish">Maharashtra</td>
+            <td class="bluish">Pune</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Institute Taluka</td>
+            <td class="blackish" width="500px">Qualification Level</td>
+            <td class="blackish" width="500px">Stream</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Haveli</td>
+            <td class="bluish">UG Course</td>
+            <td class="bluish">Engineering</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">College Name</td>
+            <td class="blackish" width="500px">Course Name</td>
+            <td class="blackish" width="500px">Admission Type</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">VIT Pune</td>
+            <td class="bluish">AI & DS</td>
+            <td class="bluish">Through CAP</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Admission Number</td>
+            <td class="blackish" width="500px">Year of study</td>
+            <td class="blackish" width="500px">Completed or pursuing</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">EN151846</td>
+            <td class="bluish">2021</td>
+            <td class="bluish">Pursuing</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Admission Date</td>
+            <td class="blackish" width="500px">Percentage</td>
+            <td class="blackish" width="500px">Result</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">14/11/2021</td>
+            <td class="bluish">-</td>
+            <td class="bluish">-</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Fees paid</td>
+            <td class="blackish" width="500px">Course Type</td>
+            <td class="blackish" width="500px">Admission through reserved category?</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">0</td>
+            <td class="bluish">Unaided</td>
+            <td class="bluish">SBC Category</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Mode</td>
+            <td class="blackish" width="500px">Gap year</td>
+            <td class="blackish" width="500px">CET Score</td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Regular</td>
+            <td class="bluish">0</td>
+            <td class="bluish">97.6</td>
+        </tr>
+    </table>
+    <table border=1 width="100%">
+        <h2>Hostel Details</h2>
+        <tr height="30px">
+            <td class="blackish" width="500px">Hosteller/Day Scholar type</td>
+            <td class="blackish" width="500px"></td>
+            <td class="blackish" width="500px"></td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Hosteller</td>
+            <td class="bluish"></td>
+            <td class="bluish"></td>
+        </tr>
+    </table>
+    <table border=1 width="100%">
+        <h2>Additional Details</h2>
+        <tr height="30px">
+            <td class="blackish" width="500px">Question</td>
+            <td class="blackish" width="500px">Answer</td>
+            <td class="blackish" width="500px"></td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Is this renewal application?</td>
+            <td class="bluish">No</td>
+            <td class="bluish"></td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Question</td>
+            <td class="blackish" width="500px">Answer</td>
+            <td class="blackish" width="500px" rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btnform">View</button></td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Declaration Certificate of parents</td>
+            <td class="bluish">decform.pdf</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Question</td>
+            <td class="blackish" width="500px">Answer</td>
+            <td class="blackish" width="500px" rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btnform">View</button></td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Leaving Certificate</td>
+            <td class="bluish">lvc.pdf</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Question</td>
+            <td class="blackish" width="500px">Answer</td>
+            <td class="blackish" width="500px" rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btnform">View</button></td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Ration Card</td>
+            <td class="bluish">ration.pdf</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Question</td>
+            <td class="blackish" width="500px">Answer</td>
+            <td class="blackish" width="500px" rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btnform">View</button></td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">Caste Validity Certificate</td>
+            <td class="bluish">validity.pdf</td>
+        </tr>
+        <tr id="class" height="30px">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr height="30px">
+            <td class="blackish" width="500px">Question</td>
+            <td class="blackish" width="500px">Answer</td>
+            <td class="blackish" width="500px" rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btnform">View</button></td>
+        </tr>
+        <tr height="30px">
+            <td class="bluish">CAP Allotment Letter</td>
+            <td class="bluish">cap.pdf</td>
+        </tr>
+    </table><br>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;I / We agree to the terms and conditions of this scholarship. All information given in this application is valid to best of my knowledge. I /We am /are punishable with penalties / punishments if any of the above mentioned details is false as per the Indian Penal Code, 199 and 200. The decision given by the competent authority will be final and will be accepted by me. If any surplus amount is received from the scholarship due to any reasons, then I / We will return the amount at the earliest. I / We will be responsible for taking action against me / my child against falsehood. I / We promise that we will take the scholarship / education fees as per the terms and conditions of the concerned scheme. All the documents that I have linked to the application have been received from the competent authority / authorities and the documents are valid and have been received by following the required legal procedures.</p><br>
+    <div id="container">
+        <button type="button" class="btn btn-primary btn-lg">Print</button>
+    </div><br><br>
+</body>
+
+</html>
