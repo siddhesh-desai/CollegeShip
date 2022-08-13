@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Raise a Query</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg" style="padding-left: 20px; background-color: #e3f2fd">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <span class="navbar-brand mb-0 h1">CollegeShip</span>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Profile
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="user_form_verification.html">User Verification</a>
+                        <a class="dropdown-item" href="user_form_pd.html">Personal Details</a>
+                        <a class="dropdown-item" href="user_form_ad.html">Address Details</a>
+                        <a class="dropdown-item" href="user_form_od.html">Other Details</a>
+                        <a class="dropdown-item" href="user_form_ccd.html">Current Course Details</a>
+                        <a class="dropdown-item" href="user_form_pqd.html">Past Qualification Details</a>
+                        <a class="dropdown-item" href="user_form_hd.html">Hostel Details</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">All Schemes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">My Applied Schemes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">My Cancelled Schemes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Grievances</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Notifications</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Declaration Forms</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    
+
+    <marquee>The Application of Scholarships will be open till 31 September
+        2022.</marquee>
+            
+                <div class="card-body p-4 p-sm-5">
+                    <form class="row g-3">
+                        <legend>
+                            <h2><b>Raise a query</b></h2>
+                        
+                            <div class="col-md-4">
+                                <label for="pdFirstName" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="pdFirstName" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="pdMobile" class="form-label">Mobile Number</label>
+                                <input type="text" class="form-control" value="1234567890" id="pdMobile" required />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="pdEmail" class="form-label">Email id</label>
+                                <input type="email" class="form-control" value="example@gmail.com" id="pdEmail" required />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="pdState" class="form-label">State</label>
+                                <select id="pdState" class="form-select">
+                                    <option selected>Choose...</option>
+                                    <option>Maharashtra</option>
+                                    <option>Tamil Nadu</option>
+                                </select>
+                            </div>
+                
+                            <div class="col-md-2">
+                                <label for="pdDistrict" class="form-label">District</label>
+                                <select id="pdDistrict" class="form-select">
+                                    <option>Kolhapur</option>
+                                    <option>Amhednagar</option>
+                                    <option>Pune</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                            <label for="pdGender" class="form-label">Deprtment</label>
+                            <select id="pdGender" class="form-select">
+                                <option>Directorate of higher education</option>
+                                <option>Directorate of technical education</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="pdGender" class="form-label">Scheme Name</label>
+                            <select id="pdGender" class="form-select">
+                                <option>Post Matric scholarship scheme</option>
+                                <option>Rajarshi Chatrapati Shahu Maharaj Merit Scholarship</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="pdGender" class="form-label">Catecory</label>
+                            <select id="pdGender" class="form-select">
+                                <option>Grievance</option>
+                                <option>Suggestion</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="pdGender" class="form-label">Grievance/Suggestion Type</label>
+                            <select id="pdGender" class="form-select">
+                                <option>OTP Issue</option>
+                                <option>Applicant Registration</option>
+                                <option>Applicant Profile</option>
+                                <option>Scholarship amount not recieved</option>
+                                <option>Reset Login for Aadhaar Details Change</option>
+                                <option>Appliction Detail View Issue(Please provide Application id)</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="pdAadhaar" class="form-label">Application id</label>
+                            <input type="text" class="form-control" value="111122223333" id="pdAadhaar" required />
+                        </div>
+                       
+                       
+                        <div class="col-md-3">
+                            <label for="pdGender" class="form-label">Academic Year</label>
+                            <select id="pdGender" class="form-select">
+                                <option>2018 - 2019</option>
+                                <option>2019 - 2020</option>
+                                <option>2020 - 2021</option>
+                                <option>2021 - 2022</option>
+                                <option>2022 - 2023</option>
+                            </select>
+                        </div>
+                        <div class="col-row-md-6">
+                            <label for="pdFatherName" class="form-label">Comments</label>
+                            <input type="text" class="form-control" id="pdFatherName" />
+                        </div>
+            
+                        
+        
+            
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        
+            
+                        <a class="btn btn-primary" href="#" role="button">Submit</a>
+                            <button class="btn btn-primary" type="submit">Reset</button>
+                            <input class="btn btn-primary" type="button" value="Back">
+                            
+                    </form>
+                </div>           
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function manageBtn(txt, rxt, a) {
+            var btn = document.getElementById(rxt);
+            if (txt.value.length === a) {
+                btn.disabled = false;
+            } else {
+                btn.disabled = true;
+            }
+        }
+    </script>
+</body>
+
+</html>
