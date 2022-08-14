@@ -15,13 +15,14 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Please enter a password'],
     minlength: [6, 'Minimum password length is 6 characters'],
   },
-
+  //=============== Addhar Card ============================
+  addhar :{type : String},
   // ============== Personal Information =============================
 
   //==================== Personal Details =============================
 
-  firstName: { type: String, minlength: [3, 'First Name is required']},
-  lastName: { type: String, minlength: [3, 'Last Name is required'] },
+  fullName: { type: String },
+  // lastName: { type: String, minlength: [3, 'Last Name is required'] },
   aadharNumber: {type: String},
   mobileNumber: { type: String },
   dob: { type: Date },

@@ -5,6 +5,12 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+var Jimp = require("jimp");
+var fs = require('fs')
+var qrCode = require('qrcode-reader');
+const QrcodeDecoder  = require("qrcode-decoder")
+const xml2js = require("xml2js")
+
 const User = require("./models/User")
 const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 
@@ -48,6 +54,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
   .catch((err) => console.log(err));
 
 // Helper Function
+
+
 function formatDate(date) {
   var d = new Date(date),
       month = '' + (d.getMonth() + 1),
@@ -66,6 +74,7 @@ function formatDate(date) {
 app.get('*', checkUser);
 app.get('/', (req, res) => res.render('home'));
 app.get('/dashboard', requireAuth, (req, res) => res.render('userDashboard'));
+app.get('/user/addhar',requireAuth, (req, res) => res.render("addharUpload"))
 app.get("/user/pi", requireAuth, (req, res) => {
   var id = req.user.id;
   User.findById(id, function (err, docs) {
@@ -158,9 +167,90 @@ app.get("/user/hd", requireAuth,(req, res) => {
   // res.render("hostelDetail")
 })
 
-// app.post("/user/pi", upload.single('image'), (req, res) => {
+
 // POST Routes :
 // ================ Personal Information Routes =================
+
+// const QrScanner = require('qr-scanner');
+
+app.post("/user/addhar", requireAuth ,upload.single('addhar'), (req, res) => {
+  
+  const addhar = req.file.filename
+  console.log(addhar)
+  // var user_id = '62d279d46ea57f1860ecabae';
+  var user_id = req.user.id;
+
+  User.findById(user_id, function (err, docs) {
+    if (err){
+      console.log(err);
+      res.redirect("/user/addhar")
+    }
+    else {
+      docs.addhar = addhar
+      const filePath = path.join(__dirname, "public", "upload", addhar)
+      var buffer = fs.readFileSync(filePath);
+      Jimp.read(buffer, function(err, image) {
+        if (err) {
+          console.error(err);
+          res.redirect("/user/addhar")
+        }
+        let qrcode = new qrCode();
+        qrcode.callback = function(err, value) {
+          if (err) {
+            console.error(err);
+            res.redirect("/user/addhar")
+          }
+          console.log(value)
+          if (value != undefined && value.result != undefined) {
+            
+            const result = value.result
+            const parser = new xml2js.Parser()
+            
+            parser.parseStringPromise(result)
+            .then(function (result) {
+              console.log(result.PrintLetterBarcodeData.$)
+
+              data = result.PrintLetterBarcodeData.$
+              
+              docs.fullName = data.name
+              docs.aadharNumber = data.uid
+              docs.gender = data.gender == 'M' ? 'Male' : 'Female';
+              docs.dob = new Date (data.dob)
+              docs.district = data.dist
+              docs.state = data.state
+              docs.pincode = data.pc
+              docs.taluka = data.vtc
+              // uid, name, gender, yob, dist, state, pc
+
+              User.findByIdAndUpdate(user_id, docs,
+                function (err, docs2) {
+                  if (err){
+                    res.redirect("/user/addhar")
+                    console.log(err)
+                  }
+                  else{
+                    console.log("Updated User : ", docs2); 
+                    res.redirect("/user/pi")
+                      // res.send({...docs2})
+                    }
+                });
+            })
+            .catch(function (err) {
+              console.log(err)
+            })
+          };
+        }
+        qrcode.decode(image.bitmap);
+        // res.redirect("/user/addhar")
+      });
+      
+    
+    }
+  });
+})
+
+
+
 app.post("/user/pi", requireAuth , upload.fields([{ name: "casteCretificate" }, { name: "incomeCertificate" }, { name: "domicileCertificate" }, { name: "disabilityCertificate" }]), (req, res) => { 
   // console.log(req.file)
   // console.log(req.files)

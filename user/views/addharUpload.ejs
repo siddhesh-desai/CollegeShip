@@ -1,0 +1,40 @@
+<%- include('partials/header2'); -%>
+
+
+<div class="card-body p-4 p-sm-5">
+    <form class="row g-3" action="/user/addhar" method="post" enctype="multipart/form-data">
+        <legend>
+            <h2><b>Upload Addhar Card</b></h2>
+        </legend>
+        <hr />
+        
+        <div class="col-md-6">
+            <label for="addhar" class="form-label">Aadhar Card</label><br />
+            <div class="input-group">
+                <input type="file" class="form-control" id="file-selector" name="addhar" />
+                <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+            </div>
+            <span id="file-qr-result"></span>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <div class="d-grid" style="width: auto; align-items: center">
+            <button type="submit" class="btn btn-primary">Save and Next</button>
+        </div>
+
+        
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+   
+    </form>
+</div>
+<script src="/js/addhar.js"></script>
+</body>
+</html>

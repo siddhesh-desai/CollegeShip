@@ -11,14 +11,11 @@
             <label for="pdEmail" class="form-label">Email</label>
             <input type="email" class="form-control" value= <%=user.email%> id="pdEmail" readonly />
         </div>
-        <div class="col-md-4">
-            <label for="pdFirstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" value= "<%=user.firstName ? user.firstName : '' %>" name="firstName" id="pdFirstName" required />
+        <div class="col-md-8">
+            <label for="pdFullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" value= "<%=user.fullName ? user.fullName : '' %>" name="fullName" id="pdFulltName" required />
         </div>
-        <div class="col-md-4">
-            <label for="pdLastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" value= "<%=user.lastName ? user.lastName : '' %>" name="lastName" id="pdLastName" required/>
-        </div>
+        
         <div class="col-md-3">
             <label for="pdAadhaar" class="form-label">Aadhar Number</label>
             <input type="text" class="form-control" value= "<%=user.aadharNumber ? user.aadharNumber : '' %>" name="aadharNumber"  id="pdAadhaar" required />
@@ -54,28 +51,33 @@
 
         <div class="col-md-4">
             <label for="pdState" class="form-label">State</label>
-            <select id="pdState" name="state" class="form-select" required>
+            <input type="text" class="form-control" value= "<%=user.state ? user.state : '' %>" name="state" id="state"  required />
+            <!-- <select id="pdState" name="state" class="form-select" required>
                 <option <%=user.state=="Maharashtra" ? "selected" : '' %> value="Maharashtra">Maharashtra</option>
                 <option <%=user.state=="Tamil Nadu" ? "selected" : '' %> value="Tamil Nadu">Tamil Nadu</option>
-            </select>
+            </select> -->
         </div>
 
         <div class="col-md-2">
             <label for="pdDistrict" class="form-label">District</label>
-            <select id="pdDistrict"  name="district" class="form-select" required>
+            <input type="text" class="form-control" value= "<%=user.district ? user.district : '' %>" name="district" id="district"  required />
+
+            <!-- <select id="pdDistrict"  name="district" class="form-select" required>
                 <option <%=user.district=="Kolhapur" ? "selected" : '' %> value="Kolhapur">Kolhapur</option>
                 <option <%=user.district=="Amhednagar" ? "selected" : '' %> value="Amhednagar">Amhednagar</option>
                 <option <%=user.district=="Pune" ? "selected" : '' %> value="Pune">Pune</option>
-            </select>
+            </select> -->
         </div>
 
         <div class="col-md-2">
             <label for="pdTaluka" class="form-label">Taluka</label>
-            <select id="pdTaluka" name="taluka" class="form-select" required>
+            <input type="text" class="form-control" value= "<%=user.taluka ? user.taluka : '' %>" name="taluka" id="taluka"  required />
+
+            <!-- <select id="pdTaluka" name="taluka" class="form-select" required>
                 <option <%=user.taluka=="Karveer" ? "selected" : '' %> value="Karveer">Karveer</option>
                 <option <%=user.taluka=="Ichalkaranji" ? "selected" : '' %> value="Ichalkaranji">Ichalkaranji</option>
                 <option <%=user.taluka=="Hatkalangle" ? "selected" : '' %> value="Hatkalangle">Hatkalangle</option>
-            </select>
+            </select> -->
         </div>
 
         <div class="col-md-2">
