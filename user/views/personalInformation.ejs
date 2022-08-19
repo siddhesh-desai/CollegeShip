@@ -85,14 +85,7 @@
             <input type="text"  value= "<%=user.pincode ? user.pincode : '' %>" name="pincode" class="form-control" id="pdPinCode" required/>
         </div>
 
-        <div class="col-md-2">
-            <label for="pdMartialStatus" class="form-label">Marital Status</label>
-            <select id="pdMartialStatus" name="maritalStatus" class="form-select" required>
-                <option <%=user.maritalStatus=="Married" ? "selected" : '' %>  value="Married">Married</option>
-                <option <%=user.maritalStatus=="Unmarried" ? "selected" : '' %> value="Unmarried">Unmarried</option>
-                <option <%=user.maritalStatus=="Divorcee" ? "selected" : '' %> value="Divorcee">Divorcee</option>
-            </select>
-        </div>
+       
 
         <br />
         <br />
@@ -333,14 +326,7 @@
             <input type="text" class="form-control" required value= "<%=user.domicileCertificateNumber ? user.domicileCertificateNumber : '' %>" name="domicileCertificateNumber" id="pdDomicileCertificateNumber" />
         </div>
 
-        <div class="col-md-2">
-            <label for="pdDomicileCertificateRelation" class="form-label">Relationship Type</label>
-            <select id="pdDomicileCertificateRelation"  name="domicileRelationType" class="form-select" required>
-                <option <%=user.domicileRelationType=="Self" ? "selected" : '' %> value="Self">Self</option>
-                <option <%=user.domicileRelationType=="Parent" ? "selected" : '' %> value="Parent">Parent</option>
-                <option <%=user.domicileRelationType=="Grandparent" ? "selected" : '' %> value="Grandparent">Grandparent</option>
-            </select>
-        </div>
+        
 
         <div class="col-md-2">
             <label for="pdDomicileCertificateAuthority" class="form-label">Issuing Authority</label>
@@ -389,63 +375,6 @@
         <br />
         <br />
         <br />
-        <legend>Personal Eligibility Details</legend>
-
-        <div class="col-md-2">
-            <label for="pdSalaried" class="form-label">Are you salaried?</label>
-            <select id="pdSalaried"  name="isSalaried" required class="form-select">
-                <option <%=user.isSalaried== false ? "selected" : '' %> value="No">No</option>
-                <option <%=user.isSalaried== true ? "selected" : '' %>  value="Yes">Yes</option>
-            </select>
-        </div>
-
-        <div class="col-md-2">
-            <label for="pdDisabled" class="form-label">Disability of any type?</label>
-            <select id="pdDisabled"  value= "<%=user.haveDisability ? user.haveDisability : '' %>" required name="haveDisability" class="form-select">
-                <option <%=user.haveDisability== false ? "selected" : '' %> value="No">No</option>
-                <option <%=user.haveDisability== true ? "selected" : '' %> value="Yes">Yes</option>
-            </select>
-        </div>
-
-        <div class="col-md-3">
-            <label for="pdDisabledType" class="form-label">If yes, what type?</label>
-            <input type="text"  value= "<%=user.disabilityDesc ? user.disabilityDesc : '' %>" class="form-control" name="disabilityDesc" id="pdDisabledType" />
-        </div>
-
-        <div class="col-md-5">
-            <label for="pdDisabledCertificate" class="form-label">Disability Certificate</label><br />
-            <div class="input-group">
-                <input type="file" class="form-control"  name="disabilityCertificate"/>
-                <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
-                <% if(user.disabilityCertificate) { %> 
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#pdDisabledCertificate">
-                        View Document
-                    </button>
-                    <div class="modal fade" id="pdDisabledCertificate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Disability Certificate</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="/upload/<%=user.disabilityCertificate%>" class="img-fluid" alt="Untitled-1.jpg">
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <% } %> 
-            </div>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
 
         <legend>Bank Details</legend>
 
@@ -459,10 +388,6 @@
             <input type="text"  value= "<%=user.bankIFSCode ? user.bankIFSCode : '' %>" class="form-control" required name="bankIFSCode" id="pdBankIFSCCode" />
         </div>
 
-        <div class="col-md-4">
-            <label for="pdBankBranch" class="form-label">Branch Name</label>
-            <input type="text"  value= "<%=user.bankBranch ? user.bankBranch : '' %>" class="form-control" required name="bankBranch" id="pdBankBranch" />
-        </div>
 
         <br />
         <br />

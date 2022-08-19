@@ -34,16 +34,16 @@ const userSchema = new mongoose.Schema({
   district: { type: String },
   taluka: { type: String },
   pincode: { type: String },
-  maritalStatus: { type: String },
+  // maritalStatus: { type: String },
 
   //============== Religion and Caste detail ==================
 
-  religion: { type: String },
+
   casteCategory: { type: String },
-  caste: { type: String },
-  haveCasteCertificate: { type: Boolean, default: false},
+  caste: {type: String },
+  haveCasteCertificate: { type: Boolean, default: false },
   casteCertificateNumber: { type: String },
-  casteIssuingDistrict: { type: String },
+  // casteIssuingDistrict: { type: String },
   casteApplicantName: { type: String },
   casteIssuingAuthority: { type: String },
   casteIssuingDate: { type: Date },
@@ -60,20 +60,20 @@ const userSchema = new mongoose.Schema({
   
   // ============== Domicile Details =============================
 
-  domicileState: { type: String },
+  // domicileState: { type: String },
   haveDomicileCertificate: { type: Boolean, default: false },
-  domicileCertificateNumber: { type: Number },
-  domicileRelationType: { type: String },
+  domicileCertificateNumber: { type: String },
+  // domicileRelationType: { type: String },
   domicileIssuingAuthority: { type: String },
   domicileIssuingDate: { type: Date },
   domicileCertificate: { type: String },
   
   // ============== Personal Eligibility Details =============================
 
-  isSalaried: { type: Boolean, default: false },
-  haveDisability: { type: Boolean, default: false },
-  disabilityDesc: { type: String },
-  disabilityCertificate: { type: String },
+  // isSalaried: { type: Boolean, default: false },
+  // haveDisability: { type: Boolean, default: false },
+  // disabilityDesc: { type: String },
+  // disabilityCertificate: { type: String },
 
   // ============== Aadhaar Bank Details =============================
 
@@ -83,7 +83,7 @@ const userSchema = new mongoose.Schema({
 
   bankAccountNumber: { type: String },
   bankIFSCode: { type: String },
-  bankBranch: { type: String },
+  bankPassbook : {type : String},
   
   // ============== Other Information =============================
 
@@ -129,43 +129,36 @@ const userSchema = new mongoose.Schema({
     {
       pqLevel: { type: String },
       pqStream: { type: String },
-      pqCompleted: { type: String },
       pqInstituteState: { type: String },
       pqInstituteDistrict: { type: String },
       pqInstituteTaluka: { type: String },
       pqCollegeName: { type: String },
-      pqCourseName: { type: String },
       pqBoardUniversityName: { type: String }, 
-      pqMode: { type: String },
-      pqAddmissionYear: { type: Number },
       pqPassingYear: { type: Number },
       pqResult: { type: String },
       pqPercentage: { type: mongoose.Types.Decimal128 },
-      pqAttempts: { type: Number },
       pqMarksheet: { type: String },  
-      pqHaveGAP: { type: Boolean },
-      pqGAPyears: { type: Number },
     }
   ],
 
   // ============== Hostel Information =============================
 
-  hostelDetails: [
-    {
-      hiBeneficiaryCategory: { type: String },
-      hostelName: { type: String }, 
-      hostelAddress: { type: String },
-      hostelState: { type: String },
-      hostelDistrict: { type: String },
-      hostelTaluka: { type: String },
-      hostelVillage: { type: String },
-      hostelPinCode: { type: String },
-      hostelType: { type: String },
-      hostelAdmissionDate: { type: Date },
-      hostelIsMessAvailable: { type: String },
-      hostelAddmissionLetter: { type: String },
-    }
-  ],
+  // hostelDetails: [
+  //   {
+  //     hiBeneficiaryCategory: { type: String },
+  //     hostelName: { type: String }, 
+  //     hostelAddress: { type: String },
+  //     hostelState: { type: String },
+  //     hostelDistrict: { type: String },
+  //     hostelTaluka: { type: String },
+  //     hostelVillage: { type: String },
+  //     hostelPinCode: { type: String },
+  //     hostelType: { type: String },
+  //     hostelAdmissionDate: { type: Date },
+  //     hostelIsMessAvailable: { type: String },
+  //     hostelAddmissionLetter: { type: String },
+  //   }
+  // ],
 });
 
 
