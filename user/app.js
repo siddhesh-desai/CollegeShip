@@ -55,7 +55,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 
 // Helper Function
 
-
 function formatDate(date) {
   var d = new Date(date),
       month = '' + (d.getMonth() + 1),
@@ -72,6 +71,7 @@ function formatDate(date) {
 
 // routes
 app.get('*', checkUser);
+app.get("/ocr", (req, res) => res.render("ocrDetection"))
 app.get('/', (req, res) => res.render('home'));
 app.get('/dashboard', requireAuth, (req, res) => res.render('userDashboard'));
 app.get('/user/addhar',requireAuth, (req, res) => res.render("addharUpload"))
@@ -85,7 +85,6 @@ app.get("/user/pi", requireAuth, (req, res) => {
       else{
         docs.dob ? docs.dob[0] = formatDate(docs.dob) : 1;
         docs.casteIssuingDate ? docs.casteIssuingDate[0] = formatDate(docs.casteIssuingDate) : 1;
-        docs.incomeIssuingDate ? docs.incomeIssuingDate[0] = formatDate(docs.incomeIssuingDate) : 1;
         docs.domicileIssuingDate ? docs.domicileIssuingDate[0] = formatDate(docs.domicileIssuingDate) : 1;
         
         res.render("personalInformation", {user : docs})
@@ -172,83 +171,363 @@ app.get("/user/hd", requireAuth,(req, res) => {
 // ================ Personal Information Routes =================
 
 // const QrScanner = require('qr-scanner');
+const ocr = require("tesseract.js")
 
-app.post("/user/addhar", requireAuth ,upload.single('addhar'), (req, res) => {
-  
-  const addhar = req.file.filename
-  console.log(addhar)
-  // var user_id = '62d279d46ea57f1860ecabae';
-  var user_id = req.user.id;
-
-  User.findById(user_id, function (err, docs) {
-    if (err){
-      console.log(err);
-      res.redirect("/user/addhar")
+app.post("/ocr/caste", requireAuth, upload.single("casteCretificate"), (req, res) => {
+  const user_id = req.user.id;
+  if (req.body.haveCasteCertificate == "No") {
+    const updatedUser = {
+      haveCasteCertificate : false
     }
-    else {
-      docs.addhar = addhar
-      const filePath = path.join(__dirname, "public", "upload", addhar)
-      var buffer = fs.readFileSync(filePath);
-      Jimp.read(buffer, function(err, image) {
-        if (err) {
-          console.error(err);
-          res.redirect("/user/addhar")
+    User.findByIdAndUpdate(user_id, updatedUser,
+      function (err, docs) {
+        if (err){
+          console.log(err)
+          res.redirect("/ocr")
         }
-        let qrcode = new qrCode();
-        qrcode.callback = function(err, value) {
-          if (err) {
-            console.error(err);
-            res.redirect("/user/addhar")
-          }
-          console.log(value)
-          if (value != undefined && value.result != undefined) {
-            
-            const result = value.result
-            const parser = new xml2js.Parser()
-            
-            parser.parseStringPromise(result)
-            .then(function (result) {
-              console.log(result.PrintLetterBarcodeData.$)
-
-              data = result.PrintLetterBarcodeData.$
-              
-              docs.fullName = data.name
-              docs.aadharNumber = data.uid
-              docs.gender = data.gender == 'M' ? 'Male' : 'Female';
-              docs.dob = new Date (data.dob)
-              docs.district = data.dist
-              docs.state = data.state
-              docs.pincode = data.pc
-              docs.taluka = data.vtc
-              // uid, name, gender, yob, dist, state, pc
-
-              User.findByIdAndUpdate(user_id, docs,
-                function (err, docs2) {
-                  if (err){
-                    res.redirect("/user/addhar")
-                    console.log(err)
-                  }
-                  else{
-                    console.log("Updated User : ", docs2); 
-                    res.redirect("/user/pi")
-                      // res.send({...docs2})
-                    }
-                });
-            })
-            .catch(function (err) {
-              console.log(err)
-            })
-          };
+        else{
+          console.log("Updated User : ", docs);
+          res.redirect("/ocr")
         }
-        qrcode.decode(image.bitmap);
-        // res.redirect("/user/addhar")
       });
+  } 
+    const document = req.file.filename
+    const filePath = path.join(__dirname, "public", "upload", document)
+    ocr.recognize(filePath, "eng", {
+      logger: e => {
+        console.log(e)
+      }
+    })
+    .then(out => {
+      // console.log(out.data.text)
+      const s = out.data.text;
+      var newstr = "";
+      for( var i = 0; i < s.length; i++ ) 
+          if( !(s[i] == '\n' || s[i] == '\r') )
+              newstr += s[i];
+      // s = s.replace(/\r?\n|\r/g, '')
+      // console.log(newstr)
+      const arr = newstr.split(" ")
+      const casteName = arr[arr.indexOf("belongs") + 3]
+      let dateOfIssue = arr[arr.indexOf("Date") + 2]
+      dateOfIssue = (dateOfIssue.split("/").reverse().join("/"))
+      const casteCategoryStart = arr.indexOf("recognised")+2
+      const casteCategoryEnd = arr.indexOf("under")
+      let casteCategory = arr.slice(casteCategoryStart, casteCategoryEnd).join(" ")
+
+      dateOfIssue = dateOfIssue.replaceAll("|", "")
+      dateOfIssue = new Date(dateOfIssue)
+
+      const casteDetail = {
+        casteCategory,
+        casteIssuingDate: dateOfIssue,
+        caste: casteName,
+        casteCretificate: document,  
+        ...req.body
+      }
+      const updatedUser = {
+        ...casteDetail,
+        haveCasteCertificate : true,
+      }
+      User.findByIdAndUpdate(user_id, updatedUser,
+        function (err, docs) {
+          if (err){
+            console.log(err)
+            res.redirect("/ocr")
+          }
+          else{
+            console.log("Updated User : ", docs);
+            res.redirect("/ocr")
+          }
+        });
+      // console.log(casteDetail)
+      // // res.send(casteDetail)
+      // res.redirect("/ocr")
       
-    
-    }
-  });
+    }).catch(err => res.send(err))
 })
 
+app.post("/ocr/domicile", requireAuth, upload.single("domicileCertificate"), (req, res) => {
+  const user_id = req.user.id;
+  if (req.body.haveDomicileCertificate == "No") {
+    const updatedUser = {
+      haveDomicileCertificate : false
+    }
+    User.findByIdAndUpdate(user_id, updatedUser,
+      function (err, docs) {
+        if (err){
+          console.log(err)
+          res.redirect("/ocr")
+        }
+        else{
+          console.log("Updated User : ", docs);
+          res.redirect("/ocr")
+        }
+      });
+  } 
+    const document = req.file.filename
+    const filePath = path.join(__dirname, "public", "upload", document)
+    ocr.recognize(filePath, "eng", {
+      logger: e => {
+        console.log(e)
+        // res.redirect("/ocr")
+      }
+    })
+    .then(out => {
+      
+      const s = out.data.text;
+      const arr = s.split(" ")
+      const nameStart = arr.indexOf("that,")
+      const nameEnd = arr.indexOf("R/O")
+      const name = arr.slice(nameStart + 1, nameEnd).join(" ")
+      const srNo = arr[arr.indexOf("=")+1]
+      const issuingAuthority = arr[arr.indexOf("of") + 2] 
+      const issuingDate = arr[arr.lastIndexOf("Date") + 1]
+      
+      const domicileData = {
+        haveDomicileCertificate: true,
+        domicileCertificateNumber: srNo,
+        domicileIssuingAuthority: issuingAuthority,
+        domicileIssuingDate: new Date(issuingDate),
+        domicileCertificate : document
+      }
+      console.log(domicileData)
+      User.findByIdAndUpdate(user_id, domicileData,
+        function (err, docs) {
+          if (err){
+            console.log(err)
+            res.redirect("/ocr")
+          }
+          else{
+            console.log("Updated User : ", docs);
+            res.redirect("/ocr")
+          }
+        });
+      
+    }).catch(err => res.send(err))
+})
+
+app.post("/ocr/pq/add", requireAuth, upload.single("pqMarksheet"), (req, res) => {
+  let pastQualification = { ...req.body }
+  pastQualification.pqMarksheet = req.file.filename
+  const document = req.file.filename
+  const filePath = path.join(__dirname, "public", "upload", document)
+  ocr.recognize(filePath, "eng", {
+    logger: e => {
+      console.log(e)
+    }
+  })
+    .then(out => {
+      const s = out.data.text;
+
+      console.log(s)
+      const arr = s.split(" ")
+      let resTemp = s.search("Result") + 7 
+      while (s[resTemp] == " ") {
+        resTemp += 1;
+      }
+      let pqResult = ""
+      // for (let i = resTemp; s[i] != " "; i++){
+      for (let i = resTemp; i < resTemp + 4; i++){
+        pqResult += s[i]
+      }
+      let pqPassingYear = arr[arr.indexOf("EXAMINATION,")+1]
+      // const percentage = (sum / marks.length)
+      const schoolNameStart = s.search("hool") + 5
+      let pqCollegeName = ""
+      for (let i = schoolNameStart; s[i] != "|" && s[i] != '/'; i++){
+        pqCollegeName += s[i];
+      }
+      pqCollegeName = pqCollegeName.trim()
+      const pqBoardUniversityName = "CBSE";
+      pqPassingYear =   parseInt(pqPassingYear)
+      pastQualification = {...pastQualification, pqResult, pqPassingYear, pqCollegeName, pqBoardUniversityName}
+      console.log(pqResult, pqPassingYear, pqCollegeName)
+      // res.send({result, passingYear, schoolName})
+      var user_id = req.user.id;
+    
+      User.findById(user_id, function (err, docs) {
+        if (err){
+          console.log(err);
+          res.redirect("/ocr")
+        }
+        else {
+          docs.pastQualifications.push(pastQualification)
+          User.findByIdAndUpdate(user_id, docs,
+            function (err, docs2) {
+              if (err){
+                  res.redirect("/ocr")
+                  console.log(err)
+                }
+                else{
+                  // console.log("Updated User : ", docs2);
+                  res.redirect("/ocr")
+                }
+            });
+        }
+      });
+    }).catch(e => {
+      console.log(e)
+      res.redirect("/ocr")
+    })
+    
+})
+
+app.post("/ocr/bank", requireAuth, upload.single("bankPassbook"), (req, res) => {
+  const user_id = req.user.id;
+  
+    const document = req.file.filename
+    const filePath = path.join(__dirname, "public", "upload", document)
+    ocr.recognize(filePath, "eng", {
+      logger: e => {
+        console.log(e)
+        // res.redirect("/ocr")
+      }
+    })
+    .then(out => {
+      
+      const s = out.data.text;
+      const arr = s.split(" ")
+      const accNumber = arr[arr.indexOf("Number") + 2]
+      const ifscCode = arr[arr.indexOf("IFSC") + 2]
+
+      const passbookData = {
+        bankAccountNumber: accNumber,
+        bankIFSCode: ifscCode,
+        bankPassbook : document
+      }
+      User.findByIdAndUpdate(user_id, passbookData,
+        function (err, docs) {
+          if (err){
+            console.log(err)
+            res.redirect("/ocr")
+          }
+          else{
+            console.log("Updated User : ", docs);
+            res.redirect("/ocr")
+          }
+        });
+    }).catch(err => res.send(err))
+})
+
+app.post("/user/general", requireAuth, upload.none(), (req, res) => {
+  const updatedUser = { ...req.body };
+  console.log(updatedUser)
+  var user_id = req.user.id;
+  User.findByIdAndUpdate(user_id, updatedUser,
+    function (err, docs) {
+      if (err){
+        console.log(err)
+        res.redirect("/ocr")
+      }
+      else{
+        console.log("Updated User : ", docs);
+        res.redirect("/ocr")
+      }
+    });
+})
+
+app.post("/user/income", requireAuth, upload.single('incomeCertificate'), (req, res) => {
+  const updatedUser = { ...req.body };
+  // console.log(updatedUser)
+  updatedUser["incomeCertificate"] = req.file.filename;
+
+  updatedUser["incomeIssuingDate"] = new Date(updatedUser.incomeIssuingDate)
+  if (updatedUser["haveIncomeCertificate"] === "Yes") updatedUser["haveIncomeCertificate"] = true
+  else updatedUser["haveIncomeCertificate"] = false;
+  
+  var user_id = req.user.id;
+  User.findByIdAndUpdate(user_id, updatedUser,
+    function (err, docs) {
+      if (err){
+        console.log(err)
+        res.redirect("/ocr")
+      }
+      else{
+        console.log("Updated User : ", docs);
+        res.redirect("/ocr")
+      }
+    });
+})
+
+const { spawn } = require('child_process');
+
+app.post("/user/addhar", requireAuth, upload.single('addhar'), (req, res) => {
+      
+  const addhar = req.file.filename
+  // console.log(addhar)
+  var user_id = req.user.id;
+  const updatedUser = {}
+  updatedUser.addhar = addhar;
+  const filePath = path.join(__dirname, "public", "upload", addhar)
+  // const  childPython = spawn('python', ['--version'])
+  // const childPython = spawn('python', ['main.py'])
+  const  childPython = spawn('python', ['main.py', filePath])
+  childPython.stdout.on('data', (data) => {
+    data = data.toString('utf8')
+    data = data.replaceAll("'", `"`)
+    data = data.replaceAll("@", ``)
+    const parseData = JSON.parse(data)
+    // console.log(parseData)
+    updatedUser.fullName = parseData.name
+    updatedUser.gender = parseData.gender[0] == 'M' || parseData.gender[0] == 'm' ? "Male" : "Female"
+    updatedUser.state = parseData.state
+    updatedUser.district = parseData.dist
+    updatedUser.pincode = parseData.pc
+    updatedUser.aadharNumber = parseData.uid
+    updatedUser.taluka = parseData.vtc
+    var newdate = parseData.dob.split("/").reverse().join("/");
+    updatedUser.dob = new Date(newdate)
+    let address = []
+    if (parseData.house) {
+      address.push(parseData.house)
+    }
+    if (parseData.lm) {
+      address.push(parseData.lm)
+    }
+    if (parseData.vtc) {
+      address.push(parseData.vtc)
+    }
+    if (parseData.po) {
+      address.push(parseData.po)
+    }
+    if (parseData.subdist) {
+      address.push(parseData.subdist)
+    }
+    if (parseData.dist) {
+      address.push(parseData.dist)
+    }
+    if (parseData.state) {
+      address.push(parseData.state)
+    }
+    if (parseData.pc) {
+      address.push(parseData.pc)
+    }
+    const newAddress = address.join(", ")
+    updatedUser.address = newAddress
+    console.log(parseData)
+    console.log(typeof (parseData))
+    User.findByIdAndUpdate(user_id, updatedUser,
+      function (err, docs) {
+        if (err){
+          console.log(err)
+          res.redirect("/ocr")
+        }
+        else{
+          console.log("Updated User : ", docs);
+          res.redirect("/ocr")
+        }
+      });
+    })
+    childPython.stderr.on('data', (data) => {
+      console.log(`stderr : ${data}`)
+      res.redirect("/ocr")
+  })
+  // childPython.on('close', (code) => {
+  //   console.log(`child process exited with code ${code}`)
+  // })
+  
+})
 
 
 app.post("/user/pi", requireAuth , upload.fields([{ name: "casteCretificate" }, { name: "incomeCertificate" }, { name: "domicileCertificate" }, { name: "disabilityCertificate" }]), (req, res) => { 

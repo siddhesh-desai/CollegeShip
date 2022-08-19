@@ -8,7 +8,7 @@
     </div>
 
     <div class="card-body p-4 p-sm-5">
-        <form class="row g-3" action="/user/pqi/add" method="post" enctype="multipart/form-data">
+        <!-- <form class="row g-3" action="/user/pqi/add" method="post" enctype="multipart/form-data">
             <legend>
                 <h2><b>Past Qualifications Information</b></h2>
             </legend>
@@ -152,7 +152,6 @@
                 <label for="inputZip" class="form-label">Upload Marksheet</label><br />
                 <div class="input-group">
                     <input type="file" class="form-control" name="pqMarksheet" id="inputGroupFile02" />
-                    <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
                 </div>
             </div>
 
@@ -194,7 +193,7 @@
             <br />
             <legend>Your Saved Past Qualification Details</legend>
         </form>
-        <br />
+        <br /> -->
 
         <table class="table">
             <thead>
@@ -227,9 +226,7 @@
                         <td><%=pastQualifications[i].pqPassingYear ? pastQualifications[i].pqPassingYear : "" %></td>
                         <td><%=pastQualifications[i].pqPercentage ? pastQualifications[i].pqPercentage  : "" %></td>
 
-                        <!-- <td>
-                            <button href="#" class="btn btn-secondary">View Document</button>
-                        </td> -->
+                      
                         <td><button type="submit" class="btn btn-secondary">Delete</button></td>
                     </tr>
                 </form>
