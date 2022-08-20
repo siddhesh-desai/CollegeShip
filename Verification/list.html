@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>List of Applicants</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <style>
+    .h11 {
+      font-size: 60px;
+      text-align: center;
+    }
+
+    .count {
+      text-align: center;
+    }
+
+    .list-group {
+      width: 800px;
+      height: 370px;
+      margin: auto;
+      overflow: auto;
+      position: center;
+    }
+
+    .group2 {
+      width: 800px;
+      height: 50px;
+      margin: auto;
+      overflow: auto;
+      position: center;
+    }
+
+    .col-8 {
+      width: auto;
+    }
+
+    .bluiiish {
+      font-size: large;
+    }
+
+    .greyish {
+      text-align: center;
+    }
+
+    .btnform {
+      width: 100px;
+      background-color: rgb(12, 133, 204);
+      color: white;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+      z-index: 2;
+      box-shadow: 10px 10px 10px #999;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-light navbar-expand-lg" style="padding-left: 20px; background-color: #e3f2fd">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <span class="navbar-brand mb-0 h1">CollegeShip</span>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Profile
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="user_form_verification.html">User Verification</a>
+            <a class="dropdown-item" href="user_form_pd.html">Personal Details</a>
+            <a class="dropdown-item" href="user_form_ad.html">Address Details</a>
+            <a class="dropdown-item" href="user_form_od.html">Other Details</a>
+            <a class="dropdown-item" href="user_form_ccd.html">Current Course Details</a>
+            <a class="dropdown-item" href="user_form_pqd.html">Past Qualification Details</a>
+            <a class="dropdown-item" href="user_form_hd.html">Hostel Details</a>
+          </div>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">All Schemes</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">My Applied Schemes</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">My Cancelled Schemes</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Grievances</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Notifications</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Declaration Forms</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <marquee>The Application of Scholarships will be open till 31 September
+    2022.</marquee>
+  <br><br>
+  <div class="h11">List of Applicants</div>
+  <hr><br><br>
+
+
+  <table border=4 width="100%" class="group2">
+    <tr height="50px">
+      <td class="bluiiish" width="10%"><b>Sr. No.</b></td>
+      <td class="bluiiish" width="29%"><b>Name of the Student</b></td>
+      <td class="bluiiish" width="19%"><b>Branch</b></td>
+      <td class="bluiiish" width="25%"><b>Application Date</b></td>
+      <td class="bluiiish" width="17%"><b>Verification</b></td>
+    </tr>
+  </table>
+
+  <div class="col-8">
+    <div id="count" data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true"
+      class="scrollspy-example" tabindex="0">
+      <div class="list-group">
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">1</td>
+            <td class="blackish" width="30%">Samarth Bura</td>
+            <td class="blackish" width="20%">AI & DS</td>
+            <td class="blackish" width="25%">14/11/2021</td>
+            <td class="blackish" width="15%">
+              <a href="verification.html" target="_blank"><button type="button" class="btnform">Verify</button></a>
+            </td>
+          </tr>
+        </table>
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">2</td>
+            <td class="blackish" width="30%">Kunal Bura</td>
+            <td class="blackish" width="20%">E & TC</td>
+            <td class="blackish" width="25%">23/12/2021</td>
+            <td class="blackish" width="15%"><button type="button" class="btnform">Verify</button></td>
+          </tr>
+        </table>
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">3</td>
+            <td class="blackish" width="30%">Kunal Bura</td>
+            <td class="blackish" width="20%">E & TC</td>
+            <td class="blackish" width="25%">23/12/2021</td>
+            <td class="blackish" width="15%"><button type="button" class="btnform">Verify</button></td>
+          </tr>
+        </table>
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">4</td>
+            <td class="blackish" width="30%">Kunal Bura</td>
+            <td class="blackish" width="20%">E & TC</td>
+            <td class="blackish" width="25%">23/12/2021</td>
+            <td class="blackish" width="15%"><button type="button" class="btnform">Verify</button></td>
+          </tr>
+        </table>
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">5</td>
+            <td class="blackish" width="30%">Kunal Bura</td>
+            <td class="blackish" width="20%">E & TC</td>
+            <td class="blackish" width="25%">23/12/2021</td>
+            <td class="blackish" width="15%"><button type="button" class="btnform">Verify</button></td>
+          </tr>
+        </table>
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">6</td>
+            <td class="blackish" width="30%">Kunal Bura</td>
+            <td class="blackish" width="20%">E & TC</td>
+            <td class="blackish" width="25%">23/12/2021</td>
+            <td class="blackish" width="15%"><button type="button" class="btnform">Verify</button></td>
+          </tr>
+        </table>
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">7</td>
+            <td class="blackish" width="30%">Kunal Bura</td>
+            <td class="blackish" width="20%">E & TC</td>
+            <td class="blackish" width="25%">23/12/2021</td>
+            <td class="blackish" width="15%"><button type="button" class="btnform">Verify</button></td>
+          </tr>
+        </table>
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">8</td>
+            <td class="blackish" width="30%">Kunal Bura</td>
+            <td class="blackish" width="20%">E & TC</td>
+            <td class="blackish" width="25%">23/12/2021</td>
+            <td class="blackish" width="15%"><button type="button" class="btnform">Verify</button></td>
+          </tr>
+        </table>
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">9</td>
+            <td class="blackish" width="30%">Kunal Bura</td>
+            <td class="blackish" width="20%">E & TC</td>
+            <td class="blackish" width="25%">23/12/2021</td>
+            <td class="blackish" width="15%"><button type="button" class="btnform">Verify</button></td>
+          </tr>
+        </table>
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">10</td>
+            <td class="blackish" width="30%">Kunal Bura</td>
+            <td class="blackish" width="20%">E & TC</td>
+            <td class="blackish" width="25%">23/12/2021</td>
+            <td class="blackish" width="15%"><button type="button" class="btnform">Verify</button></td>
+          </tr>
+        </table>
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">11</td>
+            <td class="blackish" width="30%">Kunal Bura</td>
+            <td class="blackish" width="20%">E & TC</td>
+            <td class="blackish" width="25%">23/12/2021</td>
+            <td class="blackish" width="15%"><button type="button" class="btnform">Verify</button></td>
+          </tr>
+        </table>
+        <table border=1 width="100%">
+          <tr height="40px">
+            <td class="greyish" width="10%">12</td>
+            <td class="blackish" width="30%">Kunal Bura</td>
+            <td class="blackish" width="20%">E & TC</td>
+            <td class="blackish" width="25%">23/12/2021</td>
+            <td class="blackish" width="15%"><button type="button" class="btnform">Verify</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+    integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
