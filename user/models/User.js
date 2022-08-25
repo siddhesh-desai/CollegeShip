@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
     minlength: [6, 'Minimum password length is 6 characters'],
   },
   //=============== Addhar Card ============================
-  addhar :{type : String},
+  addhar: { type: String },
+  addharUploded: {type : Boolean, default : false},
   // ============== Personal Information =============================
 
   //==================== Personal Details =============================
@@ -34,6 +35,7 @@ const userSchema = new mongoose.Schema({
   district: { type: String },
   taluka: { type: String },
   pincode: { type: String },
+  piUploded: {type : Boolean,  default : false},
   // maritalStatus: { type: String },
 
   //============== Religion and Caste detail ==================
@@ -48,6 +50,8 @@ const userSchema = new mongoose.Schema({
   casteIssuingAuthority: { type: String },
   casteIssuingDate: { type: Date },
   casteCretificate: { type: String },
+  casteUploded: {type : Boolean,  default : false},
+  
   
   // ============== Income Details =============================
 
@@ -57,16 +61,20 @@ const userSchema = new mongoose.Schema({
   incomeIssuingAuthority: { type: String },
   incomeIssuingDate: { type: Date },
   incomeCertificate: { type: String },
+  incomeUploded: {type : Boolean,  default : false},
+
   
   // ============== Domicile Details =============================
 
-  // domicileState: { type: String },
+  domicileState: { type: String },
   haveDomicileCertificate: { type: Boolean, default: false },
   domicileCertificateNumber: { type: String },
   // domicileRelationType: { type: String },
   domicileIssuingAuthority: { type: String },
   domicileIssuingDate: { type: Date },
   domicileCertificate: { type: String },
+  domicileUploded: {type : Boolean,  default : false},
+
   
   // ============== Personal Eligibility Details =============================
 
@@ -83,7 +91,9 @@ const userSchema = new mongoose.Schema({
 
   bankAccountNumber: { type: String },
   bankIFSCode: { type: String },
-  bankPassbook : {type : String},
+  bankPassbook: { type: String },
+  bankUploded: {type : Boolean,  default : false},
+  
   
   // ============== Other Information =============================
 
@@ -96,6 +106,7 @@ const userSchema = new mongoose.Schema({
   isMotherAlive: { type: Boolean, default: true },
   motherOccupation: { type: String },
   isMotherSalaried: { type: Boolean, default: false },
+  parentUploded: {type : Boolean,  default : false},
 
   // ============== Current Course Information =============================
   currentCourse: [
@@ -122,6 +133,8 @@ const userSchema = new mongoose.Schema({
       ccMode : { type: String },
     }
   ],
+  ccUploded: {type : Boolean,  default : false},
+
 
   // ============== Past Qualifications Information =============================
 
@@ -129,9 +142,7 @@ const userSchema = new mongoose.Schema({
     {
       pqLevel: { type: String },
       pqStream: { type: String },
-      pqInstituteState: { type: String },
-      pqInstituteDistrict: { type: String },
-      pqInstituteTaluka: { type: String },
+      
       pqCollegeName: { type: String },
       pqBoardUniversityName: { type: String }, 
       pqPassingYear: { type: Number },
@@ -140,6 +151,15 @@ const userSchema = new mongoose.Schema({
       pqMarksheet: { type: String },  
     }
   ],
+  pq10Uploded: {type : Boolean,  default : false},
+  pq12Uploded: {type : Boolean,  default : false},
+  
+
+  // =================== Appied Scholarship =====================
+  scholarshipStatus: { type: String },
+  appliedScholarship: { type: String },
+  appliedScholarshipDate: {type : Date},
+  declineMessage: {type : String}
 
   // ============== Hostel Information =============================
 
@@ -163,17 +183,18 @@ const userSchema = new mongoose.Schema({
 
 
 // fire a function before doc saved to db
-userSchema.pre('save', async function(next) {
-  const salt = await bcrypt.genSalt();
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
+// userSchema.pre('save', async function(next) {
+//   const salt = await bcrypt.genSalt();
+//   this.password = await bcrypt.hash(this.password, salt);
+//   next();
+// });
 
 // static method to login user
 userSchema.statics.login = async function(email, password) {
   const user = await this.findOne({ email });
   if (user) {
-    const auth = await bcrypt.compare(password, user.password);
+    // const auth = await bcrypt.compare(password, user.password);
+    const auth = password == user.password;
     if (auth) {
       return user;
     }

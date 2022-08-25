@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link
+			rel="stylesheet"
+			href="/stylesAdmin.css"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+			rel="stylesheet"
+		/>
+		<title>Admin | Home</title>
+	</head>
+
+	<body>
+		<section class="header">
+			<div class="logo">
+				<h2>College<span>Ship</span></h2>
+			</div>
+		</section>
+		<section class="main">
+			<div class="sidebar">
+				<ul class="sidebar--items">
+					<li>
+						<a href="/admin/dashboard">
+							<span class="icon icon-1"
+								><i
+									class="ri-layout-grid-line"
+								></i
+							></span>
+							<span class="sidebar--item"
+								>Dashboard</span
+							>
+						</a>
+					</li>
+					<li>
+						<a href="/admin/scholarship/request">
+							<span class="icon icon-2"
+								><i class="ri-user-line"></i
+							></span>
+							<span class="sidebar--item"
+								>Scholarship Requests</span
+							>
+						</a>
+					</li>
+
+					<li>
+						<a href="/admin/scholarship/granted">
+							<span class="icon icon-4"
+								><i class="ri-user-line"></i
+							></span>
+							<span class="sidebar--item"
+								>Granted Candidates</span
+							>
+						</a>
+					</li>
+					<!-- <li>
+						<a href="/admin/scholarship/report">
+							<span class="icon icon-5"
+								><i class="ri-line-chart-line"></i
+							></span>
+							<span class="sidebar--item"
+								>Reports</span
+							>
+						</a>
+					</li> -->
+					<li>
+						<a
+							href="/admin/import/data"
+							id="active--link"
+						>
+							<span class="icon icon-6"
+								><i
+									class="ri-customer-service-line"
+								></i
+							></span>
+							<span class="sidebar--item"
+								>Import Data</span
+							>
+						</a>
+					</li>
+				</ul>
+				<!-- <ul class="sidebar--bottom-items">
+                
+                <li>
+                    <a href="#">
+                        <span class="icon icon-8"><i class="ri-logout-box-r-line"></i></span>
+                        <span class="sidebar--item">Logout</span>
+                    </a>
+                </li>
+            </ul> -->
+			</div>
+			<div class="main--content">
+				<div class="overview">
+					<br />
+				</div>
+
+				<div class="recent--patients">
+					<br />
+					<div class="title">
+						<h2 class="section--title">
+							Import Data
+						</h2>
+					</div>
+					<br />
+					<form
+						action="/admin/import/data"
+						method="post"
+					>
+						<label for="">Enter Secret Key</label>
+						<input
+							type="password"
+							name="secret"
+							id="secret"
+						/>
+						<button type="submit">
+							Import Data
+						</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
