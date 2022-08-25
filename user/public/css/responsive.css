@@ -1,0 +1,90 @@
+/*
+* ----------------------------------------------------------------------------------------
+Author        : Rama Hardian Sidik
+Template Name : Freeman - Multipurpose Personal One Page Html Template
+Version       : 1.0
+Filename      : responsive.css
+* ----------------------------------------------------------------------------------------
+*/
+
+@media only screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {}
+
+@media only screen and (device-width: 375px) and (device-height: 812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {}
+
+@media only screen and (device-width: 812px) and (device-height: 375px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {}
+
+@media (min-width: 1366px) {}
+
+@media screen and (max-width: 2560px) {
+    body.openmenu .overlay {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1440px) {}
+
+@media screen and (max-width: 1366px) {}
+
+@media screen and (max-width: 1280px) {}
+
+@media screen and (max-width: 1128px) {}
+
+@media screen and (max-width: 1024px) {}
+
+@media (max-width: 999px) {
+    body.openmenu .overlay {
+        display: block;
+    }
+    .heroimg {
+        height: 300px;
+        width: 300px;
+    }
+    .heroimg .heroimg__poto {
+        height: 300px;
+        width: 300px;
+    }
+    .infohero__p {
+        font-size: 15px;
+    }
+    .infohero__title {
+        font-size: 50px;
+    }
+    .aboutlink {
+        margin: 0 auto;
+    }
+    #typed-text {
+        font-size: 15px;
+    }
+    .porfoliowarp__item {
+        width: 50%;
+    }
+}
+
+@media (max-width: 899) {}
+
+@media (max-width: 799px) {
+    .porfoliowarp__item {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 699px) {}
+
+@media only screen and (max-width: 580px) {}
+
+@media (max-width: 480px) {}
+
+@media (max-width: 360px) {}
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {}
+
+@media(hover: hover) and (pointer: fine) {}
+
+@media screen and (prefers-reduced-motion) {}

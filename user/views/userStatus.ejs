@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1"
+		/>
+		<title>CollageShip</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+			crossorigin="anonymous"
+		/>
+		<style>
+			.btn {
+				background-color: #ffdb67;
+				color: black;
+				border-color: #ffdb67;
+			}
+			.nav-link {
+				color: black;
+			}
+			.currNav {
+				background-color: #ffdc6788;
+				color: black;
+				font-weight: bold;
+			}
+			.nav-link:hover {
+				font-weight: bold;
+				color: black;
+			}
+		</style>
+		<script>
+			function text(x) {
+				if (x == 0) {
+					document.getElementById(
+						'mycode'
+					).style.display = 'block';
+				} else {
+					document.getElementById(
+						'mycode'
+					).style.display = 'none';
+				}
+				return;
+			}
+		</script>
+	</head>
+
+	<body>
+		<nav
+			class="navbar navbar-light navbar-expand-lg"
+			style="
+				padding-left: 20px;
+				background-color: #ffdb67;
+			"
+		>
+			<span class="navbar-brand mb-0 h1"
+				>CollegeShip</span
+			>
+		</nav>
+		<ul class="nav nav-tabs">
+			<li class="nav-item ">
+				<a class="nav-link" href="/ocr"
+					>Document upload</a
+				>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/user/pi"
+					>Personal Information</a
+				>
+			</li>
+			<!-- <li class="nav-item">
+            <a class="nav-link" href="user_form_ad.html">Address Information</a>
+        </li> -->
+			<li class="nav-item">
+				<a class="nav-link" href="/user/oi"
+					>Other Information</a
+				>
+			</li>
+			<li class="nav-item ">
+				<a class="nav-link " href="/user/cci"
+					>Current Course</a
+				>
+			</li>
+			<li class="nav-item ">
+				<a class="nav-link" href="/user/pqi"
+					>Past Qualification</a
+				>
+			</li>
+			<li class="nav-item ">
+				<a class="nav-link" href="/user/apply"
+					>Apply Scholarship</a
+				>
+			</li>
+			<li class="nav-item currNav">
+				<a class="nav-link" href="/user/status"
+					>Scholarship Status</a
+				>
+			</li>
+		</ul>
+		<marquee
+			>The Application of Scholarships will be
+			open till 31 September 2022.</marquee
+		>
+<style>
+ table{
+        border-spacing: 0px;
+        table-layout: fixed;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top: 50px;
+        text-align: center;
+
+    }
+    th{
+        border: 1px solid black;
+        padding: 20px;
+    }
+    td{
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
+    
+<table class="underscrutiny">
+    <thead>
+        <tr>
+            <th>Application ID</th>
+            <th>Date</th>
+            <!-- <th>Department Name</th> -->
+            <th>Scheme Name</th>
+            <th>Status</th>
+            <th>Message</th>
+            
+            <!-- <th>Action</th> -->
+            <!-- <th>View Form</th> -->
+        </tr>
+    </thead>
+        <tbody>
+            <tr>
+                <td><%= data.userId %></td>
+                <td><%= data.date %></td>
+                <!-- <td>Directorate of Technical Education</td> -->
+                <td ><%= data.scholarshipName %></td>
+                <td><%= data.scholarshipStatus %></td>
+                <td><%= data.declineMessage != "" ? data.declineMessage : "In Progress" %></td>
+                <!-- <td>NA</td> -->
+                <!-- <td><a href="#">View</a>         -->
+                </td>
+            
+            </tr>
+        </tbody>
+    
+</table>
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+</body>
+</html>

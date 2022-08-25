@@ -1,0 +1,366 @@
+<%- include('partials/header2'); -%>
+
+
+<div class="card-body p-4 p-sm-5">
+    
+    <!-- Addhar Card Upload -->
+    <form class="row g-3" action="/user/addhar" method="post" enctype="multipart/form-data">
+        <legend>
+            <h2><b>Upload Addhar Card</b></h2>
+        </legend>
+        <hr />
+        
+        <div class="col-md-6">
+            <label for="addhar" class="form-label">Aadhar Card</label><br />
+            <div class="input-group">
+                <input type="file" class="form-control" id="file-selector" name="addhar" />
+                <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+            </div>
+            <span id="file-qr-result"></span>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <div class="d-grid" style="width: auto; align-items: center">
+            <button type="submit" class="btn btn-primary">Save and Next</button>
+        </div>
+
+        
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+   
+    </form>
+    <!-- General Information -->
+    <form class="row g-3" action="/user/general" method="post" enctype="multipart/form-data">
+        <legend>
+            <h2><b>General Information</b></h2>
+        </legend>
+        <hr />
+        <div class="col-md-4">
+            <label for="pdFatherName" class="form-label">Father's Full Name</label>
+            <input type="text" class="form-control" name="fatherName" id="pdFatherName" required/>
+        </div>
+        <div class="col-md-4">
+            <label for="pdMotherName" class="form-label">Mother's Full Name</label>
+            <input type="text" class="form-control" name="motherName" id="pdMotherName" required/>
+        </div>
+        <div class="col-md-4">
+            <label for="pdMobile" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control"  name="mobileNumber" id="pdMobile" required />
+        </div>
+        <br />
+        <br />
+        <div class="d-grid" style="width: auto; align-items: center">
+            <button type="submit" class="btn btn-primary" id="pdBtnSubmit">
+                Save General Information
+            </button>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+    </form>    
+
+    <!-- Caste Information -->
+    <form class="row g-3" action="/ocr/caste" method="post" enctype="multipart/form-data">
+        <legend>
+            <h2><b>Upload Caste Certificate</b></h2>
+        </legend>
+        <hr />
+
+        <div class="col-12">
+            <label for="pdDomicileCertificateYesNo" class="form-label">Do you have a Caste Certificate?</label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="haveCasteCertificate" id="pdDomicileCertificateYes" value="Yes" required="">
+                <label class="form-check-label" for="pdDomicileCertificateYes">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="haveCasteCertificate" id="pdDomicileCertificateNo" value="No" required="">
+                <label class="form-check-label" for="pdDomicileCertificateNo">
+                    No
+                </label>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <label for="pdCasteCategory" class="form-label">Caste Category</label>
+            <select id="pdCasteCategory"  name="casteCategory" class="form-select" required>
+                <option value="General">General</option>
+                <option value="ST">ST</option>
+                <option value="SC">SC</option>
+                <option value="SBC">SBC</option>
+                <option value="OBC">OBC</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="inputZip" class="form-label">Caste Certificate Number</label>
+            <input type="text" class="form-control" id="inputZip" name="casteCertificateNumber" />
+        </div>  
+        <div class="col-md-2">
+            <label for="pdCasteCertificateIssueAuthority" class="form-label">Issuing Authority</label>
+            <select id="pdCasteCertificateIssueAuthority" required  name="casteIssuingAuthority" class="form-select">
+                <option  value="Divisional Office">Divisional Office</option>
+                <option value="Sub-divisional office">Sub-divisional office</option>
+            </select>
+        </div>       
+        <div class="col-md-6">
+            <label for="addhar" class="form-label">Caste Certificate</label><br />
+            <div class="input-group">
+                <input type="file" class="form-control" id="file-selector" name="casteCretificate" />
+                <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+            </div>
+           
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <div class="d-grid" style="width: auto; align-items: center">
+            <button type="submit" class="btn btn-primary">Upload Caste Information</button>
+        </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+   
+    </form>
+
+    <!-- Domicile Information -->
+    <form class="row g-3" action="/ocr/domicile" method="post" enctype="multipart/form-data">
+        <legend>
+            <h2><b>Domicile Information</b></h2>
+        </legend>
+        <hr />
+        <div class="col-12">
+            <label for="pdDomicileCertificateYesNo" class="form-label">Do you have a Domicile Certificate?</label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="haveDomicileCertificate" id="pdDomicileCertificateYes" value="Yes" required="">
+                <label class="form-check-label" for="pdDomicileCertificateYes">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="haveDomicileCertificate" id="pdDomicileCertificateNo" value="No" required="">
+                <label class="form-check-label" for="pdDomicileCertificateNo">
+                    No
+                </label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="pdDomicile" class="form-label">Which Domicile are you?</label>
+            <select id="pdDomicile" name="domicileState" class="form-select" required>
+                <option  value="Maharashtra">Maharashtra</option>
+                <option  value="Tamil Nadu">Tamil Nadu</option>
+                <option  value="Kashmir">Kashmir</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="addhar" class="form-label">Upload File Here</label><br />
+        
+            <div class="input-group">
+                <input type="file" class="form-control" id="file-selector" name="domicileCertificate" />
+                <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <div class="d-grid" style="width: auto; align-items: center">
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+
+        
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+   
+    </form>
+
+
+    <!-- Past Qualification -->
+    <form class="row g-3" action="/ocr/pq/add" method="post" enctype="multipart/form-data">
+        <legend>
+            <h2><b>Past Qualification Information</b></h2>
+        </legend>
+        <hr />
+        <div class="col-md-4">
+            <label for="level1" class="form-label">Qualification level</label>
+            <select id="level1" class="form-select" name="pqLevel">    
+                <option value="10th std">10th std</option>
+                <option value="12th std">12th std</option>  
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="level2" class="form-label">Stream</label>
+            <select id="level2" class="form-select" name="pqStream">
+
+                <option value="Sciences">Sciences</option>
+                <option value="Arts">Arts</option>
+                <option value="Commerce">Commerce</option>
+            </select>
+        </div>
+        
+        <div class="col-md-4">
+            <label for="inputZip" class="form-label">Percentage</label>
+            <input type="text" class="form-control" id="inputZip" name="pqPercentage" />
+        </div>
+        <div class="col-md-6">
+            <label for="addhar" class="form-label">Upload Marksheet Here</label><br />
+        
+            <div class="input-group">
+                <input type="file" class="form-control" id="file-selector" name="pqMarksheet" />
+                <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <div class="d-grid" style="width: auto; align-items: center">
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+
+        
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+   
+    </form>
+
+    <!-- Income Certificate -->
+    <form class="row g-3" action="/user/income" method="post" enctype="multipart/form-data">
+       
+        <legend>
+            <h2><b>Income Information</b></h2>
+        </legend>
+        <hr>
+
+        <div class="col-md-3">
+            <label for="pdAnnualIncome"   class="form-label">Family Annual Income</label>
+            <input type="text"  name="familyAnnualIncome" class="form-control" id="pdAnnualIncome" required/>
+        </div>
+        <div class="col-md-1"></div>
+
+        <div class="col-md-3">
+                <label for="pdIncomeCertificateYesNo" class="form-label">Do you have Income Certificate?</label>
+                <br />
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="haveIncomeCertificate" id="pdIncomeCertificateYes"
+                        value="Yes" required/>
+                    <label class="form-check-label" for="pdIncomeCertificateYes">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input"  type="radio" name="haveIncomeCertificate" id="pdIncomeCertificateNo"
+                        value="No" required/>
+                    <label class="form-check-label" for="pdIncomeCertificateNo">
+                        No
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <label for="pdIncomeCertificateNumber" class="form-label">Income Certificate Number</label>
+                <input type="text" required class="form-control"  name="incomeCertificateNumber" id="pdIncomeCertificateNumber" />
+            </div>
+
+            <div class="col-md-2">
+                <label for="pdIncomeCertificateAuthority" class="form-label">Issuing Authority</label>
+                <select id="pdIncomeCertificateAuthority" name="incomeIssuingAuthority" class="form-select" required>
+                    <option value="Divisional Office">Divisional Office</option>
+                    <option  value="Sub-divisional office">Sub-divisional office</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="pdIncomeCertificateDate" class="form-label">Issuing Date</label>
+                <input type="date" class="form-control" required  name="incomeIssuingDate" id="pdIncomeCertificateDate" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="pdIncomeCertificate" class="form-label">Income Certificate</label><br />
+                <div class="input-group">
+                    <input type="file" class="form-control" required  name="incomeCertificate"/>
+                    <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+
+        
+            <br />
+            <br />
+            <div class="d-grid" style="width: auto; align-items: center">
+                <button type="submit" class="btn btn-primary" id="pdBtnSubmit">
+                    Save Income Information
+                </button>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+    </form>
+
+    <!-- Bank Details -->
+    <form class="row g-3" action="/ocr/bank" method="post" enctype="multipart/form-data">
+        <legend>
+            <h2><b>Bank Information</b></h2>
+        </legend>
+        <hr />
+        
+        <div class="col-md-6">
+            <label for="incomeCertificate" class="form-label">Upload Passbook Here</label><br />
+        
+            <div class="input-group">
+                <input type="file" class="form-control" id="file-selector" name="bankPassbook" />
+                <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <div class="d-grid" style="width: auto; align-items: center">
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+
+        
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+   
+    </form>
+</div>
+
+</body>
+</html>

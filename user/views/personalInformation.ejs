@@ -1,412 +1,924 @@
-<%- include('partials/header2'); -%>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1"
+		/>
+		<title>CollageShip</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+			crossorigin="anonymous"
+		/>
+		<style>
+			.btn {
+				background-color: #ffdb67;
+				color: black;
+				border-color: #ffdb67;
+			}
+			.nav-link {
+				color: black;
+			}
+			.currNav {
+				background-color: #ffdc6788;
+				color: black;
+				font-weight: bold;
+			}
+			.nav-link:hover {
+				font-weight: bold;
+				color: black;
+			}
+		</style>
+		<script>
+			function text(x) {
+				if (x == 0) {
+					document.getElementById(
+						'mycode'
+					).style.display = 'block';
+				} else {
+					document.getElementById(
+						'mycode'
+					).style.display = 'none';
+				}
+				return;
+			}
+		</script>
+	</head>
 
-<div class="card-body p-4 p-sm-5">
-    <form class="row g-3" action="/user/pi" method="post" enctype="multipart/form-data">
-        <legend>
-            <h2><b>Personal Information</b></h2>
-        </legend>
-        <hr />
-        <legend>Personal Details</legend>
-        <div class="col-md-4">
-            <label for="pdEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" value= <%=user.email%> id="pdEmail" readonly />
-        </div>
-        <div class="col-md-8">
-            <label for="pdFullName" class="form-label">Full Name</label>
-            <input type="text" class="form-control" value= "<%=user.fullName ? user.fullName : '' %>" name="fullName" id="pdFulltName" required />
-        </div>
-        
-        <div class="col-md-3">
-            <label for="pdAadhaar" class="form-label">Aadhar Number</label>
-            <input type="text" class="form-control" value= "<%=user.aadharNumber ? user.aadharNumber : '' %>" name="aadharNumber"  id="pdAadhaar" required />
-        </div>
-        <div class="col-md-3">
-            <label for="pdMobile" class="form-label">Mobile Number</label>
-            <input type="text" class="form-control" value= "<%=user.mobileNumber ? user.mobileNumber : '' %>" name="mobileNumber" id="pdMobile" required />
-        </div>
-        <div class="col-md-3">
-            <label for="pdDOB" class="form-label">Date of Birth</label>
-            <input type="date" class="form-control" value= "<%=user.dob ? user.dob[0] : '' %>" name="dob" id="pdDOB" required/>
-        </div>
-        <div class="col-md-3">
-            <label for="pdGender" class="form-label">Gender</label>
-            <select id="pdGender" name="gender" class="form-select" required>
-                <option  <%=user.pdGender=="Male" ? 'selected' : '' %> value="Male">Male</option>
-                <option  <%=user.pdGender=="Female" ? "selected" : '' %> value="Female">Female</option>
-                <option  <%=user.pdGender=="Others" ? "selected" : '' %> value="Others">Others</option>
-            </select>
-        </div>
-        <div class="col-md-6">
-            <label for="pdFatherName" class="form-label">Father's Full Name</label>
-            <input type="text" class="form-control" value= "<%=user.fatherName ? user.fatherName : '' %>" name="fatherName" id="pdFatherName" required/>
-        </div>
-        <div class="col-md-6">
-            <label for="pdMotherName" class="form-label">Mother's Full Name</label>
-            <input type="text" class="form-control" value= "<%=user.motherName ? user.motherName : '' %>" name="motherName" id="pdMotherName" required/>
-        </div>
-        <div class="col-12">
-            <label for="pdAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" value= "<%=user.address ? user.address : '' %>" name="address" id="pdAddress" placeholder="1234 Main St" required />
-        </div>
+	<body>
+		<nav
+			class="navbar navbar-light navbar-expand-lg"
+			style="
+				padding-left: 20px;
+				background-color: #ffdb67;
+			"
+		>
+			<a href="/" class="navbar-brand mb-0 h1"
+				>CollegeShip</a
+			>
+		</nav>
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link" href="/ocr"
+					>Document upload</a
+				>
+			</li>
+			<li class="nav-item currNav">
+				<a class="nav-link" href="/user/pi"
+					>Personal Information</a
+				>
+			</li>
+			<!-- <li class="nav-item">
+            <a class="nav-link" href="user_form_ad.html">Address Information</a>
+        </li> -->
+			<li class="nav-item">
+				<a class="nav-link" href="/user/oi"
+					>Other Information</a
+				>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/user/cci"
+					>Current Course</a
+				>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/user/pqi"
+					>Past Qualification</a
+				>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/user/apply"
+					>Apply Scholarship</a
+				>
+			</li>
+		</ul>
+		<marquee
+			>The Application of Scholarships will be
+			open till 31 September 2022.</marquee
+		>
 
-        <div class="col-md-4">
-            <label for="pdState" class="form-label">State</label>
-            <input type="text" class="form-control" value= "<%=user.state ? user.state : '' %>" name="state" id="state"  required />
-            <!-- <select id="pdState" name="state" class="form-select" required>
-                <option <%=user.state=="Maharashtra" ? "selected" : '' %> value="Maharashtra">Maharashtra</option>
-                <option <%=user.state=="Tamil Nadu" ? "selected" : '' %> value="Tamil Nadu">Tamil Nadu</option>
-            </select> -->
-        </div>
+		<div class="card-body p-4 p-sm-5">
+			<form
+				class="row g-3"
+				action="/user/oi"
+				method="get"
+				enctype="multipart/form-data"
+			>
+				<legend>
+					<h2><b>Personal Information</b></h2>
+				</legend>
+				<hr />
+				<legend>Personal Details</legend>
+				<div class="col-md-4">
+					<label for="pdEmail" class="form-label"
+						>Email</label
+					>
+					<input
+						type="email"
+						class="form-control"
+						value="<%=user.email%>"
+						id="pdEmail"
+						readonly
+					/>
+				</div>
+				<div class="col-md-8">
+					<label
+						for="pdFullName"
+						class="form-label"
+						>Full Name</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.fullName ? user.fullName : '' %>"
+						name="fullName"
+						id="pdFulltName"
+						readonly
+					/>
+				</div>
 
-        <div class="col-md-2">
-            <label for="pdDistrict" class="form-label">District</label>
-            <input type="text" class="form-control" value= "<%=user.district ? user.district : '' %>" name="district" id="district"  required />
+				<div class="col-md-3">
+					<label
+						for="pdAadhaar"
+						class="form-label"
+						>Aadhar Number</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.aadharNumber ? user.aadharNumber : '' %>"
+						name="aadharNumber"
+						id="pdAadhaar"
+						readonly
+					/>
+				</div>
+				<div class="col-md-3">
+					<label for="pdMobile" class="form-label"
+						>Mobile Number</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.mobileNumber ? user.mobileNumber : '' %>"
+						name="mobileNumber"
+						id="pdMobile"
+						readonly
+					/>
+				</div>
+				<div class="col-md-3">
+					<label for="pdDOB" class="form-label"
+						>Date of Birth</label
+					>
+					<input
+						type="date"
+						class="form-control"
+						value="<%=user.dob ? user.dob[0] : '' %>"
+						name="dob"
+						id="pdDOB"
+						readonly
+					/>
+				</div>
+				<div class="col-md-3">
+					<label for="pdGender" class="form-label"
+						>Gender</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.gender ? user.gender : '' %>"
+						name="gender"
+						id="pdDOB"
+						readonly
+					/>
+				</div>
+				<div class="col-md-6">
+					<label
+						for="pdFatherName"
+						class="form-label"
+						>Father's Full Name</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.fatherName ? user.fatherName : '' %>"
+						name="fatherName"
+						id="pdFatherName"
+						readonly
+					/>
+				</div>
+				<div class="col-md-6">
+					<label
+						for="pdMotherName"
+						class="form-label"
+						>Mother's Full Name</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.motherName ? user.motherName : '' %>"
+						name="motherName"
+						id="pdMotherName"
+						readonly
+					/>
+				</div>
+				<div class="col-12">
+					<label
+						for="pdAddress"
+						class="form-label"
+						>Address</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.address ? user.address : '' %>"
+						name="address"
+						id="pdAddress"
+						placeholder="1234 Main St"
+						readonly
+					/>
+				</div>
 
-            <!-- <select id="pdDistrict"  name="district" class="form-select" required>
-                <option <%=user.district=="Kolhapur" ? "selected" : '' %> value="Kolhapur">Kolhapur</option>
-                <option <%=user.district=="Amhednagar" ? "selected" : '' %> value="Amhednagar">Amhednagar</option>
-                <option <%=user.district=="Pune" ? "selected" : '' %> value="Pune">Pune</option>
-            </select> -->
-        </div>
+				<div class="col-md-4">
+					<label for="pdState" class="form-label"
+						>State</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.state ? user.state : '' %>"
+						name="state"
+						id="state"
+						readonly
+					/>
+				</div>
 
-        <div class="col-md-2">
-            <label for="pdTaluka" class="form-label">Taluka</label>
-            <input type="text" class="form-control" value= "<%=user.taluka ? user.taluka : '' %>" name="taluka" id="taluka"  required />
+				<div class="col-md-2">
+					<label
+						for="pdDistrict"
+						class="form-label"
+						>District</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.district ? user.district : '' %>"
+						name="district"
+						id="district"
+						readonly
+					/>
+				</div>
 
-            <!-- <select id="pdTaluka" name="taluka" class="form-select" required>
-                <option <%=user.taluka=="Karveer" ? "selected" : '' %> value="Karveer">Karveer</option>
-                <option <%=user.taluka=="Ichalkaranji" ? "selected" : '' %> value="Ichalkaranji">Ichalkaranji</option>
-                <option <%=user.taluka=="Hatkalangle" ? "selected" : '' %> value="Hatkalangle">Hatkalangle</option>
-            </select> -->
-        </div>
+				<div class="col-md-2">
+					<label for="pdTaluka" class="form-label"
+						>Taluka</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.taluka ? user.taluka : '' %>"
+						name="taluka"
+						id="taluka"
+						readonly
+					/>
+				</div>
 
-        <div class="col-md-2">
-            <label for="pdPinCode" class="form-label">Pin Code</label>
-            <input type="text"  value= "<%=user.pincode ? user.pincode : '' %>" name="pincode" class="form-control" id="pdPinCode" required/>
-        </div>
+				<div class="col-md-2">
+					<label
+						for="pdPinCode"
+						class="form-label"
+						>Pin Code</label
+					>
+					<input
+						type="text"
+						value="<%=user.pincode ? user.pincode : '' %>"
+						name="pincode"
+						class="form-control"
+						id="pdPinCode"
+						readonly
+					/>
+				</div>
 
-       
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<legend>Caste Details</legend>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <legend>Religion & Caste Details</legend>
+				<div class="col-md-3">
+					<label
+						for="pdCasteCategory"
+						class="form-label"
+						>Caste Category</label
+					>
+					<input
+						type="text"
+						value="<%=user.casteCategory ? user.casteCategory : '' %>"
+						name="casteCategory"
+						class="form-control"
+						id="pdcasteCategory"
+						readonly
+					/>
+				</div>
 
-        <div class="col-md-2">
-            <label for="pdReligion" class="form-label">Religion</label>
-            <select id="pdReligion" name="religion" class="form-select" required>
-                <option <%=user.religion=="Hindu" ? "selected" : '' %> value="Hindu">Hindu</option>
-                <option <%=user.religion=="Islam" ? "selected" : '' %> value="Islam">Islam</option>
-                <option <%=user.religion=="Cristian" ? "selected" : '' %> value="Cristian">Cristian</option>
-                <option <%=user.religion=="Sikh" ? "selected" : '' %> value="Sikh">Sikh</option>
-            </select>
-        </div>
+				<div class="col-md-3">
+					<label for="pdCaste" class="form-label"
+						>Caste</label
+					>
+					<input
+						type="text"
+						value="<%=user.caste ? user.caste : '' %>"
+						name="caste"
+						class="form-control"
+						id="pdcasteCategory"
+						readonly
+					/>
+				</div>
 
-        <div class="col-md-3">
-            <label for="pdCasteCategory" class="form-label">Caste Category</label>
-            <select id="pdCasteCategory"  name="casteCategory" class="form-select" required>
-                <option <%=user.casteCategory=="General" ? "selected" : '' %> value="General">General</option>
-                <option <%=user.casteCategory=="ST" ? "selected" : '' %> value="ST">ST</option>
-                <option <%=user.casteCategory=="SC" ? "selected" : '' %> value="SC">SC</option>
-                <option <%=user.casteCategory=="SBC" ? "selected" : '' %> value="SBC">SBC</option>
-                <option <%=user.casteCategory=="OBC" ? "selected" : '' %> value="OBC">OBC</option>
-            </select>
-        </div>
+				<div class="col-md-1"></div>
 
-        <div class="col-md-3">
-            <label for="pdCaste" class="form-label">Caste</label>
-            <select id="pdCaste" name="caste" class="form-select" required>
-                <option <%=user.caste=="Maratha" ? "selected" : '' %> value="Maratha">Maratha</option>
-                <option <%=user.caste=="Gond" ? "selected" : '' %> value="Gond">Gond</option>
-                <option <%=user.caste=="Brahmin" ? "selected" : '' %> value="Brahmin">Brahmin</option>
-            </select>
-        </div>
+				<div class="col-md-3">
+					<label
+						for="pdCateCertificateYesNo"
+						class="form-label"
+						>Do you have a caste
+						Certificate?</label
+					>
+					<br />
 
-        <div class="col-md-1"></div>
+					<label
+						class="form-check-label"
+						for="pdCateCertificateYes"
+					>
+						<%=user.haveCasteCertificate==true ?
+						"Yes" : 'No' %>
+					</label>
+				</div>
 
-        <div class="col-md-3">
-            <label for="pdCateCertificateYesNo" class="form-label">Do you have a caste Certificate?</label>
-            <br />
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" <%=user.haveCasteCertificate==true ? "checked" : '' %>  type="radio" name="haveCasteCertificate" id="pdCateCertificateYes"
-                    value="Yes" required/>
-                <label class="form-check-label" for="pdCateCertificateYes">
-                    Yes
-                </label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" <%=user.haveCasteCertificate==false ? "checked" : '' %> type="radio" name="haveCasteCertificate" id="pdCateCertificateNo"
-                    value="No" required/>
-                <label class="form-check-label" for="pdCateCertificateNo">
-                    No
-                </label>
-            </div>
-        </div>
+				<div class="col-md-3">
+					<label
+						for="pdCasteCertificateNumber"
+						class="form-label"
+						>Caste Certificate Number</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						readonly
+						value="<%=user.casteCertificateNumber ? user.casteCertificateNumber : '' %>"
+						name="casteCertificateNumber"
+						id="pdCasteCertificateNumber"
+					/>
+				</div>
 
-        <div class="col-md-3">
-            <label for="pdCasteCertificateNumber" class="form-label">Caste Certificate Number</label>
-            <input type="text" class="form-control"  required value= "<%=user.casteCertificateNumber ? user.casteCertificateNumber : '' %>" name="casteCertificateNumber" id="pdCasteCertificateNumber" />
-        </div>
+				<div class="col-md-2">
+					<label
+						for="pdCasteCertificateIssueAuthority"
+						class="form-label"
+						>Issuing Authority</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						readonly
+						value="<%=user.casteIssuingAuthority ? user.casteIssuingAuthority : '' %>"
+						name="casteIssuingAuthority"
+						id="pdCasteCertificateNumber"
+					/>
+				</div>
 
-        <div class="col-md-3">
-            <label for="pdCasteCertificateDistrict" class="form-label">Issuing District</label>
-            <input type="text" class="form-control"  required value= "<%=user.casteIssuingDistrict ? user.casteIssuingDistrict : '' %>" name="casteIssuingDistrict" id="pdCasteCertificateDistrict" />
-        </div>
+				<div class="col-md-3">
+					<label
+						for="pdCasteCertificateIssueDate"
+						class="form-label"
+						>Issuing Date</label
+					>
+					<input
+						type="date"
+						class="form-control"
+						readonly
+						value="<%=user.casteIssuingDate? user.casteIssuingDate[0] : '' %>"
+						name="casteIssuingDate"
+						id="pdCasteCertificateIssueDate"
+					/>
+				</div>
+				<div class="col-md-6">
+					<label
+						for="pdCasteCertificate"
+						class="form-label"
+						>Caste Certificate</label
+					><br />
+					<div class="input-group">
+						<!-- <input type="file" required class="form-control" id="pdCasteCertificate" name="casteCretificate"/> -->
+						<input
+							type="file"
+							readonly
+							class="form-control"
+							name="casteCretificate"
+						/>
+						<!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+						<!-- Button trigger modal -->
+						<% if(user.casteCretificate) { %>
+						<button
+							type="button"
+							class="btn btn-secondary"
+							data-bs-toggle="modal"
+							data-bs-target="#pdCasteCertificate"
+						>
+							View Document
+						</button>
+						<div
+							class="modal fade"
+							id="pdCasteCertificate"
+							tabindex="-1"
+							aria-labelledby="exampleModalLabel"
+							aria-hidden="true"
+						>
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5
+											class="modal-title"
+											id="exampleModalLabel"
+										>
+											Caste Certificate
+										</h5>
+										<button
+											type="button"
+											class="btn-close"
+											data-bs-dismiss="modal"
+											aria-label="Close"
+										></button>
+									</div>
+									<div class="modal-body">
+										<img
+											src="/upload/<%=user.casteCretificate%>"
+											class="img-fluid"
+											alt="Untitled-1.jpg"
+										/>
+									</div>
+									<div class="modal-footer">
+										<button
+											type="button"
+											class="btn btn-secondary"
+											data-bs-dismiss="modal"
+										>
+											Close
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<% } %>
+					</div>
+				</div>
 
-        <div class="col-md-4">
-            <label for="pdCasteCertificateName" class="form-label">Applicant Name</label>
-            <input type="text" class="form-control" required  value= "<%=user.casteApplicantName ? user.casteApplicantName : '' %>" name="casteApplicantName" id="pdCasteCertificateName" />
-        </div>
+				<div class="col-md-2"></div>
 
-        <div class="col-md-2">
-            <label for="pdCasteCertificateIssueAuthority" class="form-label">Issuing Authority</label>
-            <select id="pdCasteCertificateIssueAuthority" required  name="casteIssuingAuthority" class="form-select">
-                <option <%=user.casteIssuingAuthority=="Divisional Office" ? "selected" : '' %> value="Divisional Office">Divisional Office</option>
-                <option <%=user.casteIssuingAuthority=="Sub-divisional office" ? "selected" : '' %> value="Sub-divisional office">Sub-divisional office</option>
-            </select>
-        </div>
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<legend>Income Details</legend>
 
-        <div class="col-md-3">
-            <label for="pdCasteCertificateIssueDate" class="form-label">Issuing Date</label>
-            <input type="date" class="form-control" required value= "<%=user.casteIssuingDate? user.casteIssuingDate[0] : '' %>" name="casteIssuingDate" id="pdCasteCertificateIssueDate" />
-        </div>
-        <div class="col-md-6">
-            <label for="pdCasteCertificate" class="form-label">Caste Certificate</label><br />
-            <div class="input-group">
-                <!-- <input type="file" required class="form-control" id="pdCasteCertificate" name="casteCretificate"/> -->
-                <input type="file" required class="form-control" name="casteCretificate"/>
-                <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
-                <!-- Button trigger modal -->
-                <% if(user.casteCretificate) { %> 
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#pdCasteCertificate">
-                    View Document
-                </button>
-                <div class="modal fade" id="pdCasteCertificate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Caste Certificate</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="/upload/<%=user.casteCretificate%>" class="img-fluid" alt="Untitled-1.jpg">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-                <% } %> 
-            </div>
-        </div>
+				<div class="col-md-3">
+					<label
+						for="pdAnnualIncome"
+						class="form-label"
+						>Family Annual Income</label
+					>
+					<input
+						type="text"
+						value="<%=user.familyAnnualIncome ? user.familyAnnualIncome : '' %>"
+						name="familyAnnualIncome"
+						class="form-control"
+						id="pdAnnualIncome"
+						readonly
+					/>
+				</div>
+				<div class="col-md-1"></div>
 
-        <div class="col-md-2"></div>
+				<div class="col-md-3">
+					<label
+						for="pdIncomeCertificateYesNo"
+						class="form-label"
+						>Do you have Income
+						Certificate?</label
+					>
+					<br />
+					<div
+						class="form-check form-check-inline"
+					>
+						<input class="form-check-input"
+						<%=user.haveIncomeCertificate==true ?
+						"checked" : '' %> type="radio"
+						name="haveIncomeCertificate"
+						id="pdIncomeCertificateYes"
+						value="Yes" readonly/>
+						<label
+							class="form-check-label"
+							for="pdIncomeCertificateYes"
+						>
+							Yes
+						</label>
+					</div>
+					<div
+						class="form-check form-check-inline"
+					>
+						<input class="form-check-input"
+						<%=user.haveIncomeCertificate==false ?
+						"checked" : '' %> type="radio"
+						name="haveIncomeCertificate"
+						id="pdIncomeCertificateNo" value="No"
+						readonly/>
+						<label
+							class="form-check-label"
+							for="pdIncomeCertificateNo"
+						>
+							No
+						</label>
+					</div>
+				</div>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <legend>Income Details</legend>
+				<div class="col-md-3">
+					<label
+						for="pdIncomeCertificateNumber"
+						class="form-label"
+						>Income Certificate Number</label
+					>
+					<input
+						type="text"
+						readonly
+						class="form-control"
+						value="<%=user.incomeCertificateNumber ? user.incomeCertificateNumber : '' %>"
+						name="incomeCertificateNumber"
+						id="pdIncomeCertificateNumber"
+					/>
+				</div>
 
-        <div class="col-md-3">
-            <label for="pdAnnualIncome"   class="form-label">Family Annual Income</label>
-            <input type="text" value= "<%=user.familyAnnualIncome ? user.familyAnnualIncome : '' %>" name="familyAnnualIncome" class="form-control" id="pdAnnualIncome" required/>
-        </div>
-        <div class="col-md-1"></div>
+				<div class="col-md-2">
+					<label
+						for="pdIncomeCertificateAuthority"
+						class="form-label"
+						>Issuing Authority</label
+					>
+					<input
+						type="text"
+						readonly
+						class="form-control"
+						value="<%=user.incomeIssuingAuthority ? user.incomeIssuingAuthority : '' %>"
+						name="incomeIssuingAuthority"
+						id="pdIncomeCertificateNumber"
+					/>
+				</div>
 
-        <div class="col-md-3">
-            <label for="pdIncomeCertificateYesNo" class="form-label">Do you have Income Certificate?</label>
-            <br />
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" <%=user.haveIncomeCertificate==true ? "checked" : '' %> type="radio" name="haveIncomeCertificate" id="pdIncomeCertificateYes"
-                    value="Yes" required/>
-                <label class="form-check-label" for="pdIncomeCertificateYes">
-                    Yes
-                </label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" <%=user.haveIncomeCertificate==false ? "checked" : '' %> type="radio" name="haveIncomeCertificate" id="pdIncomeCertificateNo"
-                    value="No" required/>
-                <label class="form-check-label" for="pdIncomeCertificateNo">
-                    No
-                </label>
-            </div>
-        </div>
+				<div class="col-md-3">
+					<label
+						for="pdIncomeCertificateDate"
+						class="form-label"
+						>Issuing Date</label
+					>
+					<input
+						type="date"
+						class="form-control"
+						readonly
+						value="<%=user.incomeIssuingDate ? user.incomeIssuingDate[0] : '' %>"
+						name="incomeIssuingDate"
+						id="pdIncomeCertificateDate"
+					/>
+				</div>
 
-        <div class="col-md-3">
-            <label for="pdIncomeCertificateNumber" class="form-label">Income Certificate Number</label>
-            <input type="text" required class="form-control"  value= "<%=user.incomeCertificateNumber ? user.incomeCertificateNumber : '' %>" name="incomeCertificateNumber" id="pdIncomeCertificateNumber" />
-        </div>
+				<div class="col-md-6">
+					<label
+						for="pdIncomeCertificate"
+						class="form-label"
+						>Income Certificate</label
+					><br />
+					<div class="input-group">
+						<input
+							type="file"
+							class="form-control"
+							readonly
+							name="incomeCertificate"
+						/>
+						<!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+						<% if(user.incomeCertificate) { %>
+						<button
+							type="button"
+							class="btn btn-secondary"
+							data-bs-toggle="modal"
+							data-bs-target="#pdIncomeCertificate"
+						>
+							View Document
+						</button>
+						<div
+							class="modal fade"
+							id="pdIncomeCertificate"
+							tabindex="-1"
+							aria-labelledby="exampleModalLabel"
+							aria-hidden="true"
+						>
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5
+											class="modal-title"
+											id="exampleModalLabel"
+										>
+											Income Certificate
+										</h5>
+										<button
+											type="button"
+											class="btn-close"
+											data-bs-dismiss="modal"
+											aria-label="Close"
+										></button>
+									</div>
+									<div class="modal-body">
+										<img
+											src="/upload/<%=user.incomeCertificate%>"
+											class="img-fluid"
+											alt="Untitled-1.jpg"
+										/>
+									</div>
+									<div class="modal-footer">
+										<button
+											type="button"
+											class="btn btn-secondary"
+											data-bs-dismiss="modal"
+										>
+											Close
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<% } %>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
 
-        <div class="col-md-2">
-            <label for="pdIncomeCertificateAuthority" class="form-label">Issuing Authority</label>
-            <select id="pdIncomeCertificateAuthority" name="incomeIssuingAuthority" class="form-select" required>
-                <option <%=user.incomeIssuingAuthority=="Divisional Office" ? "selected" : '' %> value="Divisional Office">Divisional Office</option>
-                <option <%=user.incomeIssuingAuthority=="Sub-divisional office" ? "selected" : '' %> value="Sub-divisional office">Sub-divisional office</option>
-            </select>
-        </div>
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<legend>Domicile Details</legend>
 
-        <div class="col-md-3">
-            <label for="pdIncomeCertificateDate" class="form-label">Issuing Date</label>
-            <input type="date" class="form-control" required value= "<%=user.incomeIssuingDate ? user.incomeIssuingDate[0] : '' %>" name="incomeIssuingDate" id="pdIncomeCertificateDate" />
-        </div>
+				<div class="col-md-3">
+					<label
+						for="pdDomicile"
+						class="form-label"
+						>Which Domicile are you?</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.domicileState ? user.domicileState : '' %>"
+						name="domicileState"
+						readonly
+						id="pdDomicileCertificateDate"
+					/>
+				</div>
+				<div class="col-md-1"></div>
 
-        <div class="col-md-6">
-            <label for="pdIncomeCertificate" class="form-label">Income Certificate</label><br />
-            <div class="input-group">
-                <input type="file" class="form-control" required  name="incomeCertificate"/>
-                <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
-                <% if(user.incomeCertificate) { %> 
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#pdIncomeCertificate">
-                        View Document
-                    </button>
-                    <div class="modal fade" id="pdIncomeCertificate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Income Certificate</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="/upload/<%=user.incomeCertificate%>" class="img-fluid" alt="Untitled-1.jpg">
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <% } %> 
-            </div>
-        </div>
-        <div class="col-md-2"></div>
+				<div class="col-md-3">
+					<label
+						for="pdDomicileCertificateYesNo"
+						class="form-label"
+						>Do you have Domicile
+						Certificate?</label
+					>
+					<br />
+					<div
+						class="form-check form-check-inline"
+					>
+						<input class="form-check-input"
+						<%=user.haveDomicileCertificate==true
+						? "checked" : '' %> type="radio"
+						name="haveDomicileCertificate"
+						id="pdDomicileCertificateYes"
+						value="Yes" readonly/>
+						<label
+							class="form-check-label"
+							for="pdDomicileCertificateYes"
+						>
+							Yes
+						</label>
+					</div>
+					<div
+						class="form-check form-check-inline"
+					>
+						<input class="form-check-input"
+						<%=user.haveDomicileCertificate==false
+						? "checked" : '' %> type="radio"
+						name="haveDomicileCertificate"
+						id="pdDomicileCertificateNo"
+						value="No" readonly/>
+						<label
+							class="form-check-label"
+							for="pdDomicileCertificateNo"
+						>
+							No
+						</label>
+					</div>
+				</div>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <legend>Domicile Details</legend>
+				<div class="col-md-3">
+					<label
+						for="pdDomicileCertificateNumber"
+						class="form-label"
+						>Domicile Certificate Number</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						readonly
+						value="<%=user.domicileCertificateNumber ? user.domicileCertificateNumber : '' %>"
+						name="domicileCertificateNumber"
+						id="pdDomicileCertificateNumber"
+					/>
+				</div>
 
-        <div class="col-md-3">
-            <label for="pdDomicile" class="form-label">Which Domicile are you?</label>
-            <select id="pdDomicile" name="domicileState" class="form-select" required>
-                <option <%=user.domicileState=="Maharashtra" ? "selected" : '' %> value="Maharashtra">Maharashtra</option>
-                <option <%=user.domicileState=="Tamil Nadu" ? "selected" : '' %> value="Tamil Nadu">Tamil Nadu</option>
-                <option <%=user.domicileState=="Kashmir" ? "selected" : '' %> value="Kashmir">Kashmir</option>
-            </select>
-        </div>
-        <div class="col-md-1"></div>
+				<div class="col-md-2">
+					<label
+						for="pdDomicileCertificateAuthority"
+						class="form-label"
+						>Issuing Authority</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						value="<%=user.domicileIssuingAuthority ? user.domicileIssuingAuthority : '' %>"
+						name="domicileIssuingAuthority"
+						readonly
+						id="pdDomicileCertificateDate"
+					/>
+				</div>
 
-        <div class="col-md-3">
-            <label for="pdDomicileCertificateYesNo" class="form-label">Do you have Domicile Certificate?</label>
-            <br />
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" <%=user.haveDomicileCertificate==true ? "checked" : '' %> type="radio" name="haveDomicileCertificate" id="pdDomicileCertificateYes"
-                    value="Yes" required/>
-                <label class="form-check-label" for="pdDomicileCertificateYes">
-                    Yes
-                </label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" <%=user.haveDomicileCertificate==false ? "checked" : '' %> type="radio" name="haveDomicileCertificate" id="pdDomicileCertificateNo"
-                    value="No" required/>
-                <label class="form-check-label" for="pdDomicileCertificateNo">
-                    No
-                </label>
-            </div>
-        </div>
+				<div class="col-md-3">
+					<label
+						for="pdDomicileCertificateDate"
+						class="form-label"
+						>Issuing Date</label
+					>
+					<input
+						type="date"
+						class="form-control"
+						value="<%=user.domicileIssuingDate ? user.domicileIssuingDate[0] : '' %>"
+						name="domicileIssuingDate"
+						readonly
+						id="pdDomicileCertificateDate"
+					/>
+				</div>
 
-        <div class="col-md-3">
-            <label for="pdDomicileCertificateNumber" class="form-label">Domicile Certificate Number</label>
-            <input type="text" class="form-control" required value= "<%=user.domicileCertificateNumber ? user.domicileCertificateNumber : '' %>" name="domicileCertificateNumber" id="pdDomicileCertificateNumber" />
-        </div>
+				<div class="col-md-6">
+					<label
+						for="pdDomicileCertificate"
+						class="form-label"
+						>Domicile Certificate</label
+					><br />
+					<div class="input-group">
+						<input
+							type="file"
+							class="form-control"
+							readonly
+							name="domicileCertificate"
+						/>
+						<!-- <button type="view" class="btn btn-secondary">View Document</button> -->
+						<% if(user.domicileCertificate) { %>
+						<button
+							type="button"
+							class="btn btn-secondary"
+							data-bs-toggle="modal"
+							data-bs-target="#pdDomicileCertificate"
+						>
+							View Document
+						</button>
+						<div
+							class="modal fade"
+							id="pdDomicileCertificate"
+							tabindex="-1"
+							aria-labelledby="exampleModalLabel"
+							aria-hidden="true"
+						>
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5
+											class="modal-title"
+											id="exampleModalLabel"
+										>
+											Domicile Certificate
+										</h5>
+										<button
+											type="button"
+											class="btn-close"
+											data-bs-dismiss="modal"
+											aria-label="Close"
+										></button>
+									</div>
+									<div class="modal-body">
+										<img
+											src="/upload/<%=user.domicileCertificate%>"
+											class="img-fluid"
+											alt="Untitled-1.jpg"
+										/>
+									</div>
+									<div class="modal-footer">
+										<button
+											type="button"
+											class="btn btn-secondary"
+											data-bs-dismiss="modal"
+										>
+											Close
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<% } %>
+					</div>
+				</div>
 
-        
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
 
-        <div class="col-md-2">
-            <label for="pdDomicileCertificateAuthority" class="form-label">Issuing Authority</label>
-            <select id="pdDomicileCertificateAuthority" name="domicileIssuingAuthority" class="form-select" required>
-                <option <%=user.domicileIssuingAuthority=="Divisional Office" ? "selected" : '' %> value="Divisional Office">Divisional Office</option>
-                <option <%=user.domicileIssuingAuthority=="Sub-divisional office" ? "selected" : '' %> value="Sub-divisional office">Sub-divisional office</option>
-            </select>
-        </div>
+				<legend>Bank Details</legend>
 
-        <div class="col-md-3">
-            <label for="pdDomicileCertificateDate" class="form-label">Issuing Date</label>
-            <input type="date" class="form-control" value= "<%=user.domicileIssuingDate ? user.domicileIssuingDate[0] : '' %>" name="domicileIssuingDate" required id="pdDomicileCertificateDate" />
-        </div>
+				<div class="col-md-4">
+					<label
+						for="pdBankAccountNumber"
+						class="form-label"
+						>Bank Account Number</label
+					>
+					<input
+						type="text"
+						value="<%=user.bankAccountNumber ? user.bankAccountNumber : '' %>"
+						class="form-control"
+						readonly
+						name="bankAccountNumber"
+						id="pdBankAccountNumber"
+					/>
+				</div>
 
-        <div class="col-md-6">
-            <label for="pdDomicileCertificate" class="form-label">Domicile Certificate</label><br />
-            <div class="input-group">
-                <input type="file" class="form-control"  required name="domicileCertificate"/>
-                <!-- <button type="view" class="btn btn-secondary">View Document</button> -->
-                <% if(user.domicileCertificate) { %> 
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#pdDomicileCertificate">
-                        View Document
-                    </button>
-                    <div class="modal fade" id="pdDomicileCertificate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Domicile Certificate</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="/upload/<%=user.domicileCertificate%>" class="img-fluid" alt="Untitled-1.jpg">
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <% } %> 
-            </div>
-        </div>
+				<div class="col-md-4">
+					<label
+						for="pdBankIFSCCode"
+						class="form-label"
+						>IFSC Code</label
+					>
+					<input
+						type="text"
+						value="<%=user.bankIFSCode ? user.bankIFSCode : '' %>"
+						class="form-control"
+						readonly
+						name="bankIFSCode"
+						id="pdBankIFSCCode"
+					/>
+				</div>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
 
-        <legend>Bank Details</legend>
-
-        <div class="col-md-4">
-            <label for="pdBankAccountNumber" class="form-label">Bank Account Number</label>
-            <input type="text"  value= "<%=user.bankAccountNumber ? user.bankAccountNumber : '' %>" class="form-control" required name="bankAccountNumber" id="pdBankAccountNumber" />
-        </div>
-
-        <div class="col-md-4">
-            <label for="pdBankIFSCCode" class="form-label">IFSC Code</label>
-            <input type="text"  value= "<%=user.bankIFSCode ? user.bankIFSCode : '' %>" class="form-control" required name="bankIFSCode" id="pdBankIFSCCode" />
-        </div>
-
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <div class="d-grid" style="width: auto; align-items: center">
-            <button type="submit" class="btn btn-primary" id="pdBtnSubmit">
-                Save and Next
-            </button>
-        </div>
-
-       
-    </form>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-</body>
-
+				<div
+					class="d-grid"
+					style="width: auto; align-items: center"
+				>
+					<button
+						type="submit"
+						class="btn btn-primary"
+						id="pdBtnSubmit"
+					>
+						Next
+					</button>
+				</div>
+			</form>
+		</div>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+			integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+			integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+			crossorigin="anonymous"
+		></script>
+	</body>
 </html>
